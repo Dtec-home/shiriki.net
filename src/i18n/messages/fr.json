@@ -1,0 +1,164 @@
+{
+  "nav": {
+    "giving": "Dons",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "blog": "Blog",
+    "about": "À propos",
+    "contact": "Contact",
+    "requestDemo": "Demander une démo"
+  },
+  "footer": {
+    "columns": {
+      "product": "Produit",
+      "company": "Entreprise",
+      "resources": "Ressources",
+      "legal": "Mentions légales"
+    },
+    "links": {
+      "giving": "Dons",
+      "features": "Fonctionnalités",
+      "security": "Sécurité",
+      "pricing": "Tarifs",
+      "about": "À propos",
+      "contact": "Contact",
+      "blog": "Blog",
+      "faq": "Foire aux questions",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d'utilisation"
+    },
+    "ussdLabel": "USSD {code}",
+    "copyright": "© {year} Kanisa Connect. Tous droits réservés."
+  },
+  "hero": {
+    "eyebrow": "Lancement 2026",
+    "headingPrefix": "La gestion de votre église, ",
+    "headingPrefix__needs_review": true,
+    "headingHighlight": "magnifiquement connectée.",
+    "headingHighlight__needs_review": true,
+    "lead": "Dons. Membres. Communication. Tout est connecté. Une plateforme de gestion complète conçue pour les églises africaines.",
+    "exploreLabel": "Découvrir la plateforme",
+    "demoLabel": "Parler à notre équipe"
+  },
+  "sections": {
+    "problem": {
+      "eyebrow": "L'ancienne méthode s'arrête ici",
+      "heading": "Les églises méritent de meilleurs outils.",
+      "lead": "Dites adieu au comptage manuel des espèces, aux registres papier et aux groupes WhatsApp dispersés."
+    },
+    "giving": {
+      "eyebrow": "Acceptez toujours les paiements",
+      "heading": "Chaque canal. Une vision claire.",
+      "heading__needs_review": true,
+      "lead": "Aucun paiement n'est refusé. Les fonds non associés sont conservés en toute sécurité en attendant la résolution par un administrateur, tandis que chaque contribution reste visible et traçable.",
+      "cartCtaLabel": "Envoyer la demande STK"
+    },
+    "features": {
+      "eyebrow": "Conçu pour la gestion des églises",
+      "heading": "Tout ce dont votre ministère a besoin, au même endroit.",
+      "lead": "De l'accueil au service financier, Kanisa Connect remplace les tableurs et les dossiers papier par un seul système connecté.",
+      "lead__needs_review": true
+    },
+    "digitalHome": {
+      "eyebrow": "Un seul espace numérique",
+      "heading": "Touchez chaque membre, de toutes les manières.",
+      "heading__needs_review": true,
+      "lead": "Gérez les événements, les prédications, les campagnes et les échanges depuis un espace unique, calme et performant.",
+      "lead__needs_review": true
+    },
+    "security": {
+      "eyebrow": "Prêt pour l'avenir",
+      "heading": "Sécurité de niveau entreprise. Simplicité pour l'église.",
+      "heading__needs_review": true,
+      "lead": "Construit sur une architecture robuste et évolutive qui protège vos données et fait avancer votre ministère."
+    },
+    "testimonials": {
+      "eyebrow": "Des églises comme la vôtre",
+      "heading": "Des ministères qui utilisent Kanisa Connect.",
+      "lead": "Les équipes financières, les équipes d'accueil et les pasteurs font confiance à Kanisa Connect pour les dons du dimanche et le ministère quotidien.",
+      "lead__needs_review": true
+    },
+    "cta": {
+      "heading": "Prêt à connecter votre église ?",
+      "sub": "Parlez-nous de votre congrégation et nous vous proposerons une présentation adaptée à votre équipe.",
+      "sub__needs_review": true,
+      "ctaLabel": "Demander une démo"
+    }
+  },
+  "pricing": {
+    "tiers": {
+      "starter": {
+        "name": "Starter",
+        "description": "Pour les petites congrégations qui abandonnent le papier et WhatsApp.",
+        "billingNote": "Gratuit, pour toujours, jusqu'à 100 membres",
+        "ctaLabel": "Commencer gratuitement"
+      },
+      "growth": {
+        "name": "Growth",
+        "description": "Pour les églises en croissance qui ont besoin de tous les canaux de don et de tous les rôles d'administration.",
+        "description__needs_review": true,
+        "billingNote": "par mois, jusqu'à 1 000 membres",
+        "ctaLabel": "Demander une démo"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "Pour les diocèses, réseaux et églises multi-sites à grande échelle.",
+        "description__needs_review": true,
+        "billingNote": "Tarification personnalisée, membres illimités",
+        "ctaLabel": "Contacter les ventes"
+      }
+    }
+  },
+  "forms": {
+    "contact": {
+      "nameLabel": "Nom complet",
+      "emailLabel": "Adresse e-mail",
+      "phoneLabel": "Numéro de téléphone",
+      "phoneOptional": "(facultatif)",
+      "churchLabel": "Nom de l'église",
+      "countryLabel": "Pays",
+      "countryPlaceholder": "Sélectionnez un pays",
+      "messageLabel": "Comment pouvons-nous vous aider ?",
+      "submitLabel": "Envoyer le message",
+      "submitPending": "Envoi en cours…",
+      "successMessage": "Merci — nous vous recontacterons bientôt.",
+      "errorMessage": "Une erreur s'est produite. Veuillez réessayer."
+    },
+    "demo": {
+      "title": "Demander une démo",
+      "description": "Parlez-nous un peu de votre église et nous organiserons une présentation adaptée à votre congrégation.",
+      "description__needs_review": true,
+      "nameLabel": "Nom complet",
+      "emailLabel": "Adresse e-mail",
+      "churchLabel": "Nom de l'église",
+      "phoneLabel": "Numéro de téléphone",
+      "phoneOptional": "(facultatif)",
+      "congregationSizeLabel": "Taille de la congrégation",
+      "congregationSizeOptional": "(facultatif)",
+      "congregationSizePlaceholder": "Sélectionnez une taille",
+      "submitLabel": "Demander une démo",
+      "submitPending": "Envoi en cours…",
+      "successTitle": "Vous êtes sur la liste",
+      "successTitle__needs_review": true,
+      "successMessage": "Nous vous recontacterons sous un jour ouvré pour planifier un moment adapté à votre église.",
+      "successNote": "Surveillez votre boîte de réception — nous avons aussi envoyé un e-mail de confirmation.",
+      "closeLabel": "Fermer"
+    },
+    "validation": {
+      "nameRequired": "Veuillez saisir votre nom complet.",
+      "emailInvalid": "Veuillez saisir une adresse e-mail valide, par exemple vous@votreeglise.org.",
+      "phoneInvalid": "Veuillez saisir un numéro de téléphone valide, par exemple 0712 345 678.",
+      "churchRequired": "Veuillez indiquer le nom de votre église.",
+      "countryRequired": "Veuillez sélectionner le pays où se trouve votre église.",
+      "messageTooShort": "Veuillez nous en dire un peu plus sur vos besoins (au moins 10 caractères)."
+    }
+  },
+  "common": {
+    "readMore": "Lire la suite",
+    "loading": "Chargement…",
+    "tryAgain": "Réessayer",
+    "close": "Fermer",
+    "send": "Envoyer",
+    "skipToContent": "Aller au contenu"
+  }
+}

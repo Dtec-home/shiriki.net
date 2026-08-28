@@ -1,0 +1,159 @@
+{
+  "nav": {
+    "giving": "Sadaka",
+    "features": "Vipengele",
+    "pricing": "Bei",
+    "blog": "Blogu",
+    "about": "Kuhusu",
+    "contact": "Wasiliana",
+    "requestDemo": "Omba demo"
+  },
+  "footer": {
+    "columns": {
+      "product": "Bidhaa",
+      "company": "Kampuni",
+      "resources": "Rasilimali",
+      "legal": "Kisheria"
+    },
+    "links": {
+      "giving": "Sadaka",
+      "features": "Vipengele",
+      "security": "Usalama",
+      "pricing": "Bei",
+      "about": "Kuhusu",
+      "contact": "Wasiliana",
+      "blog": "Blogu",
+      "faq": "Maswali Yanayoulizwa Mara kwa Mara",
+      "privacy": "Sera ya faragha",
+      "terms": "Masharti ya huduma"
+    },
+    "ussdLabel": "USSD {code}",
+    "copyright": "© {year} Kanisa Connect. Haki zote zimehifadhiwa."
+  },
+  "hero": {
+    "eyebrow": "Uzinduzi 2026",
+    "headingPrefix": "Utendaji wa kanisa, ",
+    "headingHighlight": "umeunganishwa kwa uzuri.",
+    "headingHighlight__needs_review": true,
+    "lead": "Sadaka. Wanachama. Mawasiliano. Vyote vimeunganishwa. Jukwaa kamili la usimamizi lililojengwa kwa ajili ya makanisa ya Afrika.",
+    "exploreLabel": "Chunguza jukwaa",
+    "demoLabel": "Zungumza na timu yetu"
+  },
+  "sections": {
+    "problem": {
+      "eyebrow": "Njia ya zamani inaishia hapa",
+      "heading": "Makanisa yanastahili zana bora.",
+      "lead": "Achana na kuhesabu fedha kwa mkono, kumbukumbu za karatasi, na vikundi vya WhatsApp vilivyotawanyika."
+    },
+    "giving": {
+      "eyebrow": "Pokea fedha kila wakati",
+      "heading": "Kila njia. Picha moja iliyo wazi.",
+      "heading__needs_review": true,
+      "lead": "Hakuna malipo yanayokataliwa. Fedha zisizolingana huhifadhiwa kwa usalama kwa ajili ya utatuzi wa msimamizi, huku kila mchango ukibaki wazi na wenye uwajibikaji.",
+      "cartCtaLabel": "Tuma ombi la STK"
+    },
+    "features": {
+      "eyebrow": "Imejengwa kwa ajili ya uendeshaji wa kanisa",
+      "heading": "Kila kitu ambacho huduma yako inahitaji, mahali pamoja.",
+      "lead": "Kutoka dawati la mapokezi hadi ofisi ya fedha, Kanisa Connect inabadilisha lahajedwali na nyaraka za karatasi kwa mfumo mmoja uliounganishwa.",
+      "lead__needs_review": true
+    },
+    "digitalHome": {
+      "eyebrow": "Nyumba moja ya kidijitali",
+      "heading": "Wafikie wanachama wote, kwa kila njia.",
+      "lead": "Simamia matukio, mahubiri, kampeni, na mazungumzo kutoka kitovu kimoja tulivu na chenye uwezo.",
+      "lead__needs_review": true
+    },
+    "security": {
+      "eyebrow": "Tayari kwa kinachofuata",
+      "heading": "Usalama wa hadhi ya kimataifa. Matumizi rahisi kwa kanisa.",
+      "heading__needs_review": true,
+      "lead": "Imejengwa kwenye muundo thabiti na unaoweza kukua, unaolinda data yako na kuendeleza huduma bila kukwama."
+    },
+    "testimonials": {
+      "eyebrow": "Kutoka kwa makanisa kama lako",
+      "heading": "Huduma zinazotumia Kanisa Connect.",
+      "lead": "Timu za fedha, madawati ya mapokezi, na wachungaji wanaiamini Kanisa Connect kwa ajili ya sadaka za Jumapili na huduma za kila siku.",
+      "lead__needs_review": true
+    },
+    "cta": {
+      "heading": "Uko tayari kuunganisha kanisa lako?",
+      "sub": "Tuambie kuhusu kutaniko lako na tutakuandalia maonyesho yaliyolenga timu yako.",
+      "ctaLabel": "Omba demo"
+    }
+  },
+  "pricing": {
+    "tiers": {
+      "starter": {
+        "name": "Starter",
+        "description": "Kwa makutaniko madogo yanayoachana na karatasi na WhatsApp.",
+        "billingNote": "Bure, milele, hadi wanachama 100",
+        "ctaLabel": "Anza bure"
+      },
+      "growth": {
+        "name": "Growth",
+        "description": "Kwa makanisa yanayokua yanayohitaji kila njia ya sadaka na kila jukumu la usimamizi.",
+        "description__needs_review": true,
+        "billingNote": "kwa mwezi, hadi wanachama 1,000",
+        "ctaLabel": "Omba demo"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "Kwa majimbo ya kanisa, mitandao, na makanisa yenye matawi mengi kwa kiwango kikubwa.",
+        "billingNote": "Bei maalum, wanachama wasio na kikomo",
+        "ctaLabel": "Zungumza na mauzo"
+      }
+    }
+  },
+  "forms": {
+    "contact": {
+      "nameLabel": "Jina kamili",
+      "emailLabel": "Anwani ya barua pepe",
+      "phoneLabel": "Nambari ya simu",
+      "phoneOptional": "(hiari)",
+      "churchLabel": "Jina la kanisa",
+      "countryLabel": "Nchi",
+      "countryPlaceholder": "Chagua nchi",
+      "messageLabel": "Tunawezaje kukusaidia?",
+      "submitLabel": "Tuma ujumbe",
+      "submitPending": "Inatuma…",
+      "successMessage": "Asante — tutawasiliana nawe hivi karibuni.",
+      "errorMessage": "Hitilafu imetokea. Tafadhali jaribu tena."
+    },
+    "demo": {
+      "title": "Omba demo",
+      "description": "Tuambie kidogo kuhusu kanisa lako na tutaandaa maonyesho yaliyolengwa kwa ajili ya kutaniko lako.",
+      "nameLabel": "Jina kamili",
+      "emailLabel": "Anwani ya barua pepe",
+      "churchLabel": "Jina la kanisa",
+      "phoneLabel": "Nambari ya simu",
+      "phoneOptional": "(hiari)",
+      "congregationSizeLabel": "Idadi ya kutaniko",
+      "congregationSizeOptional": "(hiari)",
+      "congregationSizePlaceholder": "Chagua idadi",
+      "submitLabel": "Omba demo",
+      "submitPending": "Inatuma…",
+      "successTitle": "Umeorodheshwa",
+      "successTitle__needs_review": true,
+      "successMessage": "Tutawasiliana nawe ndani ya siku moja ya kazi kupanga muda unaofaa kwa kanisa lako.",
+      "successNote": "Angalia kisanduku chako cha barua pepe — tumetuma pia barua pepe ya uthibitisho.",
+      "closeLabel": "Funga"
+    },
+    "validation": {
+      "nameRequired": "Tafadhali andika jina lako kamili.",
+      "emailInvalid": "Tafadhali weka anwani sahihi ya barua pepe, kama vile wewe@kanisalako.org.",
+      "phoneInvalid": "Tafadhali weka nambari sahihi ya simu, mfano 0712 345 678.",
+      "churchRequired": "Tafadhali tuambie jina la kanisa lako.",
+      "countryRequired": "Tafadhali chagua nchi ambayo kanisa lako lipo.",
+      "messageTooShort": "Tafadhali tuambie zaidi kuhusu unachohitaji (angalau herufi 10)."
+    }
+  },
+  "common": {
+    "readMore": "Soma zaidi",
+    "loading": "Inapakia…",
+    "tryAgain": "Jaribu tena",
+    "close": "Funga",
+    "send": "Tuma",
+    "skipToContent": "Ruka hadi maudhui"
+  }
+}

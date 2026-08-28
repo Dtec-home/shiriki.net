@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "giving": "Giving",
+    "features": "Features",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "requestDemo": "Request demo"
+  },
+  "footer": {
+    "columns": {
+      "product": "Product",
+      "company": "Company",
+      "resources": "Resources",
+      "legal": "Legal"
+    },
+    "links": {
+      "giving": "Giving",
+      "features": "Features",
+      "security": "Security",
+      "pricing": "Pricing",
+      "about": "About",
+      "contact": "Contact",
+      "blog": "Blog",
+      "faq": "FAQ",
+      "privacy": "Privacy policy",
+      "terms": "Terms of service"
+    },
+    "ussdLabel": "USSD {code}",
+    "copyright": "© {year} Kanisa Connect. All rights reserved."
+  },
+  "hero": {
+    "eyebrow": "Launch 2026",
+    "headingPrefix": "Church operations, ",
+    "headingHighlight": "beautifully connected.",
+    "lead": "Giving. Members. Communication. All connected. A complete management platform built for African churches.",
+    "exploreLabel": "Explore platform",
+    "demoLabel": "Talk to our team"
+  },
+  "sections": {
+    "problem": {
+      "eyebrow": "The old way stops here",
+      "heading": "Churches deserve better tools.",
+      "lead": "Move past manual cash counting, paper records, and scattered WhatsApp groups."
+    },
+    "giving": {
+      "eyebrow": "Always accept money",
+      "heading": "Every channel. One clear picture.",
+      "lead": "No payment is rejected. Unmatched funds are securely held for admin resolution, while every contribution stays visible and accountable.",
+      "cartCtaLabel": "Send STK prompt"
+    },
+    "features": {
+      "eyebrow": "Built for church operations",
+      "heading": "Everything your ministry needs, in one place.",
+      "lead": "From the welcome desk to the finance office, Kanisa Connect replaces spreadsheets and paper trails with one connected system."
+    },
+    "digitalHome": {
+      "eyebrow": "One digital home",
+      "heading": "Reach every member, every way.",
+      "lead": "Manage events, sermons, campaigns, and conversations from one calm, capable hub."
+    },
+    "security": {
+      "eyebrow": "Ready for what is next",
+      "heading": "Enterprise-grade security. Church-simple UX.",
+      "lead": "Built on a robust, scalable architecture that protects your data and keeps ministry moving."
+    },
+    "testimonials": {
+      "eyebrow": "From churches like yours",
+      "heading": "Ministries running on Kanisa Connect.",
+      "lead": "Finance teams, welcome desks, and pastors trust Kanisa Connect for Sunday giving and everyday ministry."
+    },
+    "cta": {
+      "heading": "Ready to connect your church?",
+      "sub": "Tell us about your congregation and we'll tailor a walkthrough for your team.",
+      "ctaLabel": "Request a demo"
+    }
+  },
+  "pricing": {
+    "tiers": {
+      "starter": {
+        "name": "Starter",
+        "description": "For small congregations getting off paper and WhatsApp.",
+        "billingNote": "Free, forever, up to 100 members",
+        "ctaLabel": "Start free"
+      },
+      "growth": {
+        "name": "Growth",
+        "description": "For growing churches that need every giving channel and role.",
+        "billingNote": "per month, up to 1,000 members",
+        "ctaLabel": "Request a demo"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "description": "For dioceses, networks, and multi-branch churches at scale.",
+        "billingNote": "Custom pricing, unlimited members",
+        "ctaLabel": "Talk to sales"
+      }
+    }
+  },
+  "forms": {
+    "contact": {
+      "nameLabel": "Full name",
+      "emailLabel": "Email address",
+      "phoneLabel": "Phone number",
+      "phoneOptional": "(optional)",
+      "churchLabel": "Church name",
+      "countryLabel": "Country",
+      "countryPlaceholder": "Select a country",
+      "messageLabel": "How can we help?",
+      "submitLabel": "Send message",
+      "submitPending": "Sending…",
+      "successMessage": "Thanks — we'll be in touch soon.",
+      "errorMessage": "Something went wrong. Please try again."
+    },
+    "demo": {
+      "title": "Request a demo",
+      "description": "Tell us a little about your church and we'll set up a walkthrough tailored to your congregation.",
+      "nameLabel": "Full name",
+      "emailLabel": "Email address",
+      "churchLabel": "Church name",
+      "phoneLabel": "Phone number",
+      "phoneOptional": "(optional)",
+      "congregationSizeLabel": "Congregation size",
+      "congregationSizeOptional": "(optional)",
+      "congregationSizePlaceholder": "Select a size",
+      "submitLabel": "Request demo",
+      "submitPending": "Sending…",
+      "successTitle": "You're on the list",
+      "successMessage": "We'll be in touch within one business day to schedule a time that works for your church.",
+      "successNote": "Keep an eye on your inbox — we've sent a confirmation email too.",
+      "closeLabel": "Close"
+    },
+    "validation": {
+      "nameRequired": "Please enter your full name.",
+      "emailInvalid": "Please enter a valid email address, like you@yourchurch.org.",
+      "phoneInvalid": "Please enter a valid phone number, e.g. 0712 345 678.",
+      "churchRequired": "Please tell us the name of your church.",
+      "countryRequired": "Please select the country your church is in.",
+      "messageTooShort": "Please tell us a little more about what you need (at least 10 characters)."
+    }
+  },
+  "common": {
+    "readMore": "Read more",
+    "loading": "Loading…",
+    "tryAgain": "Try again",
+    "close": "Close",
+    "send": "Send",
+    "skipToContent": "Skip to content"
+  }
+}
