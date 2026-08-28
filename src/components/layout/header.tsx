@@ -2,6 +2,8 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+
+import { APP_SIGNIN_URL, APP_SIGNUP_URL } from '@/lib/site'
 import { cn } from '@/lib/utils'
 import { Container } from '@/components/layout/container'
 import { Logo } from '@/components/layout/logo'
@@ -49,7 +51,7 @@ export function Header() {
       )}
     >
       <Container className="flex h-16 items-center justify-between gap-4 lg:h-[72px]">
-        <Link href="/" className="flex items-center gap-2" aria-label="Kanisa Connect home">
+        <Link href="/" className="flex items-center gap-2" aria-label="Shiriki home">
           <Logo />
         </Link>
 
@@ -63,10 +65,25 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle />
+          {/* The path into the product. This site had no link to the app at
+              all, so a church leader who was convinced here had nowhere to
+              go. "Request demo" is kept for those who want to talk first. */}
+          <Link
+            href={APP_SIGNIN_URL}
+            className="hidden min-h-11 items-center justify-center rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
+          >
+            Sign in
+          </Link>
+          <Link
+            href={APP_SIGNUP_URL}
+            className="hidden min-h-11 items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5 sm:inline-flex"
+          >
+            Get started
+          </Link>
           <DemoRequestDialog>
             <button
               type="button"
-              className="hidden min-h-11 items-center justify-center rounded-lg bg-secondary px-4 py-2 text-sm font-bold text-secondary-foreground transition-transform hover:-translate-y-0.5 sm:inline-flex"
+              className="hidden min-h-11 items-center justify-center rounded-lg bg-secondary px-4 py-2 text-sm font-bold text-secondary-foreground transition-transform hover:-translate-y-0.5 lg:inline-flex"
             >
               Request demo
             </button>

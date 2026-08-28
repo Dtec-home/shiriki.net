@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 /**
  * Shared visual template for every OG image (root default + any per-page
  * `opengraph-image.tsx` other agents add for blog posts, etc.), rendered via
- * `next/og` `ImageResponse` (Satori). Kanisa Connect brand:
+ * `next/og` `ImageResponse` (Satori). Shiriki brand:
  *   - deep indigo background (`--primary` ≈ #082675)
  *   - gold accent (`--secondary` ≈ #edae12)
  *   - a subtle diagonal-stripe motif, echoing the site header treatment
@@ -109,7 +109,7 @@ export function OgTemplate({
             letterSpacing: '-0.01em',
           }}
         >
-          Kanisa Connect
+          Shiriki
         </div>
       </div>
 
@@ -150,7 +150,7 @@ export function OgTemplate({
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         <div style={{ display: 'flex', height: 4, width: 120, backgroundColor: GOLD }} />
         <div style={{ fontFamily: sansFont, fontSize: 22, color: LIGHT }}>
-          kanisaconnect.com
+          shiriki.site
         </div>
       </div>
     </div>

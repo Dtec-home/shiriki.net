@@ -4,7 +4,7 @@ import { SITE_URL } from '@/lib/site'
 
 /**
  * robots.txt — allow all crawlers, and EXPLICITLY allow the major AI
- * crawlers so Kanisa Connect content is eligible for AI search/answer
+ * crawlers so Shiriki content is eligible for AI search/answer
  * engines (AEO). Per-agent rules are required because some operators
  * (notably `Google-Extended`, `Applebot-Extended`) only respect their own
  * named directive, not the wildcard `*` rule.

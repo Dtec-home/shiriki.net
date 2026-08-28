@@ -1,7 +1,7 @@
 import { defineQuery } from 'next-sanity'
 
 /**
- * Typed GROQ queries for the Kanisa Connect marketing site. Each query is
+ * Typed GROQ queries for the Shiriki marketing site. Each query is
  * defined with `defineQuery` so Sanity TypeGen can generate result types
  * once a real project exists (see `pnpm typegen`). Until then, the matching
  * hand-written result types live in `src/sanity/types.ts`.

@@ -8,7 +8,7 @@ import { CONTACT_EMAIL, CONTACT_PHONE, ORGANIZATION_ADDRESS, SALES_EMAIL, USSD_C
 
 export const metadata: Metadata = buildMetadata({
   title: 'Contact us',
-  description: 'Talk to the Kanisa Connect team about giving, membership, and communication tools for your church.',
+  description: 'Talk to the Shiriki team about giving, membership, and communication tools for your church.',
   path: '/contact',
 })
 
@@ -27,7 +27,7 @@ export default function ContactPage() {
           <span className="text-sm font-bold uppercase tracking-[0.18em] text-primary">Contact</span>
           <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">Let&apos;s talk about your church.</h1>
           <p className="max-w-md text-lg leading-8 text-muted-foreground">
-            Whether you&apos;re exploring Kanisa Connect for the first time or need support with an existing account,
+            Whether you&apos;re exploring Shiriki for the first time or need support with an existing account,
             our team is ready to help.
           </p>
         </div>

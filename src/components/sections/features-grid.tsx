@@ -42,7 +42,7 @@ export type FeaturesGridProps = {
 export const FALLBACK_FEATURES_GRID: FeaturesGridProps = {
   eyebrow: 'Built for church operations',
   heading: 'Everything your ministry needs, in one place.',
-  lead: 'From the welcome desk to the finance office, Kanisa Connect replaces spreadsheets and paper trails with one connected system.',
+  lead: 'From the welcome desk to the finance office, Shiriki replaces spreadsheets and paper trails with one connected system.',
   cards: [
     {
       icon: 'users',

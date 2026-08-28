@@ -1,5 +1,5 @@
 /**
- * Site navigation structure. Static (not Sanity-driven) — Kanisa Connect's
+ * Site navigation structure. Static (not Sanity-driven) — Shiriki's
  * primary nav is small and stable, so it is hand-authored here rather than
  * modeled as a CMS document.
  */

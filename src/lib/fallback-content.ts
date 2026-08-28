@@ -23,7 +23,7 @@ export const FALLBACK_FAQS: FaqDoc[] = [
   {
     _id: 'mpesa-how',
     category: 'Giving',
-    question: 'How does M-Pesa giving work with Kanisa Connect?',
+    question: 'How does M-Pesa giving work with Shiriki?',
     answer:
       'Members can give via M-Pesa STK Push (a payment prompt sent straight to their phone) or your church\'s M-Pesa PayBill number. Every transaction is automatically matched to a member and giving category, and unmatched payments are held for an admin to resolve rather than rejected.',
   },
@@ -32,7 +32,7 @@ export const FALLBACK_FAQS: FaqDoc[] = [
     category: 'Giving',
     question: 'Do you take a cut of M-Pesa giving?',
     answer:
-      "No. Kanisa Connect does not add a markup on top of Safaricom's standard M-Pesa transaction charges — your church receives the full contribution amount, minus only the standard telco fee.",
+      "No. Shiriki does not add a markup on top of Safaricom's standard M-Pesa transaction charges — your church receives the full contribution amount, minus only the standard telco fee.",
   },
   {
     _id: 'ussd-what',
@@ -60,7 +60,7 @@ export const FALLBACK_FAQS: FaqDoc[] = [
     category: 'Security',
     question: 'Can we limit what each admin or volunteer can see?',
     answer:
-      'Yes. Kanisa Connect ships with 7+ granular admin roles (for example: finance-only, membership-only, or event coordinator) so volunteers only ever see the data relevant to their responsibility.',
+      'Yes. Shiriki ships with 7+ granular admin roles (for example: finance-only, membership-only, or event coordinator) so volunteers only ever see the data relevant to their responsibility.',
   },
   {
     _id: 'pricing-free',

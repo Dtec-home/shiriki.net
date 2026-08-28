@@ -10,7 +10,7 @@ type LogoProps = {
 }
 
 /**
- * The "Kanisa Connect" wordmark — bold "Kanisa", lighter-weight "Connect".
+ * The "Shiriki" wordmark — bold "Shiriki", lighter-weight "Connect".
  * Purely presentational; wrap it in a `<Link href="/">` where navigation is
  * required.
  */
@@ -28,7 +28,7 @@ export function Logo({ className, tone = "default" }: LogoProps) {
           tone === "inverted" ? "text-primary-foreground" : "text-primary"
         )}
       >
-        Kanisa
+        Shiriki
       </span>{" "}
       <span
         className={cn(

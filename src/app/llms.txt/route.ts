@@ -52,10 +52,10 @@ function section(heading: string, lines: string[]): string {
 
 const PAGES = [
   { title: 'Home', path: '/', desc: 'Church management platform overview — giving, members, communication, events, and finance.' },
-  { title: 'About', path: '/about', desc: 'About Kanisa Connect and its mission for African churches.' },
+  { title: 'About', path: '/about', desc: 'About Shiriki and its mission for African churches.' },
   { title: 'Pricing', path: '/pricing', desc: 'Plans and pricing in Kenyan Shillings.' },
   { title: 'Blog', path: '/blog', desc: 'Articles on church operations, giving, and community.' },
-  { title: 'FAQ', path: '/faq', desc: 'Frequently asked questions about Kanisa Connect.' },
+  { title: 'FAQ', path: '/faq', desc: 'Frequently asked questions about Shiriki.' },
   { title: 'Contact', path: '/contact', desc: 'Get in touch or request a demo.' },
 ]
 
@@ -83,14 +83,14 @@ export async function GET() {
       data.faqs.map((faq) => `- ${faq.question}`),
     ),
     section('Contact', [
-      link('Contact Kanisa Connect', '/contact', 'Sales, support, and demo requests.'),
+      link('Contact Shiriki', '/contact', 'Sales, support, and demo requests.'),
     ]),
   ].filter(Boolean)
 
   const body = [
-    '# Kanisa Connect',
+    '# Shiriki',
     '',
-    '> Kanisa Connect is a church management platform for African churches — member records, communication, events, and finance, with mobile giving via M-Pesa and Airtel Money, all in one connected home.',
+    '> Shiriki is a church management platform for African churches — member records, communication, events, and finance, with mobile giving via M-Pesa and Airtel Money, all in one connected home.',
     '',
     `Website: ${url('/')}`,
     '',

@@ -18,7 +18,7 @@ import { typeTag } from '@/sanity/lib/live'
 export const metadata: Metadata = buildMetadata({
   title: 'About us',
   description:
-    'Kanisa Connect is built by a team of East African engineers for churches across Africa — mobile-first, M-Pesa-native, and resilient without reliable internet.',
+    'Shiriki is built by a team of East African engineers for churches across Africa — mobile-first, M-Pesa-native, and resilient without reliable internet.',
   path: '/about',
 })
 
@@ -121,7 +121,7 @@ export default async function AboutPage() {
     <>
       <Container as="div" className="flex flex-col gap-20 py-16 md:py-24">
         <Reveal className="flex flex-col gap-5">
-          <span className="text-sm font-bold uppercase tracking-[0.18em] text-primary">About Kanisa Connect</span>
+          <span className="text-sm font-bold uppercase tracking-[0.18em] text-primary">About Shiriki</span>
           <h1 className="max-w-3xl text-balance text-4xl font-bold tracking-tight md:text-6xl">{heading}</h1>
           <p className="max-w-2xl text-lg leading-8 text-muted-foreground">{intro}</p>
         </Reveal>
@@ -137,7 +137,7 @@ export default async function AboutPage() {
           ) : (
             <div className="flex flex-col gap-4 text-lg leading-8 text-muted-foreground">
               <p>
-                Kanisa Connect started with a small team of software engineers who, between their day jobs,
+                Shiriki started with a small team of software engineers who, between their day jobs,
                 volunteered as treasurers and ushers in their local churches. Every Sunday night looked the same:
                 cash counted by hand, M-Pesa statements reconciled line by line against a paper register, and giving
                 records that lived in three different notebooks.
@@ -145,7 +145,7 @@ export default async function AboutPage() {
               <p>
                 What began as a single congregation&apos;s giving tracker grew, church by church, into a full
                 operations platform — giving, membership, communication, and events in one connected home. Today
-                Kanisa Connect supports ministries across Kenya, Uganda, and Tanzania, with the same principle we
+                Shiriki supports ministries across Kenya, Uganda, and Tanzania, with the same principle we
                 started with: every contribution should be visible, accountable, and easy to give.
               </p>
             </div>
@@ -201,7 +201,7 @@ export default async function AboutPage() {
 
         <div className="flex flex-col gap-8">
           <Reveal>
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Churches running on Kanisa Connect</h2>
+            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Churches running on Shiriki</h2>
           </Reveal>
           <Reveal>
             <div className="flex flex-wrap gap-3">

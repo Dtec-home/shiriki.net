@@ -30,7 +30,7 @@ export default async function BlogIndexPage() {
   return (
     <Container as="div" className="flex flex-col gap-12 py-16 md:py-24">
       <Reveal className="flex flex-col gap-4">
-        <span className="text-sm font-bold uppercase tracking-[0.18em] text-primary">The Kanisa Connect blog</span>
+        <span className="text-sm font-bold uppercase tracking-[0.18em] text-primary">The Shiriki blog</span>
         <h1 className="max-w-3xl text-balance text-4xl font-bold tracking-tight md:text-6xl">
           Ideas for running a connected church.
         </h1>

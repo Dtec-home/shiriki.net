@@ -66,7 +66,7 @@ export function PostCard({ post, readingTime, featured = false, className }: Pos
           />
         ) : (
           <span className="absolute inset-0 flex items-center justify-center text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground">
-            Kanisa Connect
+            Shiriki
           </span>
         )}
       </Link>

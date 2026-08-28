@@ -11,7 +11,7 @@ import { slugTag, typeTag } from '@/sanity/lib/live'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Privacy policy',
-  description: 'How Kanisa Connect collects, uses, stores, and protects church, giving, and member data.',
+  description: 'How Shiriki collects, uses, stores, and protects church, giving, and member data.',
   path: '/privacy',
 })
 
@@ -44,7 +44,7 @@ export default async function PrivacyPolicyPage() {
       <div className="flex gap-3 rounded-2xl border border-secondary/40 bg-secondary/10 p-5">
         <AlertTriangle className="mt-0.5 size-5 shrink-0 text-secondary-foreground" aria-hidden="true" />
         <p className="text-sm leading-6 text-foreground">
-          <strong>Placeholder pending legal review.</strong> This policy is a good-faith draft prepared for Kanisa
+          <strong>Placeholder pending legal review.</strong> This policy is a good-faith draft prepared for Shiriki
           Connect&apos;s launch and has not yet been reviewed by a qualified data protection lawyer in Kenya or the EU.
           Do not treat it as final legal advice; it will be updated before general availability.
         </p>
@@ -59,10 +59,10 @@ export default async function PrivacyPolicyPage() {
         <section className="flex flex-col gap-3">
           <h2 className="text-xl font-bold text-foreground">1. Who this policy covers</h2>
           <p>
-            This policy applies to Kanisa Connect (&ldquo;we&rdquo;, &ldquo;us&rdquo;), the church administrators and
+            This policy applies to Shiriki (&ldquo;we&rdquo;, &ldquo;us&rdquo;), the church administrators and
             staff who use our platform (&ldquo;church accounts&rdquo;), and the individual church members whose
             records those accounts manage (&ldquo;members&rdquo;). Where a church is the data controller for its own
-            members&apos; information, Kanisa Connect acts as a data processor on the church&apos;s behalf.
+            members&apos; information, Shiriki acts as a data processor on the church&apos;s behalf.
           </p>
         </section>
 
@@ -125,7 +125,7 @@ export default async function PrivacyPolicyPage() {
         <section className="flex flex-col gap-3">
           <h2 className="text-xl font-bold text-foreground">6. Kenya&apos;s Data Protection Act, 2019</h2>
           <p>
-            Kanisa Connect is designed to operate consistently with Kenya&apos;s Data Protection Act, 2019 and the
+            Shiriki is designed to operate consistently with Kenya&apos;s Data Protection Act, 2019 and the
             regulations issued by the Office of the Data Protection Commissioner (ODPC). This includes: processing
             personal data lawfully, fairly, and transparently; collecting data for specified, explicit purposes;
             minimizing data collected to what is necessary; and implementing appropriate technical and

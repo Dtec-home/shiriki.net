@@ -49,7 +49,7 @@ export async function Footer() {
             <Link
               href="/"
               className="flex items-center focus-visible:outline-primary-foreground"
-              aria-label="Kanisa Connect home"
+              aria-label="Shiriki home"
             >
               <Logo tone="inverted" />
             </Link>
@@ -124,7 +124,7 @@ export async function Footer() {
         </div>
 
         <div className="flex flex-col gap-2 border-t border-primary-foreground/10 pt-6 text-sm text-primary-foreground/70 sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; {year} Kanisa Connect. All rights reserved.</p>
+          <p>&copy; {year} Shiriki. All rights reserved.</p>
           <div className="flex gap-4">
             <Link
               href="/privacy"

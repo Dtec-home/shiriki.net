@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/sheet'
 import { DemoRequestDialog } from '@/components/forms/demo-request-dialog'
 import { MAIN_NAV } from '@/lib/nav'
+import { APP_SIGNIN_URL, APP_SIGNUP_URL } from '@/lib/site'
 
 /**
  * Mobile navigation drawer: a `Sheet` triggered by a labelled hamburger
@@ -34,7 +35,7 @@ export function MobileNav() {
       </SheetTrigger>
       <SheetContent side="right" className="flex w-full flex-col gap-0 sm:max-w-sm">
         <SheetHeader>
-          <SheetTitle className="text-lg font-bold">Kanisa Connect</SheetTitle>
+          <SheetTitle className="text-lg font-bold">Shiriki</SheetTitle>
         </SheetHeader>
 
         <nav aria-label="Mobile" className="flex flex-1 flex-col gap-1 overflow-y-auto px-4 pb-4">
@@ -51,6 +52,21 @@ export function MobileNav() {
               </li>
             ))}
           </ul>
+
+          <Link
+            href={APP_SIGNUP_URL}
+            onClick={close}
+            className="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground"
+          >
+            Get started
+          </Link>
+          <Link
+            href={APP_SIGNIN_URL}
+            onClick={close}
+            className="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-lg border px-4 py-2 text-sm font-medium"
+          >
+            Sign in
+          </Link>
 
           <DemoRequestDialog>
             <button

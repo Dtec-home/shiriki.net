@@ -11,7 +11,7 @@ import { slugTag, typeTag } from '@/sanity/lib/live'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Terms of service',
-  description: 'The terms governing a church account\'s use of the Kanisa Connect platform.',
+  description: 'The terms governing a church account\'s use of the Shiriki platform.',
   path: '/terms',
 })
 
@@ -44,7 +44,7 @@ export default async function TermsOfServicePage() {
       <div className="flex gap-3 rounded-2xl border border-secondary/40 bg-secondary/10 p-5">
         <AlertTriangle className="mt-0.5 size-5 shrink-0 text-secondary-foreground" aria-hidden="true" />
         <p className="text-sm leading-6 text-foreground">
-          <strong>Placeholder pending legal review.</strong> These terms are a good-faith draft prepared for Kanisa
+          <strong>Placeholder pending legal review.</strong> These terms are a good-faith draft prepared for Shiriki
           Connect&apos;s launch and have not yet been reviewed by qualified counsel. Do not treat them as final; they
           will be updated before general availability.
         </p>
@@ -59,7 +59,7 @@ export default async function TermsOfServicePage() {
         <section className="flex flex-col gap-3">
           <h2 className="text-xl font-bold text-foreground">1. Acceptance of these terms</h2>
           <p>
-            By creating a church account or otherwise using Kanisa Connect, you agree to these terms on behalf of the
+            By creating a church account or otherwise using Shiriki, you agree to these terms on behalf of the
             church or organization you represent. If you do not have authority to bind that organization, do not use
             the platform.
           </p>
@@ -68,7 +68,7 @@ export default async function TermsOfServicePage() {
         <section className="flex flex-col gap-3">
           <h2 className="text-xl font-bold text-foreground">2. The service</h2>
           <p>
-            Kanisa Connect provides church management software covering giving (M-Pesa, Airtel Money, card, and
+            Shiriki provides church management software covering giving (M-Pesa, Airtel Money, card, and
             USSD), member records, communication, events, and financial reporting. We may add, change, or remove
             features over time; material reductions in a paid plan&apos;s functionality will be communicated in
             advance.
@@ -80,7 +80,7 @@ export default async function TermsOfServicePage() {
           <p>
             The church account holder is responsible for the accuracy of the member and financial data entered into
             the platform, for granting admin roles appropriately, and for obtaining any consents required from its
-            members to process their personal data through Kanisa Connect. Church admins must keep their login
+            members to process their personal data through Shiriki. Church admins must keep their login
             credentials (OTP-verified phone numbers) secure and promptly report any suspected unauthorized access.
           </p>
         </section>
@@ -98,7 +98,7 @@ export default async function TermsOfServicePage() {
           <h2 className="text-xl font-bold text-foreground">5. Giving and payment processing</h2>
           <p>
             M-Pesa, Airtel Money, card, and USSD payments are processed by Safaricom, Airtel, and our licensed
-            payment processing partners, not by Kanisa Connect directly. We are not a bank or a holder of client
+            payment processing partners, not by Shiriki directly. We are not a bank or a holder of client
             funds; contributions are settled to the church&apos;s own PayBill/Till or bank account per the payment
             provider&apos;s standard settlement schedule. Unmatched or disputed transactions are held for admin
             resolution within the platform.
@@ -108,7 +108,7 @@ export default async function TermsOfServicePage() {
         <section className="flex flex-col gap-3">
           <h2 className="text-xl font-bold text-foreground">6. Data ownership</h2>
           <p>
-            A church account owns the member and financial data it enters into Kanisa Connect. We process that data
+            A church account owns the member and financial data it enters into Shiriki. We process that data
             as described in our{' '}
             <a href="/privacy" className="text-primary underline underline-offset-2">
               Privacy Policy
@@ -154,7 +154,7 @@ export default async function TermsOfServicePage() {
         <section className="flex flex-col gap-3">
           <h2 className="text-xl font-bold text-foreground">10. Limitation of liability</h2>
           <p>
-            To the maximum extent permitted by law, Kanisa Connect&apos;s liability arising from use of the platform
+            To the maximum extent permitted by law, Shiriki&apos;s liability arising from use of the platform
             is limited to the fees paid by the church account in the twelve months preceding the claim. We are not
             liable for indirect, incidental, or consequential damages.
           </p>

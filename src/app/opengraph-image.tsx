@@ -7,7 +7,7 @@ import { SITE_TAGLINE } from '@/lib/site'
 // Branded default OG image for the whole site — used by any route that
 // doesn't define its own `opengraph-image.tsx` and by `buildMetadata` as the
 // fallback `image` for pages with no Sanity `ogImage`.
-export const alt = 'Kanisa Connect — Church operations, beautifully connected.'
+export const alt = 'Shiriki — Church operations, beautifully connected.'
 export const size = OG_SIZE
 export const contentType = 'image/png'
 

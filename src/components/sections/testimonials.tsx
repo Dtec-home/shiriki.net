@@ -20,8 +20,8 @@ export type TestimonialsProps = {
 
 export const FALLBACK_TESTIMONIALS: TestimonialsProps = {
   eyebrow: 'From churches like yours',
-  heading: 'Ministries running on Kanisa Connect.',
-  lead: 'Finance teams, welcome desks, and pastors trust Kanisa Connect for Sunday giving and everyday ministry.',
+  heading: 'Ministries running on Shiriki.',
+  lead: 'Finance teams, welcome desks, and pastors trust Shiriki for Sunday giving and everyday ministry.',
   items: [
     {
       quote:

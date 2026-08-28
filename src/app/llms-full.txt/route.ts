@@ -56,32 +56,32 @@ const PAGES: { title: string; path: string; summary: string }[] = [
     title: 'Home',
     path: '/',
     summary:
-      'Kanisa Connect is a church management platform for African churches: member records, communication, events, and finance, with mobile giving via M-Pesa and Airtel Money — all in one connected home.',
+      'Shiriki is a church management platform for African churches: member records, communication, events, and finance, with mobile giving via M-Pesa and Airtel Money — all in one connected home.',
   },
   {
     title: 'About',
     path: '/about',
-    summary: 'About Kanisa Connect and its mission to give African churches a beautifully connected digital home.',
+    summary: 'About Shiriki and its mission to give African churches a beautifully connected digital home.',
   },
   {
     title: 'Pricing',
     path: '/pricing',
-    summary: 'Kanisa Connect plans are priced in Kenyan Shillings (KES), with flexible tiers for churches of every size.',
+    summary: 'Shiriki plans are priced in Kenyan Shillings (KES), with flexible tiers for churches of every size.',
   },
   {
     title: 'Contact',
     path: '/contact',
-    summary: 'Reach the Kanisa Connect team for sales, support, or to request a demo.',
+    summary: 'Reach the Shiriki team for sales, support, or to request a demo.',
   },
   {
     title: 'Privacy Policy',
     path: '/privacy',
-    summary: 'How Kanisa Connect collects, uses, and protects member and church data.',
+    summary: 'How Shiriki collects, uses, and protects member and church data.',
   },
   {
     title: 'Terms of Service',
     path: '/terms',
-    summary: 'The terms governing use of the Kanisa Connect platform.',
+    summary: 'The terms governing use of the Shiriki platform.',
   },
 ]
 
@@ -94,9 +94,9 @@ export async function GET() {
   )
 
   const blocks: string[] = [
-    '# Kanisa Connect — Full content for AI ingestion',
+    '# Shiriki — Full content for AI ingestion',
     '',
-    '> Kanisa Connect is a church management platform for African churches — member records, communication, events, and finance, with mobile giving via M-Pesa and Airtel Money, all in one connected home.',
+    '> Shiriki is a church management platform for African churches — member records, communication, events, and finance, with mobile giving via M-Pesa and Airtel Money, all in one connected home.',
     '',
     `Website: ${url('/')}`,
     '',

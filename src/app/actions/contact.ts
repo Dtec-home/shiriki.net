@@ -57,7 +57,7 @@ export type FormState = {
 // Env / config
 // ---------------------------------------------------------------------------
 
-const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || `${SITE_NAME} <hello@kanisaconnect.com>`
+const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || `${SITE_NAME} <hello@shiriki.site>`
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL || SALES_EMAIL
 const IS_PRODUCTION = process.env.NODE_ENV === 'production'
 
