@@ -71,6 +71,8 @@ export const ANALYTICS_EVENTS = {
   USSD_SIMULATOR_INTERACTION: 'ussd_simulator_interaction',
   /** A pricing plan's CTA was chosen (Starter / Growth / Enterprise). */
   PRICING_PLAN_SELECTED: 'pricing_plan_selected',
+  /** The floating WhatsApp button was clicked, opening a chat thread. */
+  WHATSAPP_CLICK: 'whatsapp_click',
 
   // --- Engagement depth ------------------------------------------------------
   /** Fired once per milestone (25/50/75/100) the first time a page scroll crosses it. */

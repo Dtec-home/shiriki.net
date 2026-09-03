@@ -4,13 +4,16 @@ type LogoProps = {
   className?: string
   /**
    * "default" — for light/neutral surfaces (uses the indigo primary).
-   * "inverted" — for the indigo header/footer surfaces (uses white + gold).
+   * "inverted" — for the indigo header/footer surfaces (uses white).
    */
   tone?: "default" | "inverted"
 }
 
 /**
- * The "Shiriki" wordmark — bold "Shiriki", lighter-weight "Connect".
+ * The "Shiriki" wordmark. Previously set the brand as two words — bold
+ * "Shiriki" beside a lighter "Connect" — which is why the rename's
+ * whole-string search never caught it: the two halves were separate elements.
+ *
  * Purely presentational; wrap it in a `<Link href="/">` where navigation is
  * required.
  */
@@ -18,26 +21,12 @@ export function Logo({ className, tone = "default" }: LogoProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-baseline gap-1 font-display text-lg tracking-tight select-none",
+        "inline-flex items-baseline font-display text-lg font-bold tracking-tight select-none",
+        tone === "inverted" ? "text-primary-foreground" : "text-primary",
         className
       )}
     >
-      <span
-        className={cn(
-          "font-bold",
-          tone === "inverted" ? "text-primary-foreground" : "text-primary"
-        )}
-      >
-        Shiriki
-      </span>{" "}
-      <span
-        className={cn(
-          "font-medium",
-          tone === "inverted" ? "text-secondary dark:text-primary-foreground" : "text-foreground/70"
-        )}
-      >
-        Connect
-      </span>
+      Shiriki
     </span>
   )
 }

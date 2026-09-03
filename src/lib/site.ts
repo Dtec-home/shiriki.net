@@ -35,6 +35,18 @@ export const SALES_EMAIL = 'sales@shiriki.site'
 export const CONTACT_PHONE = '+254 797 030 300'
 export const USSD_CODE = '*710*13414#'
 
+/**
+ * WhatsApp is the same line as `CONTACT_PHONE`, in the digits-only form
+ * `wa.me` expects (country code, no `+`, no spaces). Derived rather than
+ * written out twice so the two can never drift apart.
+ */
+export const WHATSAPP_NUMBER = CONTACT_PHONE.replace(/\D/g, '')
+
+/** Pre-filled first message, so the visitor does not start from a blank thread. */
+export const WHATSAPP_MESSAGE = "Hi Shiriki — I'd like to know more about using it for my church."
+
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
+
 export const ORGANIZATION_ADDRESS = {
   streetAddress: 'Westlands',
   addressLocality: 'Nairobi',
