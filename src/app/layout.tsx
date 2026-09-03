@@ -30,11 +30,13 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   ...buildMetadata({ path: '/' }),
+  // One mark in both themes: the tile carries its own brand colour, so there
+  // is nothing for a light/dark split to fix. SVG first for browsers that
+  // take it, the 32px PNG for those that do not.
   icons: {
     icon: [
-      { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
-      { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },
       { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
     apple: '/apple-icon.png',
   },
