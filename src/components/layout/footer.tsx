@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { Globe, Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { Logo } from '@/components/layout/logo'
+import { SocialIcon } from '@/components/layout/social-icon'
 import { FOOTER_NAV } from '@/lib/nav'
 import {
   CONTACT_EMAIL,
@@ -94,7 +95,7 @@ export async function Footer() {
                       aria-label={social.label}
                       className="flex size-11 items-center justify-center rounded-full border border-primary-foreground/15 text-primary-foreground/80 transition-colors hover:border-primary-foreground/40 hover:text-primary-foreground focus-visible:outline-primary-foreground"
                     >
-                      <Globe className="size-4" aria-hidden="true" />
+                      <SocialIcon platform={social.platform} className="size-4" />
                     </a>
                   </li>
                 ))}
