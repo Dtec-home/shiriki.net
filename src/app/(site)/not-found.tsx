@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Compass } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { Button } from '@/components/ui/button'
+import { SectionLabel } from '@/components/sections/section-label'
 
 /**
  * Custom 404 for the public site. Rendered inside the (site) layout, so it
@@ -13,7 +14,7 @@ export default function NotFound() {
       <div className="flex size-14 items-center justify-center rounded-2xl bg-accent text-primary">
         <Compass className="size-6" aria-hidden="true" />
       </div>
-      <span className="text-sm font-bold uppercase tracking-[0.18em] text-primary">404 — Not found</span>
+      <SectionLabel className="text-primary">404 — Not found</SectionLabel>
       <h1 className="text-balance text-3xl font-bold tracking-tight md:text-5xl">This page doesn&apos;t exist.</h1>
       <p className="max-w-[480px] text-lg leading-8 text-muted-foreground">
         The page you&apos;re looking for may have moved or never existed. Let&apos;s get you back on track.

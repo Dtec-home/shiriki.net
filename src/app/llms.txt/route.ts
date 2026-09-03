@@ -90,7 +90,7 @@ export async function GET() {
   const body = [
     '# Shiriki',
     '',
-    '> Shiriki is a church management platform for African churches — member records, communication, events, and finance, with mobile giving via M-Pesa and Airtel Money, all in one connected home.',
+    '> Shiriki is a church management platform for African churches — member records, communication, events, and finance, with mobile giving via M-Pesa, Airtel Money and USSD reconciled against the member register.',
     '',
     `Website: ${url('/')}`,
     '',

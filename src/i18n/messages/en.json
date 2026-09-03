@@ -28,51 +28,51 @@
       "terms": "Terms of service"
     },
     "ussdLabel": "USSD {code}",
-    "copyright": "© {year} Kanisa Connect. All rights reserved."
+    "copyright": "© {year} Shiriki. All rights reserved."
   },
   "hero": {
-    "eyebrow": "Launch 2026",
-    "headingPrefix": "Church operations, ",
-    "headingHighlight": "beautifully connected.",
-    "lead": "Giving. Members. Communication. All connected. A complete management platform built for African churches.",
-    "exploreLabel": "Explore platform",
+    "eyebrow": "Launching 2026",
+    "headingPrefix": "Church management that ",
+    "headingHighlight": "runs on M-Pesa.",
+    "lead": "Members, giving, events, and finance in one system — with STK Push, PayBill, Airtel Money, and USSD gifts that match themselves to your member register.",
+    "exploreLabel": "See how giving works",
     "demoLabel": "Talk to our team"
   },
   "sections": {
     "problem": {
-      "eyebrow": "The old way stops here",
-      "heading": "Churches deserve better tools.",
-      "lead": "Move past manual cash counting, paper records, and scattered WhatsApp groups."
+      "eyebrow": "Where the record lives today",
+      "heading": "Sunday's offering ends up in three places at once.",
+      "lead": "A cash count in one book, M-Pesa messages on the treasurer's phone, and the member register in a WhatsApp group. None of it reconciles until somebody retypes it."
     },
     "giving": {
-      "eyebrow": "Always accept money",
-      "heading": "Every channel. One clear picture.",
-      "lead": "No payment is rejected. Unmatched funds are securely held for admin resolution, while every contribution stays visible and accountable.",
+      "eyebrow": "Giving channels",
+      "heading": "Every gift lands in the same ledger.",
+      "lead": "Five ways to give, one reconciled record. A payment that cannot be matched to a member is held for an admin to resolve — never rejected, never lost.",
       "cartCtaLabel": "Send STK prompt"
     },
     "features": {
-      "eyebrow": "Built for church operations",
-      "heading": "Everything your ministry needs, in one place.",
-      "lead": "From the welcome desk to the finance office, Kanisa Connect replaces spreadsheets and paper trails with one connected system."
+      "eyebrow": "Members and money",
+      "heading": "The welcome desk and the finance office, on the same records.",
+      "lead": "A visitor who signs in on Sunday becomes a member record, a giving history, and a follow-up task — without anyone retyping a name."
     },
     "digitalHome": {
-      "eyebrow": "One digital home",
-      "heading": "Reach every member, every way.",
-      "lead": "Manage events, sermons, campaigns, and conversations from one calm, capable hub."
+      "eyebrow": "Communication and events",
+      "heading": "Announcements that reach the members without smartphones.",
+      "lead": "SMS, push, and email sent to one group, one ministry, or everyone who gave last month — plus event RSVPs, M-Pesa ticketing, and a sermon archive."
     },
     "security": {
-      "eyebrow": "Ready for what is next",
-      "heading": "Enterprise-grade security. Church-simple UX.",
-      "lead": "Built on a robust, scalable architecture that protects your data and keeps ministry moving."
+      "eyebrow": "Security",
+      "heading": "Members sign in with a phone number and a one-time code.",
+      "lead": "No passwords to forget, reuse, or leak. Every admin action is written to an audit log your treasurer and board can read."
     },
     "testimonials": {
-      "eyebrow": "From churches like yours",
-      "heading": "Ministries running on Kanisa Connect.",
-      "lead": "Finance teams, welcome desks, and pastors trust Kanisa Connect for Sunday giving and everyday ministry."
+      "eyebrow": "Churches using Shiriki",
+      "heading": "Ministries running on Shiriki.",
+      "lead": "Finance teams, welcome desks, and pastors, in their own words."
     },
     "cta": {
-      "heading": "Ready to connect your church?",
-      "sub": "Tell us about your congregation and we'll tailor a walkthrough for your team.",
+      "heading": "See it with your own church's numbers.",
+      "sub": "Tell us your congregation size and which giving channels you use, and we will walk your team through the setup you would actually run.",
       "ctaLabel": "Request a demo"
     }
   },

@@ -28,58 +28,58 @@
       "terms": "Masharti ya huduma"
     },
     "ussdLabel": "USSD {code}",
-    "copyright": "© {year} Kanisa Connect. Haki zote zimehifadhiwa."
+    "copyright": "© {year} Shiriki. Haki zote zimehifadhiwa."
   },
   "hero": {
-    "eyebrow": "Uzinduzi 2026",
-    "headingPrefix": "Utendaji wa kanisa, ",
-    "headingHighlight": "umeunganishwa kwa uzuri.",
+    "eyebrow": "Inazinduliwa 2026",
+    "headingPrefix": "Usimamizi wa kanisa ",
+    "headingHighlight": "unaoendeshwa na M-Pesa.",
     "headingHighlight__needs_review": true,
-    "lead": "Sadaka. Wanachama. Mawasiliano. Vyote vimeunganishwa. Jukwaa kamili la usimamizi lililojengwa kwa ajili ya makanisa ya Afrika.",
-    "exploreLabel": "Chunguza jukwaa",
+    "lead": "Wanachama, sadaka, matukio, na fedha katika mfumo mmoja — pamoja na STK Push, PayBill, Airtel Money, na sadaka za USSD zinazojilinganisha na daftari lako la wanachama.",
+    "exploreLabel": "Ona jinsi sadaka zinavyofanya kazi",
     "demoLabel": "Zungumza na timu yetu"
   },
   "sections": {
     "problem": {
-      "eyebrow": "Njia ya zamani inaishia hapa",
-      "heading": "Makanisa yanastahili zana bora.",
-      "lead": "Achana na kuhesabu fedha kwa mkono, kumbukumbu za karatasi, na vikundi vya WhatsApp vilivyotawanyika."
+      "eyebrow": "Rekodi ilipo leo",
+      "heading": "Sadaka ya Jumapili inaishia sehemu tatu kwa wakati mmoja.",
+      "lead": "Hesabu ya fedha taslimu katika daftari moja, ujumbe wa M-Pesa kwenye simu ya mweka hazina, na daftari la wanachama katika kikundi cha WhatsApp. Hakuna kinacholingana hadi mtu aandike upya."
     },
     "giving": {
-      "eyebrow": "Pokea fedha kila wakati",
-      "heading": "Kila njia. Picha moja iliyo wazi.",
+      "eyebrow": "Njia za kutoa",
+      "heading": "Kila sadaka inaingia katika daftari moja.",
       "heading__needs_review": true,
-      "lead": "Hakuna malipo yanayokataliwa. Fedha zisizolingana huhifadhiwa kwa usalama kwa ajili ya utatuzi wa msimamizi, huku kila mchango ukibaki wazi na wenye uwajibikaji.",
+      "lead": "Njia tano za kutoa, rekodi moja iliyolinganishwa. Malipo yasiyoweza kulinganishwa na mwanachama huhifadhiwa ili msimamizi ayashughulikie — hayakataliwi wala kupotea.",
       "cartCtaLabel": "Tuma ombi la STK"
     },
     "features": {
-      "eyebrow": "Imejengwa kwa ajili ya uendeshaji wa kanisa",
-      "heading": "Kila kitu ambacho huduma yako inahitaji, mahali pamoja.",
-      "lead": "Kutoka dawati la mapokezi hadi ofisi ya fedha, Kanisa Connect inabadilisha lahajedwali na nyaraka za karatasi kwa mfumo mmoja uliounganishwa.",
+      "eyebrow": "Wanachama na fedha",
+      "heading": "Dawati la mapokezi na ofisi ya fedha, kwenye rekodi zile zile.",
+      "lead": "Mgeni anayejisajili Jumapili anakuwa rekodi ya mwanachama, historia ya sadaka, na kazi ya kufuatilia — bila mtu yeyote kuandika jina upya.",
       "lead__needs_review": true
     },
     "digitalHome": {
-      "eyebrow": "Nyumba moja ya kidijitali",
-      "heading": "Wafikie wanachama wote, kwa kila njia.",
-      "lead": "Simamia matukio, mahubiri, kampeni, na mazungumzo kutoka kitovu kimoja tulivu na chenye uwezo.",
+      "eyebrow": "Mawasiliano na matukio",
+      "heading": "Matangazo yanayowafikia wanachama wasio na simu janja.",
+      "lead": "SMS, arifa, na barua pepe kwa kikundi kimoja, huduma moja, au kila aliyetoa mwezi uliopita — pamoja na usajili wa matukio, tiketi za M-Pesa, na kumbukumbu za mahubiri.",
       "lead__needs_review": true
     },
     "security": {
-      "eyebrow": "Tayari kwa kinachofuata",
-      "heading": "Usalama wa hadhi ya kimataifa. Matumizi rahisi kwa kanisa.",
+      "eyebrow": "Usalama",
+      "heading": "Wanachama huingia kwa nambari ya simu na msimbo wa mara moja.",
       "heading__needs_review": true,
-      "lead": "Imejengwa kwenye muundo thabiti na unaoweza kukua, unaolinda data yako na kuendeleza huduma bila kukwama."
+      "lead": "Hakuna nywila za kusahau, kutumia tena, au kuvuja. Kila hatua ya msimamizi huandikwa katika kumbukumbu ambayo mweka hazina na bodi wanaweza kuisoma."
     },
     "testimonials": {
-      "eyebrow": "Kutoka kwa makanisa kama lako",
-      "heading": "Huduma zinazotumia Kanisa Connect.",
-      "lead": "Timu za fedha, madawati ya mapokezi, na wachungaji wanaiamini Kanisa Connect kwa ajili ya sadaka za Jumapili na huduma za kila siku.",
+      "eyebrow": "Makanisa yanayotumia Shiriki",
+      "heading": "Huduma zinazotumia Shiriki.",
+      "lead": "Timu za fedha, madawati ya mapokezi, na wachungaji, kwa maneno yao wenyewe.",
       "lead__needs_review": true
     },
     "cta": {
-      "heading": "Uko tayari kuunganisha kanisa lako?",
-      "sub": "Tuambie kuhusu kutaniko lako na tutakuandalia maonyesho yaliyolenga timu yako.",
-      "ctaLabel": "Omba demo"
+      "heading": "Iangalie kwa takwimu za kanisa lako mwenyewe.",
+      "sub": "Tuambie idadi ya kutaniko lako na njia za sadaka mnazotumia, nasi tutaipitia pamoja na timu yako mipangilio mtakayotumia kweli.",
+      "ctaLabel": "Omba maonyesho"
     }
   },
   "pricing": {

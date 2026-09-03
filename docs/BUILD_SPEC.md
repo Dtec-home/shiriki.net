@@ -1,4 +1,4 @@
-# Kanisa Connect — Build Spec
+# Shiriki — Build Spec
 
 Locked technical decisions for the codebase as it actually exists after
 Sprints 0–7. This is a record of what was built, not a prescriptive plan —
@@ -95,7 +95,7 @@ docs/
 
 No `/case-studies`, `/solutions`, `/industries`, `/partners`, `/certifications`,
 `/csr` routes exist — those were part of an unrelated reference project
-(`coseke.cloud`) consulted for build-spec format only; Kanisa Connect's own
+(`coseke.cloud`) consulted for build-spec format only; Shiriki's own
 route set is the eleven marketing/blog routes above plus the Studio/API/SEO
 plumbing.
 
@@ -348,7 +348,7 @@ route restructuring, middleware, or component wiring has been done.
   will not survive multi-instance/serverless horizontal scaling without a
   shared store (e.g. Upstash Redis) — not implemented.
 - **No `/case-studies`, `/solutions`, `/industries`, `/partners`,
-  `/certifications`, `/csr` routes.** Kanisa Connect's route set (§3) is
+  `/certifications`, `/csr` routes.** Shiriki's route set (§3) is
   smaller than the coseke.cloud reference project consulted for build-spec
   *format* only — this is by design, not a gap.
 - **No component/unit test suite.** Only the Sprint 7 Playwright

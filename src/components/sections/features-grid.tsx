@@ -2,6 +2,7 @@ import { BarChart3, Check, HeartHandshake, ShieldCheck, Smartphone, Users, type 
 import { Container } from '@/components/layout/container'
 import { Reveal } from '@/components/motion/reveal'
 import { Stagger, StaggerItem } from '@/components/motion/stagger'
+import { SectionLabel } from '@/components/sections/section-label'
 
 /**
  * Icon lookup for feature cards. Keyed loosely (lowercased, common aliases)
@@ -40,20 +41,20 @@ export type FeaturesGridProps = {
 }
 
 export const FALLBACK_FEATURES_GRID: FeaturesGridProps = {
-  eyebrow: 'Built for church operations',
-  heading: 'Everything your ministry needs, in one place.',
-  lead: 'From the welcome desk to the finance office, Shiriki replaces spreadsheets and paper trails with one connected system.',
+  eyebrow: 'Members and money',
+  heading: 'The welcome desk and the finance office, on the same records.',
+  lead: 'A visitor who signs in on Sunday becomes a member record, a giving history, and a follow-up task — without anyone retyping a name.',
   cards: [
     {
       icon: 'users',
       title: 'Know your congregation',
-      text: 'Phone OTP login, rich profiles, families, dynamic groups, visitor conversion, and automated milestone wishes.',
+      text: 'Members sign in with a phone number and an OTP. Profiles carry families, groups, and attendance, and the visitor pipeline tracks who came back a second time.',
       items: ['Bulk CSV import up to 5k', '7+ granular admin roles', 'Visitor conversion pipeline'],
     },
     {
       icon: 'chart',
-      title: 'Total financial transparency',
-      text: 'Real-time dashboards, automated reconciliation, and strict audit trails for complete peace of mind.',
+      title: 'Books your treasurer can close',
+      text: 'Every gift posts to a general ledger with an audit trail. Reconciliation runs against the member register on its own, so the treasurer reviews exceptions rather than every line.',
       items: ['General ledger & budgets', 'Expense claims with approvals', 'Excel & PDF reports'],
       dark: true,
     },
@@ -61,17 +62,16 @@ export const FALLBACK_FEATURES_GRID: FeaturesGridProps = {
 }
 
 /**
- * "Everything your ministry needs" feature pair: a light "know your
- * congregation" card and a dark "financial transparency" card. Anchored as
- * `#features` for the main nav's "Features" link. Card titles are `<h3>`
- * (the original monolith wrongly used `<h2>` here).
+ * Feature pair: a light "know your congregation" card and a dark treasurer's
+ * card. Anchored as `#features` for the main nav's "Features" link. Card
+ * titles are `<h3>` (the original monolith wrongly used `<h2>` here).
  */
 export function FeaturesGrid({ eyebrow, heading, lead, cards }: FeaturesGridProps) {
   return (
     <section id="features" className="scroll-mt-20 py-20 lg:py-28">
       <Container className="flex flex-col gap-12">
         <Reveal className="max-w-2xl">
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">{eyebrow}</p>
+          <SectionLabel className="text-primary">{eyebrow}</SectionLabel>
           <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight md:text-5xl">{heading}</h2>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">{lead}</p>
         </Reveal>

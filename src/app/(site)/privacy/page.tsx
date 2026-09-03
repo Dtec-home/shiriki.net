@@ -8,6 +8,7 @@ import { CONTACT_EMAIL } from '@/lib/site'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { legalPageQuery } from '@/sanity/lib/queries'
 import { slugTag, typeTag } from '@/sanity/lib/live'
+import { SectionLabel } from '@/components/sections/section-label'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Privacy policy',
@@ -36,7 +37,7 @@ export default async function PrivacyPolicyPage() {
   return (
     <Container size="prose" as="div" className="flex flex-col gap-8 py-16 md:py-24">
       <div className="flex flex-col gap-3">
-        <span className="text-sm font-bold uppercase tracking-[0.18em] text-primary">Legal</span>
+        <SectionLabel className="text-primary">Legal</SectionLabel>
         <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">Privacy policy</h1>
         <p className="text-sm text-muted-foreground">Last updated: {updated}</p>
       </div>

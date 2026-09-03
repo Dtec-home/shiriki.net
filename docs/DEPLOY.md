@@ -1,4 +1,4 @@
-# Kanisa Connect — Deployment Runbook
+# Shiriki — Deployment Runbook
 
 ## 1. Environment variables
 
@@ -24,7 +24,7 @@ the Vercel project settings for Preview and Production.
 
 ```bash
 pnpm dlx sanity@latest login
-pnpm dlx sanity@latest projects create "Kanisa Connect"
+pnpm dlx sanity@latest projects create "Shiriki"
 # copy the project id into NEXT_PUBLIC_SANITY_PROJECT_ID
 pnpm dlx sanity@latest dataset create production
 ```

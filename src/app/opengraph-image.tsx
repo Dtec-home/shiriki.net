@@ -7,7 +7,7 @@ import { SITE_TAGLINE } from '@/lib/site'
 // Branded default OG image for the whole site — used by any route that
 // doesn't define its own `opengraph-image.tsx` and by `buildMetadata` as the
 // fallback `image` for pages with no Sanity `ogImage`.
-export const alt = 'Shiriki — Church operations, beautifully connected.'
+export const alt = 'Shiriki — Church management that runs on M-Pesa.'
 export const size = OG_SIZE
 export const contentType = 'image/png'
 
@@ -19,7 +19,7 @@ export default async function Image() {
       <OgTemplate
         eyebrow="Church management platform"
         title={SITE_TAGLINE}
-        subtitle="M-Pesa & Airtel Money giving, member records, and communication — all in one connected home."
+        subtitle="M-Pesa, Airtel Money and USSD giving, reconciled against your member register."
         displayFont={displayFont}
         sansFont={sansFont}
       />

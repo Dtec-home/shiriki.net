@@ -28,59 +28,59 @@
       "terms": "Conditions d'utilisation"
     },
     "ussdLabel": "USSD {code}",
-    "copyright": "© {year} Kanisa Connect. Tous droits réservés."
+    "copyright": "© {year} Shiriki. Tous droits réservés."
   },
   "hero": {
     "eyebrow": "Lancement 2026",
-    "headingPrefix": "La gestion de votre église, ",
+    "headingPrefix": "La gestion d'église qui ",
     "headingPrefix__needs_review": true,
-    "headingHighlight": "magnifiquement connectée.",
+    "headingHighlight": "fonctionne avec M-Pesa.",
     "headingHighlight__needs_review": true,
-    "lead": "Dons. Membres. Communication. Tout est connecté. Une plateforme de gestion complète conçue pour les églises africaines.",
-    "exploreLabel": "Découvrir la plateforme",
+    "lead": "Membres, dons, événements et finances dans un seul système — avec STK Push, PayBill, Airtel Money et les dons USSD qui se rapprochent seuls de votre registre des membres.",
+    "exploreLabel": "Voir comment fonctionnent les dons",
     "demoLabel": "Parler à notre équipe"
   },
   "sections": {
     "problem": {
-      "eyebrow": "L'ancienne méthode s'arrête ici",
-      "heading": "Les églises méritent de meilleurs outils.",
-      "lead": "Dites adieu au comptage manuel des espèces, aux registres papier et aux groupes WhatsApp dispersés."
+      "eyebrow": "Où vit le registre aujourd'hui",
+      "heading": "L'offrande du dimanche finit à trois endroits à la fois.",
+      "lead": "Un comptage d'espèces dans un cahier, les messages M-Pesa sur le téléphone du trésorier et le registre des membres dans un groupe WhatsApp. Rien ne se rapproche tant que quelqu'un ne ressaisit pas tout."
     },
     "giving": {
-      "eyebrow": "Acceptez toujours les paiements",
-      "heading": "Chaque canal. Une vision claire.",
+      "eyebrow": "Canaux de don",
+      "heading": "Chaque don arrive dans le même registre.",
       "heading__needs_review": true,
-      "lead": "Aucun paiement n'est refusé. Les fonds non associés sont conservés en toute sécurité en attendant la résolution par un administrateur, tandis que chaque contribution reste visible et traçable.",
+      "lead": "Cinq façons de donner, un seul enregistrement rapproché. Un paiement qui ne peut être associé à un membre est mis en attente pour qu'un administrateur le traite — jamais refusé, jamais perdu.",
       "cartCtaLabel": "Envoyer la demande STK"
     },
     "features": {
-      "eyebrow": "Conçu pour la gestion des églises",
-      "heading": "Tout ce dont votre ministère a besoin, au même endroit.",
-      "lead": "De l'accueil au service financier, Kanisa Connect remplace les tableurs et les dossiers papier par un seul système connecté.",
+      "eyebrow": "Membres et finances",
+      "heading": "L'accueil et le service financier, sur les mêmes fiches.",
+      "lead": "Un visiteur qui s'inscrit le dimanche devient une fiche membre, un historique de dons et une tâche de suivi — sans que personne ne ressaisisse un nom.",
       "lead__needs_review": true
     },
     "digitalHome": {
-      "eyebrow": "Un seul espace numérique",
-      "heading": "Touchez chaque membre, de toutes les manières.",
+      "eyebrow": "Communication et événements",
+      "heading": "Des annonces qui atteignent les membres sans smartphone.",
       "heading__needs_review": true,
-      "lead": "Gérez les événements, les prédications, les campagnes et les échanges depuis un espace unique, calme et performant.",
+      "lead": "SMS, notifications et e-mails envoyés à un groupe, à un ministère ou à tous ceux qui ont donné le mois dernier — avec les inscriptions aux événements, la billetterie M-Pesa et les archives de prédications.",
       "lead__needs_review": true
     },
     "security": {
-      "eyebrow": "Prêt pour l'avenir",
-      "heading": "Sécurité de niveau entreprise. Simplicité pour l'église.",
+      "eyebrow": "Sécurité",
+      "heading": "Les membres se connectent avec un numéro de téléphone et un code à usage unique.",
       "heading__needs_review": true,
-      "lead": "Construit sur une architecture robuste et évolutive qui protège vos données et fait avancer votre ministère."
+      "lead": "Aucun mot de passe à oublier, à réutiliser ou à divulguer. Chaque action d'administrateur est inscrite dans un journal d'audit que votre trésorier et votre conseil peuvent lire."
     },
     "testimonials": {
-      "eyebrow": "Des églises comme la vôtre",
-      "heading": "Des ministères qui utilisent Kanisa Connect.",
-      "lead": "Les équipes financières, les équipes d'accueil et les pasteurs font confiance à Kanisa Connect pour les dons du dimanche et le ministère quotidien.",
+      "eyebrow": "Des églises qui utilisent Shiriki",
+      "heading": "Des ministères qui utilisent Shiriki.",
+      "lead": "Les équipes financières, les équipes d'accueil et les pasteurs, dans leurs propres mots.",
       "lead__needs_review": true
     },
     "cta": {
-      "heading": "Prêt à connecter votre église ?",
-      "sub": "Parlez-nous de votre congrégation et nous vous proposerons une présentation adaptée à votre équipe.",
+      "heading": "Voyez-le avec les chiffres de votre propre église.",
+      "sub": "Dites-nous la taille de votre assemblée et les canaux de don que vous utilisez, et nous ferons découvrir à votre équipe la configuration que vous utiliseriez réellement.",
       "sub__needs_review": true,
       "ctaLabel": "Demander une démo"
     }

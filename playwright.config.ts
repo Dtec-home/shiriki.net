@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
 /**
- * Playwright config for Kanisa Connect visual regression + a11y smoke tests
+ * Playwright config for Shiriki visual regression + a11y smoke tests
  * (Sprint 7.6). Builds the production app and serves it via `pnpm start` so
  * screenshots reflect the real production bundle (fonts, minified CSS,
  * `NODE_ENV=production` analytics gating), not the dev server.

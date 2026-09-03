@@ -16,7 +16,7 @@ import { HIDDEN_FROM_CREATE_TYPES, SINGLETON_TYPES, structure } from '@/sanity/s
  */
 export default defineConfig({
   name: 'default',
-  title: 'Kanisa Connect',
+  title: 'Shiriki',
 
   projectId: projectId || 'placeholder',
   dataset,

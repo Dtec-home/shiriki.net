@@ -14,6 +14,7 @@ import { urlFor } from '@/sanity/lib/image'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { aboutPageQuery } from '@/sanity/lib/queries'
 import { typeTag } from '@/sanity/lib/live'
+import { SectionLabel } from '@/components/sections/section-label'
 
 export const metadata: Metadata = buildMetadata({
   title: 'About us',
@@ -53,7 +54,7 @@ const FALLBACK_VALUES = [
   },
   {
     title: 'Trust & security',
-    text: "Member records and financial data are held to enterprise security standards, because a church's trust is not negotiable.",
+    text: 'Phone-and-OTP sign-in, per-church data isolation, and an audit log the board can read. A church\'s trust is not something to hand-wave.',
     icon: 'lock',
   },
   {
@@ -63,23 +64,17 @@ const FALLBACK_VALUES = [
   },
 ]
 
-const FALLBACK_TEAM = [
-  { name: 'Wanjiru Kamau', role: 'Co-founder & CEO', avatar: null as SanityImageSource | null },
-  { name: 'David Mutua', role: 'Co-founder & Head of Engineering', avatar: null as SanityImageSource | null },
-  { name: 'Achieng Odhiambo', role: 'Head of Product', avatar: null as SanityImageSource | null },
-  { name: 'Brian Kiptoo', role: 'Lead, Payments & Integrations', avatar: null as SanityImageSource | null },
-  { name: 'Naomi Chebet', role: 'Customer Success Lead', avatar: null as SanityImageSource | null },
-  { name: 'Joseph Mwangi', role: 'Security & Infrastructure', avatar: null as SanityImageSource | null },
-]
+/**
+ * Both lists below are intentionally empty.
+ *
+ * They previously held six invented colleagues and six invented client
+ * churches, rendered as fact on a public page. Their sections are guarded on
+ * `length`, so each reappears the moment real entries exist — team members
+ * from `aboutPage.team` in Sanity, partner churches here.
+ */
+const FALLBACK_TEAM: { name: string; role: string; avatar: SanityImageSource | null }[] = []
 
-const CHURCH_PARTNERS = [
-  'Emmanuel Community Church, Nairobi',
-  'Living Waters Chapel, Kisumu',
-  'Cornerstone Fellowship, Eldoret',
-  'Grace Family Church, Mombasa',
-  'Nairobi Chapel West',
-  'Redeemed Assembly, Nakuru',
-]
+const CHURCH_PARTNERS: string[] = []
 
 function initials(name: string): string {
   return name
@@ -121,7 +116,7 @@ export default async function AboutPage() {
     <>
       <Container as="div" className="flex flex-col gap-20 py-16 md:py-24">
         <Reveal className="flex flex-col gap-5">
-          <span className="text-sm font-bold uppercase tracking-[0.18em] text-primary">About Shiriki</span>
+          <SectionLabel className="text-primary">About Shiriki</SectionLabel>
           <h1 className="max-w-3xl text-balance text-4xl font-bold tracking-tight md:text-6xl">{heading}</h1>
           <p className="max-w-2xl text-lg leading-8 text-muted-foreground">{intro}</p>
         </Reveal>
@@ -143,10 +138,10 @@ export default async function AboutPage() {
                 records that lived in three different notebooks.
               </p>
               <p>
-                What began as a single congregation&apos;s giving tracker grew, church by church, into a full
-                operations platform — giving, membership, communication, and events in one connected home. Today
-                Shiriki supports ministries across Kenya, Uganda, and Tanzania, with the same principle we
-                started with: every contribution should be visible, accountable, and easy to give.
+                What began as a single congregation&apos;s giving tracker grew into a full operations platform:
+                giving, membership, communication, and events on one set of records. We are building it for
+                churches across Kenya, Uganda, and Tanzania, around the principle we started with — every
+                contribution should be visible, accountable, and easy to give.
               </p>
             </div>
           )}
@@ -175,6 +170,7 @@ export default async function AboutPage() {
           </Stagger>
         </div>
 
+        {team.length > 0 ? (
         <div className="flex flex-col gap-8">
           <Reveal>
             <h2 className="text-2xl font-bold tracking-tight md:text-3xl">The team</h2>
@@ -198,7 +194,9 @@ export default async function AboutPage() {
             ))}
           </Stagger>
         </div>
+        ) : null}
 
+        {CHURCH_PARTNERS.length > 0 ? (
         <div className="flex flex-col gap-8">
           <Reveal>
             <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Churches running on Shiriki</h2>
@@ -213,6 +211,7 @@ export default async function AboutPage() {
             </div>
           </Reveal>
         </div>
+        ) : null}
       </Container>
 
       <CtaBand

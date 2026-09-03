@@ -1,4 +1,4 @@
-# Kanisa Connect — Module Contracts
+# Shiriki — Module Contracts
 
 Parallel sprint agents must implement these exact module paths and export
 names. Do NOT create a file owned by another agent; import against the

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { AlertTriangle } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { Button } from '@/components/ui/button'
+import { SectionLabel } from '@/components/sections/section-label'
 
 /**
  * Error boundary for the public site. Must be a Client Component (Next.js
@@ -26,7 +27,7 @@ export default function SiteError({
       <div className="flex size-14 items-center justify-center rounded-2xl bg-destructive/10 text-destructive">
         <AlertTriangle className="size-6" aria-hidden="true" />
       </div>
-      <span className="text-sm font-bold uppercase tracking-[0.18em] text-primary">Something went wrong</span>
+      <SectionLabel className="text-primary">Something went wrong</SectionLabel>
       <h1 className="text-balance text-3xl font-bold tracking-tight md:text-5xl">We hit an unexpected error.</h1>
       <p className="max-w-[480px] text-lg leading-8 text-muted-foreground">
         Sorry about that. You can try again, or head back home. If it keeps happening, please get in touch.

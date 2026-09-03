@@ -15,8 +15,8 @@ export type CtaBandProps = {
 }
 
 export const FALLBACK_CTA_BAND: CtaBandProps = {
-  heading: 'Ready to connect your church?',
-  sub: "Tell us about your congregation and we'll tailor a walkthrough for your team.",
+  heading: "See it with your own church's numbers.",
+  sub: 'Tell us your congregation size and which giving channels you use, and we will walk your team through the setup you would actually run.',
   ctaLabel: 'Request a demo',
 }
 

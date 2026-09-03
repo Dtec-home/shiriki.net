@@ -2,6 +2,7 @@ import { Banknote, EyeOff, MessagesSquare, type LucideIcon } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { Reveal } from '@/components/motion/reveal'
 import { Stagger, StaggerItem } from '@/components/motion/stagger'
+import { SectionLabel } from '@/components/sections/section-label'
 
 export type ProblemItem = {
   title: string
@@ -16,13 +17,22 @@ export type ProblemBandProps = {
 }
 
 export const FALLBACK_PROBLEM_BAND: ProblemBandProps = {
-  eyebrow: 'The old way stops here',
-  heading: 'Churches deserve better tools.',
-  lead: 'Move past manual cash counting, paper records, and scattered WhatsApp groups.',
+  eyebrow: 'Where the record lives today',
+  heading: "Sunday's offering ends up in three places at once.",
+  lead: "A cash count in one book, M-Pesa messages on the treasurer's phone, and the member register in a WhatsApp group. None of it reconciles until somebody retypes it.",
   items: [
-    { title: 'Manual processes', text: 'No more error-prone cash counting or lost paper records.' },
-    { title: 'Zero visibility', text: 'See who gave what, when, and how much in real time.' },
-    { title: 'Fragmented comms', text: 'Centralize your messages away from chaotic group chats.' },
+    {
+      title: 'The Monday count',
+      text: 'Two people, a cash box, and a ledger book — then it gets typed into Excel and the two totals disagree.',
+    },
+    {
+      title: 'PayBill on one handset',
+      text: "Confirmation messages land on the treasurer's phone. Matching each one to a member is manual, and pledges go untracked.",
+    },
+    {
+      title: 'Five WhatsApp groups',
+      text: 'Announcements, attendance, and visitor follow-up live in chats nobody can search, filter, or export.',
+    },
   ],
 }
 
@@ -30,15 +40,16 @@ export const FALLBACK_PROBLEM_BAND: ProblemBandProps = {
 const ICONS: LucideIcon[] = [Banknote, EyeOff, MessagesSquare]
 
 /**
- * "The old way stops here" band: eyebrow + `<h2>` + lead, followed by three
- * problem cards on a muted surface. First section below the hero.
+ * Problem band: label + `<h2>` + lead, followed by three cards naming the
+ * specific places a church's Sunday record currently splits. First section
+ * below the hero.
  */
 export function ProblemBand({ eyebrow, heading, lead, items }: ProblemBandProps) {
   return (
     <section className="bg-muted/40 py-20 lg:py-28">
       <Container>
         <Reveal className="max-w-2xl">
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">{eyebrow}</p>
+          <SectionLabel className="text-primary">{eyebrow}</SectionLabel>
           <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight md:text-5xl">{heading}</h2>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">{lead}</p>
         </Reveal>

@@ -3,6 +3,7 @@ import { Container } from '@/components/layout/container'
 import { FadeInUp } from '@/components/motion/fade-in-up'
 import { Reveal } from '@/components/motion/reveal'
 import { DemoRequestDialog } from '@/components/forms/demo-request-dialog'
+import { SectionLabel } from '@/components/sections/section-label'
 
 export type GivingCartLine = {
   label: string
@@ -25,15 +26,15 @@ export type GivingChannelsProps = {
 }
 
 export const FALLBACK_GIVING_CHANNELS: GivingChannelsProps = {
-  eyebrow: 'Always accept money',
-  heading: 'Every channel. One clear picture.',
-  lead: 'No payment is rejected. Unmatched funds are securely held for admin resolution, while every contribution stays visible and accountable.',
+  eyebrow: 'Giving channels',
+  heading: 'Every gift lands in the same ledger.',
+  lead: 'Five ways to give, one reconciled record. A payment that cannot be matched to a member is held for an admin to resolve — never rejected, never lost.',
   channels: [
-    'M-Pesa STK Push — one-tap giving from any phone',
-    'M-Pesa PayBill — smart category matching',
-    'Airtel Money — reach Airtel subscribers seamlessly',
-    'Card payments — for diaspora via Paystack',
-    'USSD (*710*13414#) — works without internet',
+    "M-Pesa STK Push — the prompt arrives on the member's phone",
+    'M-Pesa PayBill — matched by phone number and account reference',
+    'Airtel Money — for members on the Airtel network',
+    'Card via Paystack — for diaspora members giving in KES',
+    'USSD (*710*13414#) — no smartphone, no data bundle',
   ],
   cart: {
     kicker: 'Sunday giving',
@@ -49,16 +50,16 @@ export const FALLBACK_GIVING_CHANNELS: GivingChannelsProps = {
 }
 
 /**
- * "Every channel. One clear picture." section: channel list on the left,
- * a multi-category giving cart card on the right. Anchored as `#giving` for
- * the main nav's "Giving" link.
+ * Giving section: the five channel list on the left, a multi-category giving
+ * cart card on the right. Anchored as `#giving` for the main nav's "Giving"
+ * link.
  */
 export function GivingChannels({ eyebrow, heading, lead, channels, cart }: GivingChannelsProps) {
   return (
     <section id="giving" className="scroll-mt-20 bg-primary/5 py-20 lg:py-28">
       <Container className="grid items-center gap-14 lg:grid-cols-2">
         <FadeInUp>
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-primary">{eyebrow}</p>
+          <SectionLabel className="text-primary">{eyebrow}</SectionLabel>
           <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight md:text-5xl">{heading}</h2>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">{lead}</p>
           <ul className="mt-8 flex flex-col gap-4">

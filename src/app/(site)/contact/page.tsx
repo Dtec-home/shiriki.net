@@ -5,6 +5,7 @@ import { Reveal } from '@/components/motion/reveal'
 import { ContactForm } from '@/components/forms/contact-form'
 import { buildMetadata } from '@/lib/metadata'
 import { CONTACT_EMAIL, CONTACT_PHONE, ORGANIZATION_ADDRESS, SALES_EMAIL, USSD_CODE } from '@/lib/site'
+import { SectionLabel } from '@/components/sections/section-label'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Contact us',
@@ -24,7 +25,7 @@ export default function ContactPage() {
     <Container as="div" className="grid grid-cols-1 gap-16 py-16 md:py-24 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
       <Reveal className="flex flex-col gap-8">
         <div className="flex flex-col gap-5">
-          <span className="text-sm font-bold uppercase tracking-[0.18em] text-primary">Contact</span>
+          <SectionLabel className="text-primary">Contact</SectionLabel>
           <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">Let&apos;s talk about your church.</h1>
           <p className="max-w-md text-lg leading-8 text-muted-foreground">
             Whether you&apos;re exploring Shiriki for the first time or need support with an existing account,

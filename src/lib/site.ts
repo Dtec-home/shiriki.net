@@ -3,13 +3,13 @@
  * even when Sanity is unreachable or unconfigured.
  */
 export const SITE_NAME = 'Shiriki'
-export const SITE_TAGLINE = 'Church operations, beautifully connected.'
+export const SITE_TAGLINE = 'Church management that runs on M-Pesa.'
 export const SITE_LOCALE = 'en_KE'
 export const SITE_LANG = 'en'
 
-export const DEFAULT_TITLE = `${SITE_NAME} | Church Management, Connected`
+export const DEFAULT_TITLE = `${SITE_NAME} | Church management that runs on M-Pesa`
 export const DEFAULT_DESCRIPTION =
-  'The complete church management platform for African churches — M-Pesa giving, member records, communication, events, and finance in one connected home.'
+  'Church management for African congregations: M-Pesa STK Push, PayBill, Airtel Money and USSD giving reconciled against your member register, plus events, communication and finance.'
 
 /**
  * The application, where a church actually signs up and signs in. Separate
@@ -32,7 +32,7 @@ export const SITE_URL = (
 
 export const CONTACT_EMAIL = 'hello@shiriki.site'
 export const SALES_EMAIL = 'sales@shiriki.site'
-export const CONTACT_PHONE = '+254 700 000 000'
+export const CONTACT_PHONE = '+254 797 030 300'
 export const USSD_CODE = '*710*13414#'
 
 export const ORGANIZATION_ADDRESS = {

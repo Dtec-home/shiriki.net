@@ -119,7 +119,7 @@ export function softwareApplicationSchema(): WithContext<SoftwareApplication> {
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Web, Android, iOS, USSD',
     description:
-      'Church management platform for African churches — member records, communication, events, finance, and mobile giving via M-Pesa and Airtel Money in one connected home.',
+      'Church management platform for African churches — member records, communication, events, finance, and mobile giving via M-Pesa, Airtel Money and USSD reconciled against the member register.',
     offers: {
       '@type': 'Offer',
       priceCurrency: 'KES',

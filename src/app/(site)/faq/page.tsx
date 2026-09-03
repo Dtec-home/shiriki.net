@@ -18,6 +18,7 @@ import { sanityFetch } from '@/sanity/lib/fetch'
 import { faqsQuery } from '@/sanity/lib/queries'
 import { typeTag } from '@/sanity/lib/live'
 import { FALLBACK_FAQS, type FaqDoc } from '@/lib/fallback-content'
+import { SectionLabel } from '@/components/sections/section-label'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Frequently asked questions',
@@ -48,7 +49,7 @@ export default async function FaqPage() {
         className="grid grid-cols-1 gap-12 py-16 md:grid-cols-[300px_1fr] md:gap-16 md:py-24"
       >
         <Reveal className="flex flex-col gap-4 md:border-r md:pr-8">
-          <span className="text-sm font-bold uppercase tracking-[0.18em] text-primary">Support</span>
+          <SectionLabel className="text-primary">Support</SectionLabel>
           <h1 className="text-balance text-3xl font-bold tracking-tight">Frequently asked questions</h1>
           <p className="text-muted-foreground">
             Can&apos;t find what you&apos;re looking for? Reach out and our team will help.

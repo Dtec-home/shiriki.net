@@ -2,6 +2,7 @@ import { CalendarDays, HeartHandshake, MessageSquare, type LucideIcon } from 'lu
 import { Container } from '@/components/layout/container'
 import { Reveal } from '@/components/motion/reveal'
 import { Stagger, StaggerItem } from '@/components/motion/stagger'
+import { SectionLabel } from '@/components/sections/section-label'
 
 const ICONS: Record<'message' | 'calendar' | 'heart', LucideIcon> = {
   message: MessageSquare,
@@ -23,38 +24,38 @@ export type DigitalHomeProps = {
 }
 
 export const FALLBACK_DIGITAL_HOME: DigitalHomeProps = {
-  eyebrow: 'One digital home',
-  heading: 'Reach every member, every way.',
-  lead: 'Manage events, sermons, campaigns, and conversations from one calm, capable hub.',
+  eyebrow: 'Communication and events',
+  heading: 'Announcements that reach the members without smartphones.',
+  lead: 'SMS, push, and email sent to one group, one ministry, or everyone who gave last month — plus event RSVPs, M-Pesa ticketing, and a sermon archive.',
   items: [
     {
       icon: 'message',
-      title: 'Communication hub',
-      text: 'Targeted SMS, push notifications, email campaigns, and ministry updates in one place.',
+      title: 'Communication',
+      text: 'Targeted SMS, push, and email, segmented by group, ministry, or giving history.',
     },
     {
       icon: 'calendar',
-      title: 'Events & engagement',
-      text: 'RSVPs, venues, volunteers, paid M-Pesa tickets, and feedback without the spreadsheets.',
+      title: 'Events & attendance',
+      text: 'RSVPs, venues, volunteer rosters, paid M-Pesa tickets, and post-event feedback.',
     },
     {
       icon: 'heart',
-      title: 'Digital content',
-      text: 'Share sermons, devotionals, prayer requests, pledges, and campaigns with your church family.',
+      title: 'Sermons & pledges',
+      text: 'Publish sermons, devotionals, and prayer requests, and run pledge campaigns members can track.',
     },
   ],
 }
 
 /**
- * Dark `bg-foreground` band: "Reach every member, every way." with three
- * capability cards (communication, events, digital content).
+ * Dark `bg-foreground` band covering the reach side of the platform, with
+ * three capability cards (communication, events, sermons and pledges).
  */
 export function DigitalHome({ eyebrow, heading, lead, items }: DigitalHomeProps) {
   return (
     <section className="bg-foreground py-20 text-background lg:py-28">
       <Container>
         <Reveal className="max-w-2xl">
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-secondary dark:text-background">{eyebrow}</p>
+          <SectionLabel className="text-secondary dark:text-background">{eyebrow}</SectionLabel>
           <h2 className="mt-4 text-balance text-3xl font-bold tracking-tight md:text-5xl">{heading}</h2>
           <p className="mt-5 text-lg leading-8 text-background/60">{lead}</p>
         </Reveal>

@@ -33,63 +33,86 @@ export type PricingTableProps = {
 
 export const FALLBACK_PRICING_TIERS: PricingTier[] = [
   {
-    name: 'Starter',
-    description: 'For small congregations getting off paper and WhatsApp.',
-    priceKes: 0,
-    billingNote: 'Free, forever, up to 100 members',
+    name: 'Msingi',
+    description: 'For small congregations getting off paper and WhatsApp. Start with a 30-day free trial.',
+    priceKes: 2000,
+    billingNote: '30-day free trial, then KES 2,000/mo · up to 150 members',
     features: [
       'Member directory & profiles',
-      'M-Pesa STK Push giving',
+      'M-Pesa STK Push & USSD giving',
+      '100 SMS/month included',
+      'Basic attendance tracking',
       '1 admin login',
-      'SMS giving receipts',
       'Community support',
     ],
-    ctaLabel: 'Start free',
+    ctaLabel: 'Start free trial',
     ctaHref: '/contact',
   },
   {
-    name: 'Growth',
-    description: 'For growing churches that need every giving channel and role.',
-    priceKes: 4500,
-    billingNote: 'per month, up to 1,000 members',
+    name: 'Ukuaji',
+    description: 'For growing churches that need every giving channel, multiple roles, and proper reconciliation.',
+    priceKes: 3500,
+    billingNote: 'per month · up to 500 members',
     features: [
-      'Everything in Starter',
+      'Everything in Msingi',
       'All giving channels (M-Pesa, Airtel Money, card, USSD)',
-      '7+ granular admin roles',
-      'Events, RSVPs & paid ticketing',
-      'SMS, push & email communication hub',
+      'Up to 5 admin roles',
+      'Events & RSVPs',
+      '200 SMS/month included',
+      'Email notifications',
       'Financial reports & audit trail',
     ],
     ctaLabel: 'Request a demo',
     highlighted: true,
   },
   {
-    name: 'Enterprise',
-    description: 'For dioceses, networks, and multi-branch churches at scale.',
-    priceKes: 'custom',
-    billingNote: 'Custom pricing, unlimited members',
+    name: 'Kanisa',
+    description: 'For established churches with staff, finance operations, and up to 3 branches.',
+    priceKes: 7500,
+    billingNote: 'per month · up to 2,000 members',
     features: [
-      'Everything in Growth',
+      'Everything in Ukuaji',
+      'Unlimited admin roles',
+      'Double-entry accounting & budgets',
+      'HR, leave & Kenyan payroll (PAYE/NSSF/SHIF)',
+      'Paid event ticketing & YouTube sync',
+      '500 SMS/month included',
+      'Up to 3 branches',
+    ],
+    ctaLabel: 'Request a demo',
+  },
+  {
+    name: 'Shirikisho',
+    description: 'For dioceses, conferences, and multi-branch churches at scale.',
+    priceKes: 'custom',
+    billingNote: 'Custom pricing · unlimited members & branches',
+    features: [
+      'Everything in Kanisa',
       'Unlimited branches & multi-tenancy',
-      'Dedicated onboarding & support',
-      'Custom integrations & API access',
-      'Service-level agreement (SLA)',
+      'Consolidated financial reporting',
+      'Custom domain & API access',
+      'Dedicated account manager & SLA',
     ],
     ctaLabel: 'Talk to sales',
   },
 ]
 
 export const FALLBACK_COMPARISON_ROWS: ComparisonRow[] = [
-  { feature: 'Member records & profiles', values: [true, true, true] },
-  { feature: 'M-Pesa STK Push giving', values: [true, true, true] },
-  { feature: 'M-Pesa PayBill, Airtel Money, card & USSD giving', values: [false, true, true] },
-  { feature: 'Admin roles', values: ['1', '7+', 'Unlimited'] },
-  { feature: 'Events & paid ticketing', values: [false, true, true] },
-  { feature: 'Communication hub (SMS/push/email)', values: [false, true, true] },
-  { feature: 'Financial reports & audit trail', values: [false, true, true] },
-  { feature: 'Multi-branch / multi-tenancy', values: [false, false, true] },
-  { feature: 'Dedicated support & SLA', values: [false, false, true] },
-  { feature: 'API access & custom integrations', values: [false, false, true] },
+  { feature: 'Member records & profiles', values: ['Up to 150', 'Up to 500', 'Up to 2,000', 'Unlimited'] },
+  { feature: 'M-Pesa STK Push & USSD giving', values: [true, true, true, true] },
+  { feature: 'M-Pesa PayBill & Airtel Money', values: [false, true, true, true] },
+  { feature: 'Card payments (Visa/Mastercard)', values: [false, true, true, true] },
+  { feature: 'Admin roles', values: ['1', '5', 'Unlimited', 'Unlimited'] },
+  { feature: 'Bulk SMS included', values: ['100/mo', '200/mo', '500/mo', 'Custom'] },
+  { feature: 'Events & RSVPs', values: [false, true, true, true] },
+  { feature: 'Paid event ticketing', values: [false, false, true, true] },
+  { feature: 'Financial reports & audit trail', values: [false, true, true, true] },
+  { feature: 'Double-entry accounting & budgets', values: [false, false, true, true] },
+  { feature: 'HR, leave & Kenyan payroll', values: [false, false, true, true] },
+  { feature: 'Multi-branch / multi-tenancy', values: [false, false, 'Up to 3', 'Unlimited'] },
+  { feature: 'Custom domain', values: [false, false, false, true] },
+  { feature: 'Dedicated support & SLA', values: ['Community', 'Priority', 'Priority + onboarding', 'Dedicated manager'] },
+  { feature: 'API access & custom integrations', values: [false, false, false, true] },
 ]
 
 function formatPrice(priceKes: PricingTier['priceKes']): string {
@@ -106,7 +129,7 @@ function formatPrice(priceKes: PricingTier['priceKes']): string {
 export function PricingTable({ tiers, comparisonRows }: PricingTableProps) {
   return (
     <div className="flex flex-col gap-16">
-      <Stagger className="grid items-start gap-6 lg:grid-cols-3">
+      <Stagger className="grid items-start gap-6 lg:grid-cols-4">
         {tiers.map((tier) => (
           <StaggerItem key={tier.name}>
             <article
