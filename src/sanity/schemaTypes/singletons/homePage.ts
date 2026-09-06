@@ -31,6 +31,14 @@ export const homePage = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'heroHeadlineHighlight',
+      title: 'Headline — highlighted tail',
+      description:
+        'The end of the headline, set in the brand colour. Rendered immediately after Headline, so include any leading space you want between them. Leave empty for a single-colour headline.',
+      type: 'string',
+      group: 'hero',
+    }),
+    defineField({
       name: 'heroSubheadline',
       title: 'Subheadline',
       type: 'text',

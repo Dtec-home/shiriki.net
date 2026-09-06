@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Hero, FALLBACK_HERO } from '@/components/sections/hero'
+import { ChannelStrip } from '@/components/sections/channel-strip'
 import { ProblemBand, FALLBACK_PROBLEM_BAND } from '@/components/sections/problem-band'
 import { GivingChannels, FALLBACK_GIVING_CHANNELS } from '@/components/sections/giving-channels'
 import { FeaturesGrid, FALLBACK_FEATURES_GRID } from '@/components/sections/features-grid'
@@ -9,6 +10,7 @@ import { Testimonials, FALLBACK_TESTIMONIALS } from '@/components/sections/testi
 import { CtaBand } from '@/components/sections/cta-band'
 import { SectionErrorBoundary } from '@/components/section-error-boundary'
 import { JsonLd } from '@/components/seo/json-ld'
+import { MAIN_NAV } from '@/lib/nav'
 import { buildMetadata } from '@/lib/metadata'
 import { softwareApplicationSchema } from '@/lib/json-ld'
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, USSD_CODE } from '@/lib/site'
@@ -21,6 +23,7 @@ type CtaLinkDoc = { label?: string | null; href?: string | null; variant?: strin
 type HomePageDoc = {
   heroEyebrow?: string | null
   heroHeadline?: string | null
+  heroHeadlineHighlight?: string | null
   heroSubheadline?: string | null
   heroPrimaryCta?: CtaLinkDoc
   heroSecondaryCta?: CtaLinkDoc
@@ -90,18 +93,30 @@ export default async function HomePage() {
   ])
 
   // --- Hero ---
-  // `heroHeadline` is a flat string in Sanity (no two-tone split like the
-  // fallback copy), so CMS content renders as plain text with nothing
-  // highlighted rather than guessing which words to color.
+  // The headline is two Sanity fields, not one: `heroHeadline` in the text
+  // colour and `heroHeadlineHighlight` in the brand teal after it. Splitting a
+  // single string here would mean guessing which words an editor meant to
+  // colour, and the guess would be wrong the first time anyone rewrote it.
+  //
+  // Sanity models the hero as two interchangeable CTAs, which no longer lines
+  // up with the hero's three slots — and the seeded `heroPrimaryCta` points at
+  // `/demo`, a route this site has never had. So the explore link is taken
+  // from whichever CTA actually names a page the site navigates to, and the
+  // demo dialog's label is never CMS-driven: a trigger labelled "See pricing"
+  // that opens a demo form is worse than a stale label.
+  const siteHrefs = new Set(MAIN_NAV.map((link) => link.href))
+  const exploreCta = [homePage?.heroPrimaryCta, homePage?.heroSecondaryCta].find(
+    (cta) => cta?.href && (siteHrefs.has(cta.href) || cta.href.startsWith('#')),
+  )
+
   const hero = homePage?.heroHeadline
     ? {
         eyebrow: homePage.heroBadgeText || homePage.heroEyebrow || undefined,
         headingPrefix: homePage.heroHeadline,
-        headingHighlight: '',
+        headingHighlight: homePage.heroHeadlineHighlight || '',
         lead: homePage.heroSubheadline || FALLBACK_HERO.lead,
-        exploreHref: homePage.heroPrimaryCta?.href || FALLBACK_HERO.exploreHref,
-        exploreLabel: homePage.heroPrimaryCta?.label || FALLBACK_HERO.exploreLabel,
-        demoLabel: homePage.heroSecondaryCta?.label || FALLBACK_HERO.demoLabel,
+        exploreHref: exploreCta?.href || FALLBACK_HERO.exploreHref,
+        exploreLabel: exploreCta?.label || FALLBACK_HERO.exploreLabel,
       }
     : FALLBACK_HERO
 
@@ -192,6 +207,9 @@ export default async function HomePage() {
       <JsonLd data={softwareApplicationSchema()} />
       <SectionErrorBoundary label="Hero">
         <Hero {...hero} />
+      </SectionErrorBoundary>
+      <SectionErrorBoundary label="ChannelStrip">
+        <ChannelStrip />
       </SectionErrorBoundary>
       <SectionErrorBoundary label="ProblemBand">
         <ProblemBand {...problemBand} />

@@ -1102,10 +1102,14 @@ const homePage = {
   _id: 'homePage',
   _type: 'homePage',
   heroEyebrow: 'Church management for East Africa',
-  heroHeadline: 'Church management that runs on M-Pesa.',
+  heroHeadline: 'Church management that ',
+  heroHeadlineHighlight: 'runs on M-Pesa.',
   heroSubheadline:
     'Members, giving, events, and finance in one system — with STK Push, PayBill, Airtel Money, and USSD gifts that match themselves to your member register.',
-  heroPrimaryCta: { _type: 'cta', _key: key(), label: 'Request a demo', href: '/demo', variant: 'primary' },
+  // Was "Request a demo" pointing at `/demo`, a route this site does not have,
+  // so the hero's link 404'd. The demo lives in a dialog the hero renders
+  // itself; this slot is the scroll link into the giving section.
+  heroPrimaryCta: { _type: 'cta', _key: key(), label: 'See how giving works', href: '/#giving', variant: 'primary' },
   heroSecondaryCta: { _type: 'cta', _key: key(), label: 'See pricing', href: '/pricing', variant: 'secondary' },
   // Left empty on purpose: this read "Trusted by churches across Kenya, Uganda
   // & Tanzania", a claim with no churches behind it. `heroEyebrow` renders in

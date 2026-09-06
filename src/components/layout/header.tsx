@@ -46,11 +46,18 @@ export function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 border-b bg-background/85 backdrop-blur-md transition-shadow duration-200',
-        mounted && scrolled ? 'border-border shadow-brand-sm' : 'border-transparent',
+        'sticky top-0 z-50 border-b transition-[background-color,box-shadow] duration-200',
+        // Transparent at rest so the header sits *in* the hero's tinted wash
+        // rather than as a white bar laid over it; it only materialises into a
+        // blurred surface once there is content scrolling underneath.
+        mounted && scrolled
+          ? 'border-border bg-background/85 shadow-brand-sm backdrop-blur-md'
+          : 'border-transparent bg-transparent',
       )}
     >
-      <Container className="flex h-16 items-center justify-between gap-4 lg:h-[72px]">
+      {/* `wide` to match the home hero, so the wordmark sits on the same left
+          edge as the `<h1>` under it rather than 130px inboard of it. */}
+      <Container size="wide" className="flex h-16 items-center justify-between gap-4 lg:h-[72px]">
         <Link href="/" className="flex items-center gap-2" aria-label="Shiriki home">
           <Logo />
         </Link>
@@ -64,7 +71,9 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
+          <div className="hidden sm:block">
+            <ThemeToggle />
+          </div>
           {/* The path into the product. This site had no link to the app at
               all, so a church leader who was convinced here had nowhere to
               go. "Request demo" is kept for those who want to talk first. */}
@@ -74,9 +83,13 @@ export function Header() {
           >
             Sign in
           </Link>
+          {/* Visible at every width, including phones. It used to be hidden
+              below `sm`, which left a phone visitor with no way into the app
+              except opening the hamburger first — the one control on the page
+              that has to be reachable in a single tap. */}
           <Link
             href={APP_SIGNUP_URL}
-            className="hidden min-h-11 items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5 sm:inline-flex"
+            className="inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-3 py-2 text-sm font-bold text-primary-foreground transition-transform hover:-translate-y-0.5 sm:px-4"
           >
             Get started
           </Link>

@@ -42,6 +42,7 @@ export const homePageQuery = defineQuery(`
   *[_type == "homePage"][0]{
     heroEyebrow,
     heroHeadline,
+    heroHeadlineHighlight,
     heroSubheadline,
     heroPrimaryCta,
     heroSecondaryCta,

@@ -1,6 +1,8 @@
-import { ArrowRight, Check } from 'lucide-react'
+import Link from 'next/link'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { TrackEvent } from '@/components/analytics/track-event'
 import { ANALYTICS_EVENTS } from '@/lib/analytics'
+import { APP_SIGNUP_URL } from '@/lib/site'
 import { Container } from '@/components/layout/container'
 import { FadeInUp } from '@/components/motion/fade-in-up'
 import { Reveal } from '@/components/motion/reveal'
@@ -12,11 +14,13 @@ export type HeroProps = {
   eyebrow?: string
   /** Plain text rendered before the highlighted portion of the H1. */
   headingPrefix: string
-  /** Highlighted (secondary-colored) portion of the H1. */
+  /** Highlighted (primary-colored) portion of the H1. */
   headingHighlight: string
   lead: string
+  /** The quiet third link under the two buttons — scrolls, never converts. */
   exploreHref?: string
   exploreLabel?: string
+  startLabel?: string
   demoLabel?: string
   /**
    * Short factual reassurances under the CTAs. Every one has to be verifiable
@@ -33,23 +37,27 @@ export const FALLBACK_HERO: HeroProps = {
   lead: 'Members, giving, events, and finance in one system — with STK Push, PayBill, Airtel Money, and USSD gifts that match themselves to your member register.',
   exploreHref: '/#giving',
   exploreLabel: 'See how giving works',
+  startLabel: 'Start free',
   demoLabel: 'Talk to our team',
   trustPoints: ['30-day free trial', 'No payment to start', 'No cut of your offerings'],
 }
 
 /**
- * Home page hero: indigo `bg-primary` band with a subtle diagonal-stripe
- * overlay, split into a copy column and `HeroGivingProof` — the STK-prompt
- * illustration that shows the claim the `<h1>` makes.
+ * Home page hero: a soft teal wash rather than the solid brand band it used to
+ * be, split into a copy column and `HeroGivingProof` — the STK-prompt collage
+ * that shows the claim the `<h1>` makes instead of restating it.
  *
- * Left-aligned with a plain label rather than the centred-headline-under-a-
- * pill-badge arrangement, which is the most common generated-landing-page
- * layout and reads as one. Hairline rules divide the copy column into bands,
- * echoing the rule in `SectionLabel` so the two read as one system.
+ * The size contrast between the headline and the lead is the point: an
+ * oversized two-tone `<h1>` carries the proposition, and everything under it
+ * stays small and quiet. Left-aligned with a plain label rather than the
+ * centred-headline-under-a-pill-badge arrangement, which is the most common
+ * generated-landing-page layout and reads as one.
  *
- * There is deliberately no rating, customer count, or logo wall here. The
- * product is pre-launch; `trustPoints` carries only facts the pricing page
- * and FAQ can substantiate.
+ * `Start free` is the primary action and points at the app's signup, so the
+ * first button on the page is the one that converts; the scroll anchor is
+ * demoted to a text link. There is deliberately no rating, customer count, or
+ * logo wall — the product is pre-launch, and `trustPoints` carries only facts
+ * the pricing page and FAQ can substantiate.
  *
  * Server Component: the only client boundary is inside `DemoRequestDialog`.
  */
@@ -60,71 +68,83 @@ export function Hero({
   lead,
   exploreHref = '/#giving',
   exploreLabel = 'See how giving works',
+  startLabel = 'Start free',
   demoLabel = 'Talk to our team',
   trustPoints = FALLBACK_HERO.trustPoints,
 }: HeroProps) {
   return (
-    <section className="relative overflow-hidden bg-primary text-primary-foreground">
+    <section className="hero-wash relative overflow-hidden">
+      {/* Retained from the solid-band version: at 3.5% over the wash it is a
+          texture you notice only on a large screen, which is the intent. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 opacity-[0.08] [background-image:linear-gradient(135deg,transparent_25%,currentColor_25%,currentColor_26%,transparent_26%,transparent_74%,currentColor_74%,currentColor_75%,transparent_75%)] [background-size:72px_72px]"
+        className="absolute inset-0 opacity-[0.035] [background-image:linear-gradient(135deg,transparent_25%,currentColor_25%,currentColor_26%,transparent_26%,transparent_74%,currentColor_74%,currentColor_75%,transparent_75%)] [background-size:72px_72px]"
       />
       {/* `wide` rather than the site-wide `content`: the copy column and the
-          illustration each need room, and a hero is the one place a wider
-          measure reads as deliberate rather than inconsistent. */}
+          collage each need room, and a hero is the one place a wider measure
+          reads as deliberate rather than inconsistent. */}
       <Container
         size="wide"
-        className="relative grid items-center gap-14 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20 lg:py-24"
+        className="relative grid items-center gap-16 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:py-24"
       >
         <FadeInUp className="flex flex-col">
-          {eyebrow ? (
-            <SectionLabel className="mb-7 text-secondary dark:text-primary-foreground">{eyebrow}</SectionLabel>
-          ) : null}
+          {eyebrow ? <SectionLabel className="mb-6">{eyebrow}</SectionLabel> : null}
 
-          <h1 className="text-balance text-4xl font-bold tracking-tight sm:text-5xl xl:text-6xl">
+          <h1 className="text-balance text-4xl font-bold leading-[1.05] tracking-[-0.03em] sm:text-5xl xl:text-6xl">
             {headingPrefix}
-            <span className="text-secondary dark:text-primary-foreground">{headingHighlight}</span>
+            <span className="text-primary">{headingHighlight}</span>
           </h1>
 
-          <hr className="mt-8 border-primary-foreground/15" />
+          {/* Held well short of the headline's measure. The gap in size between
+              the two is what makes the h1 read as the proposition and this as
+              the footnote to it. */}
+          <p className="mt-6 max-w-md text-pretty leading-7 text-muted-foreground">{lead}</p>
 
-          <p className="mt-8 max-w-xl text-pretty text-lg leading-8 text-primary-foreground/70">{lead}</p>
-
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:self-start">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:self-start">
             <TrackEvent event={ANALYTICS_EVENTS.CTA_CLICK} props={{ location: 'hero' }}>
-              <a
-                href={exploreHref}
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-secondary px-6 py-3 font-bold text-secondary-foreground shadow-brand-lg transition-all hover:-translate-y-0.5 hover:bg-secondary/90 focus-visible:outline-primary-foreground motion-reduce:transition-none"
+              <Link
+                href={APP_SIGNUP_URL}
+                className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-primary py-2 pl-2 pr-6 font-bold text-primary-foreground shadow-brand-lg transition-all hover:-translate-y-0.5 hover:bg-primary/90 motion-reduce:transition-none"
               >
-                {exploreLabel}
-                <ArrowRight className="size-4" aria-hidden="true" />
-              </a>
+                <span
+                  aria-hidden="true"
+                  className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary-foreground/20"
+                >
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" />
+                </span>
+                {startLabel}
+              </Link>
             </TrackEvent>
             <DemoRequestDialog>
               <button
                 type="button"
-                className="inline-flex min-h-11 items-center justify-center rounded-lg border border-primary-foreground/20 px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary-foreground/10 focus-visible:outline-primary-foreground"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border bg-card px-6 py-2 font-semibold text-card-foreground shadow-brand-sm transition-colors hover:bg-muted"
               >
                 {demoLabel}
               </button>
             </DemoRequestDialog>
           </div>
 
+          <a
+            href={exploreHref}
+            className="mt-5 inline-flex items-center gap-1 self-start text-sm font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            {exploreLabel}
+            <ArrowUpRight className="size-4" aria-hidden="true" />
+          </a>
+
           {trustPoints && trustPoints.length > 0 ? (
-            <>
-              <hr className="mt-8 border-primary-foreground/15" />
-              <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
-                {trustPoints.map((point) => (
-                  <li key={point} className="flex items-center gap-2 text-sm text-primary-foreground/70">
-                    <Check
-                      className="size-4 shrink-0 text-secondary dark:text-primary-foreground"
-                      aria-hidden="true"
-                    />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </>
+            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t pt-6">
+              {trustPoints.map((point) => (
+                <li key={point} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  {/* A rotated square, not a check in a circle: at this size the
+                      marker only has to separate the items, and three ticks
+                      read as a feature list the eye then has to dismiss. */}
+                  <span aria-hidden="true" className="size-1.5 rotate-45 rounded-[1px] bg-primary" />
+                  {point}
+                </li>
+              ))}
+            </ul>
           ) : null}
         </FadeInUp>
 

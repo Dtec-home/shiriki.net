@@ -322,3 +322,23 @@
     scroll-behavior: auto !important;
   }
 }
+
+/*
+ * Hero wash — the tinted ground the home hero sits on.
+ *
+ * One opaque radial rather than stacked translucent blobs: it fades to the
+ * page ground exactly, with none of the grey fringing a `transparent` stop
+ * causes, and it costs no blur filter. `color-mix` against --background is
+ * what makes a single declaration correct in both themes — pale teal over
+ * near-white in light, a deep teal-black in dark — so there is nothing to
+ * keep in sync when the palette changes.
+ */
+.hero-wash {
+  background:
+    radial-gradient(
+      125% 100% at 8% -10%,
+      color-mix(in oklab, var(--primary) 18%, var(--background)) 0%,
+      color-mix(in oklab, var(--brand-emerald-500) 7%, var(--background)) 45%,
+      var(--background) 78%
+    );
+}
