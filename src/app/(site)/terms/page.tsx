@@ -4,7 +4,7 @@ import { Container } from '@/components/layout/container'
 import { PortableTextRenderer } from '@/components/blog/portable-text-renderer'
 import { SectionErrorBoundary } from '@/components/section-error-boundary'
 import { buildMetadata } from '@/lib/metadata'
-import { CONTACT_EMAIL } from '@/lib/site'
+import { CONTACT_EMAIL, DEVELOPER_NAME } from '@/lib/site'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { legalPageQuery } from '@/sanity/lib/queries'
 import { slugTag, typeTag } from '@/sanity/lib/live'
@@ -60,8 +60,10 @@ export default async function TermsOfServicePage() {
         <section className="flex flex-col gap-3">
           <h2 className="text-xl font-bold text-foreground">1. Acceptance of these terms</h2>
           <p>
-            By creating a church account or otherwise using Shiriki, you agree to these terms on behalf of the
-            church or organization you represent. If you do not have authority to bind that organization, do not use
+            Shiriki is developed and operated by {DEVELOPER_NAME} (&ldquo;we&rdquo;, &ldquo;us&rdquo;). These
+            terms are an agreement between {DEVELOPER_NAME} and the church or organization you represent. By
+            creating a church account or otherwise using Shiriki, you agree to them on that organization&apos;s
+            behalf. If you do not have authority to bind that organization, do not use
             the platform.
           </p>
         </section>

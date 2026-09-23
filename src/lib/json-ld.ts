@@ -47,7 +47,9 @@ export function organizationSchema(): WithContext<Organization> {
     '@id': `${SITE_URL}/#organization`,
     name: SITE_NAME,
     url: SITE_URL,
-    logo: absoluteUrl('/opengraph-image'),
+    // Google wants a square logo of at least 112x112px; the 1200x630 OG card
+    // gets cropped. apple-icon.png is the 180x180 Shiriki mark.
+    logo: absoluteUrl('/apple-icon.png'),
     sameAs: SOCIAL_LINKS.map((link) => link.url),
     contactPoint: [
       {
@@ -120,11 +122,17 @@ export function softwareApplicationSchema(): WithContext<SoftwareApplication> {
     operatingSystem: 'Web, Android, iOS, USSD',
     description:
       'Church management platform for African churches — member records, communication, events, finance, and mobile giving via M-Pesa, Airtel Money and USSD reconciled against the member register.',
+    // Price range of the published monthly plans (Msingi to Kanisa; the
+    // Shirikisho tier is quoted). A bare `price: '0'` would claim the product
+    // is free, which it is not — only the 30-day trial is.
     offers: {
-      '@type': 'Offer',
+      '@type': 'AggregateOffer',
       priceCurrency: 'KES',
-      price: '0',
-      description: 'Flexible plans priced in Kenyan Shillings; contact sales for a quote.',
+      lowPrice: '2000',
+      highPrice: '7500',
+      offerCount: 3,
+      url: absoluteUrl('/pricing'),
+      description: 'Monthly plans from KES 2,000, each with a 30-day free trial.',
     },
     provider: { '@id': `${SITE_URL}/#organization` },
   }

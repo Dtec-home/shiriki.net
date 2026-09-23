@@ -29,6 +29,9 @@ import { resolve } from 'path'
 // already a project dependency with resolvable types.
 import { createClient } from 'next-sanity'
 
+import { PRIVACY_POLICY_LAST_UPDATED, privacyPolicyBody } from '../src/lib/legal/privacy-policy'
+import { DEVELOPER_NAME } from '../src/lib/site'
+
 // Load .env.local (tsx doesn't load Next.js env files automatically). No
 // `dotenv` dependency is installed, so parse the minimal `KEY=VALUE` format
 // ourselves rather than adding a new package dependency for this one script.
@@ -1247,27 +1250,15 @@ const legalPages = [
     _type: 'legalPage',
     title: 'Privacy Policy',
     slug: { _type: 'slug', current: 'privacy' },
-    lastUpdated: '2026-08-01',
-    body: [
-      block(
-        'This Privacy Policy explains how Shiriki collects, uses, and protects information about churches, church staff, and congregation members who use our platform.',
-      ),
-      h2('Information we collect'),
-      bullets([
-        'Account information for church administrators and staff',
-        'Member records entered by the church (contact details, ministries, attendance)',
-        'Giving records processed through supported payment channels',
-      ]),
-      h2('How we use it'),
-      block(
-        'Information is used solely to provide the Shiriki service to the church that entered it. We do not sell member or giving data to third parties.',
-      ),
-      h2('Data security'),
-      block(
-        'Data is encrypted in transit and at rest. Card payments are processed by PCI DSS-compliant partners; Shiriki never stores raw card numbers.',
-      ),
-    ],
-    seo: { _type: 'seo', metaTitle: 'Privacy Policy | Shiriki', noIndex: false },
+    lastUpdated: PRIVACY_POLICY_LAST_UPDATED,
+    body: privacyPolicyBody,
+    seo: {
+      _type: 'seo',
+      metaTitle: 'Privacy Policy | Shiriki',
+      metaDescription:
+        'What Shiriki collects from churches, members and givers, how it is used and shared, how long it is kept, and how to delete your account.',
+      noIndex: false,
+    },
   },
   {
     _id: 'legal-terms',
@@ -1277,7 +1268,7 @@ const legalPages = [
     lastUpdated: '2026-08-01',
     body: [
       block(
-        'These Terms of Service govern your church’s use of the Shiriki platform. By creating an account, your church agrees to these terms.',
+        `These Terms of Service are an agreement between your church and ${DEVELOPER_NAME}, the developer and operator of Shiriki (“we”, “us”), and govern your church’s use of the Shiriki platform. By creating an account, your church agrees to these terms.`,
       ),
       h2('Use of the service'),
       block(

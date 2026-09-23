@@ -1,7 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { CheckCircle2, Info, TriangleAlert } from 'lucide-react'
-import { PortableText, type PortableTextComponents, type PortableTextMarkComponentProps } from '@portabletext/react'
+import {
+  PortableText,
+  toPlainText,
+  type PortableTextComponents,
+  type PortableTextMarkComponentProps,
+} from '@portabletext/react'
 import type { SanityImageSource } from '@sanity/image-url'
 import { CodeBlock } from '@/components/blog/code-block'
 import { urlFor } from '@/sanity/lib/image'
@@ -87,11 +92,28 @@ function BodyImage({ value }: { value: ImageValue }) {
 
 type CodeBlockValue = { code?: { code?: string; language?: string } }
 
+/** "9. How long we keep information" -> "how-long-we-keep-information". */
+function headingId(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/^\d+\.\s*/, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '')
+}
+
 const components: PortableTextComponents = {
   block: {
     normal: ({ children }) => <p className="mb-6 last:mb-0">{children}</p>,
-    h2: ({ children }) => (
-      <h2 className="mb-4 mt-12 text-[32px] font-bold leading-[1.2] tracking-tight first:mt-0">{children}</h2>
+    // Section headings get a slug id so they can be linked to directly —
+    // e.g. /privacy#deleting-your-account-and-data, the account-deletion URL
+    // registered with Google Play.
+    h2: ({ children, value }) => (
+      <h2
+        id={headingId(toPlainText(value))}
+        className="mb-4 mt-12 scroll-mt-24 text-[32px] font-bold leading-[1.2] tracking-tight first:mt-0"
+      >
+        {children}
+      </h2>
     ),
     h3: ({ children }) => <h3 className="mb-3 mt-10 text-2xl font-bold leading-[1.25] first:mt-0">{children}</h3>,
     h4: ({ children }) => <h4 className="mb-3 mt-8 text-xl font-bold leading-[1.4] first:mt-0">{children}</h4>,

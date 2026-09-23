@@ -3,6 +3,13 @@
  * even when Sanity is unreachable or unconfigured.
  */
 export const SITE_NAME = 'Shiriki'
+
+/**
+ * The legal developer of Shiriki: the Google Play developer account the app
+ * is published under. Play requires the privacy policy to name the same
+ * entity as the store listing, so the policy uses this, not SITE_NAME.
+ */
+export const DEVELOPER_NAME = 'Allons-y Suite'
 export const SITE_TAGLINE = 'Church management that runs on M-Pesa.'
 export const SITE_LOCALE = 'en_KE'
 export const SITE_LANG = 'en'
