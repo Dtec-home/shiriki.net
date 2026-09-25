@@ -40,7 +40,7 @@ export const SITE_URL = (
 export const CONTACT_EMAIL = 'hello@shiriki.site'
 export const SALES_EMAIL = 'sales@shiriki.site'
 export const CONTACT_PHONE = '+254 797 030 300'
-export const USSD_CODE = '*710*13414#'
+export const USSD_CODE = '*710*12414#'
 
 /**
  * WhatsApp is the same line as `CONTACT_PHONE`, in the digits-only form

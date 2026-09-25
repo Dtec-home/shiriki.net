@@ -4,6 +4,7 @@ import { FadeInUp } from '@/components/motion/fade-in-up'
 import { Reveal } from '@/components/motion/reveal'
 import { DemoRequestDialog } from '@/components/forms/demo-request-dialog'
 import { SectionLabel } from '@/components/sections/section-label'
+import { USSD_CODE } from '@/lib/site'
 
 export type GivingCartLine = {
   label: string
@@ -34,7 +35,7 @@ export const FALLBACK_GIVING_CHANNELS: GivingChannelsProps = {
     'M-Pesa PayBill — matched by phone number and account reference',
     'Airtel Money — for members on the Airtel network',
     'Card via Paystack — for diaspora members giving in KES',
-    'USSD (*710*13414#) — no smartphone, no data bundle',
+    `USSD (${USSD_CODE}) — no smartphone, no data bundle`,
   ],
   cart: {
     kicker: 'Sunday giving',

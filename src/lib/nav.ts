@@ -33,6 +33,7 @@ export const FOOTER_NAV: FooterNavColumn[] = [
       { label: 'Features', href: '/#features' },
       { label: 'Security', href: '/#security' },
       { label: 'Pricing', href: '/pricing' },
+      { label: 'Android App', href: 'https://play.google.com/store/apps/details?id=com.shiriki.app' },
     ],
   },
   {
