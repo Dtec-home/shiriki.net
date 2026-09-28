@@ -16,7 +16,7 @@ export const SITE_LANG = 'en'
 
 export const DEFAULT_TITLE = `${SITE_NAME} | Church management that runs on M-Pesa`
 export const DEFAULT_DESCRIPTION =
-  'Church management for African congregations: M-Pesa STK Push, PayBill, Airtel Money and USSD giving reconciled against your member register, plus events, communication and finance.'
+  'Church management for African congregations: M-Pesa STK Push, PayBill, Airtel Money and USSD giving reconciled against your member register. Available on Web and Android.'
 
 /**
  * The application, where a church actually signs up and signs in. Separate

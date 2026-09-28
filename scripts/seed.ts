@@ -241,7 +241,7 @@ const givingChannels = [
     _type: 'givingChannel',
     name: 'USSD',
     description:
-      'No smartphone or data bundle required. Members dial *710*13414# from any phone to give, check pledges, or request a statement.',
+      'No smartphone or data bundle required. Members dial *710*12414# from any phone to give, check pledges, or request a statement.',
     icon: 'Phone',
     badge: 'Works offline',
     order: 5,
@@ -357,7 +357,7 @@ const faqDefs = [
     question: 'Can members give without a smartphone?',
     answer: [
       block(
-        'Yes. Members can dial *710*13414# from any phone — smartphone or not — to give, check their pledge balance, or request a statement. No data bundle is required.',
+        'Yes. Members can dial *710*12414# from any phone — smartphone or not — to give, check their pledge balance, or request a statement. No data bundle is required.',
       ),
     ],
     category: 'Giving',
@@ -749,7 +749,7 @@ const postDefs = [
       ),
       h3('Day 7: Go live'),
       block(
-        'Run a test STK Push contribution from your own phone. If it arrives in the ledger matched to your member profile, you are live. Share the USSD code *710*13414# with your congregation and announce it from the pulpit on Sunday.',
+        'Run a test STK Push contribution from your own phone. If it arrives in the ledger matched to your member profile, you are live. Share the USSD code *710*12414# with your congregation and announce it from the pulpit on Sunday.',
       ),
       block(
         'Mchakato mzima \u2014 kutoka kusajili hadi kupokea mchango wa kwanza \u2014 unaweza kukamilika ndani ya wiki moja. Wengi wa makanisa yetu yanafanya hivyo.',
@@ -828,7 +828,7 @@ const postDefs = [
     ],
   },
   {
-    title: 'USSD giving: how *710*13414# reaches the members no app can',
+    title: 'USSD giving: how *710*12414# reaches the members no app can',
     slug: 'ussd-giving-no-smartphone-required',
     excerpt:
       'Not every church member has a smartphone or data bundle. USSD giving makes digital contributions possible from any phone, anywhere.',
@@ -841,7 +841,7 @@ const postDefs = [
         'Kenya\u2019s smartphone penetration is growing fast, but it is not universal. In many congregations \u2014 especially in rural areas, smaller towns, and among older members \u2014 feature phones are still common. These members can send and receive M-Pesa, but they cannot download an app or browse a website.',
       ),
       block(
-        'USSD bridges this gap. By dialling *710*13414# from any phone, a member enters a simple menu-driven flow: choose a church, select a department, enter an amount, and confirm with their M-Pesa PIN. No data, no app, no smartphone.',
+        'USSD bridges this gap. By dialling *710*12414# from any phone, a member enters a simple menu-driven flow: choose a church, select a department, enter an amount, and confirm with their M-Pesa PIN. No data, no app, no smartphone.',
       ),
       h3('What a member can do on USSD'),
       bullets([
@@ -1065,7 +1065,7 @@ const siteSettings = {
   contactEmail: 'hello@shiriki.site',
   salesEmail: 'sales@shiriki.site',
   phone: '+254 797 030 300',
-  ussdCode: '*710*13414#',
+  ussdCode: '*710*12414#',
   address: {
     streetAddress: 'Westlands',
     addressLocality: 'Nairobi',
@@ -1168,7 +1168,7 @@ const homePage = {
   ],
   ussdPanel: {
     eyebrow: 'USSD giving',
-    code: '*710*13414#',
+    code: '*710*12414#',
     body: 'Members can give, check pledges, and request statements by dialing this USSD code from any phone — no data bundle required.',
     cta: { _type: 'cta', _key: key(), label: 'See how USSD giving works', href: '/#giving', variant: 'ghost' },
   },

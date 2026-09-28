@@ -56,7 +56,7 @@ const PAGES: { title: string; path: string; summary: string }[] = [
     title: 'Home',
     path: '/',
     summary:
-      'Shiriki is a church management platform for African churches: member records, communication, events, and finance, with mobile giving via M-Pesa, Airtel Money and USSD reconciled against the member register.',
+      'Shiriki is a church management platform for African churches: member records, communication, events, and finance, with mobile giving via M-Pesa, Airtel Money and USSD reconciled against the member register, with a dedicated Android app.',
   },
   {
     title: 'About',
@@ -96,7 +96,7 @@ export async function GET() {
   const blocks: string[] = [
     '# Shiriki — Full content for AI ingestion',
     '',
-    '> Shiriki is a church management platform for African churches — member records, communication, events, and finance, with mobile giving via M-Pesa, Airtel Money and USSD reconciled against the member register.',
+    '> Shiriki is a church management platform for African churches — member records, communication, events, and finance, with mobile giving via M-Pesa, Airtel Money and USSD reconciled against the member register, with a dedicated Android app.',
     '',
     `Website: ${url('/')}`,
     '',
