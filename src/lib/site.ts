@@ -42,6 +42,9 @@ export const SALES_EMAIL = 'sales@shiriki.site'
 export const CONTACT_PHONE = '+254 797 030 300'
 export const USSD_CODE = '*710*12414#'
 
+/** The member app on Google Play (package `app.shiriki.mobile`). */
+export const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=app.shiriki.mobile'
+
 /**
  * WhatsApp is the same line as `CONTACT_PHONE`, in the digits-only form
  * `wa.me` expects (country code, no `+`, no spaces). Derived rather than

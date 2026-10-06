@@ -557,6 +557,16 @@ const faqDefs = [
     category: 'Getting started',
     order: 21,
   },
+  {
+    question: 'Is there a Shiriki mobile app?',
+    answer: [
+      block(
+        'Yes. The Shiriki app for Android is on Google Play at https://play.google.com/store/apps/details?id=app.shiriki.mobile. Members can see their giving history and receipts, update their profile, and get church announcements and event reminders. Members without a smartphone can still give by dialling *710*12414#.',
+      ),
+    ],
+    category: 'Getting started',
+    order: 22,
+  },
 ].map((f) => ({
   _id: `faq-${slugify(f.question)}`,
   _type: 'faq',

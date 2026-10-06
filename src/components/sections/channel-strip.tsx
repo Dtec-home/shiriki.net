@@ -1,7 +1,6 @@
-import Link from 'next/link'
 import { ArrowRight, Building2, CreditCard, Hash, Signal, Smartphone } from 'lucide-react'
 import { Container } from '@/components/layout/container'
-import { USSD_CODE } from '@/lib/site'
+import { PLAY_STORE_URL, USSD_CODE } from '@/lib/site'
 
 /**
  * The narrow strip directly under the hero: one line of news, then the payment
@@ -27,17 +26,19 @@ export function ChannelStrip() {
     <section aria-labelledby="channel-strip-heading" className="border-y bg-background py-8">
       <Container size="wide">
         <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-sm">
-          <span className="font-semibold">Launching in 2026.</span>
+          <span className="font-semibold">Shiriki is now on Google Play.</span>
           <span className="text-muted-foreground">
-            The first 30 days are free, and we never take a cut of your offerings.
+            Members see their giving history, receipts, and church announcements on Android.
           </span>
-          <Link
-            href="/pricing"
+          <a
+            href={PLAY_STORE_URL}
+            target="_blank"
+            rel="noreferrer noopener"
             className="inline-flex items-center gap-1 font-semibold text-primary underline-offset-4 hover:underline"
           >
-            See pricing
+            Get the app
             <ArrowRight className="size-3.5" aria-hidden="true" />
-          </Link>
+          </a>
         </p>
 
         <h2 id="channel-strip-heading" className="sr-only">

@@ -31,7 +31,13 @@ export async function sanityFetch<TResult, TFallback>(
   if (!isSanityConfigured) return fallback
 
   try {
-    return await client.fetch<TResult>(query, params, options)
+    // Tags let the Sanity webhook purge on publish; the hourly revalidate is
+    // the backstop for when it does not fire, so a missed webhook can leave
+    // content stale for an hour rather than until the next cache purge.
+    return await client.fetch<TResult>(query, params, {
+      ...options,
+      next: { revalidate: 3600, ...options.next },
+    })
   } catch (error) {
     console.warn(`[sanityFetch] query failed, using fallback: ${(error as Error).message}`)
     return fallback

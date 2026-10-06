@@ -4,6 +4,8 @@
  * modeled as a CMS document.
  */
 
+import { PLAY_STORE_URL } from '@/lib/site'
+
 export type NavLink = {
   label: string
   href: string
@@ -33,7 +35,7 @@ export const FOOTER_NAV: FooterNavColumn[] = [
       { label: 'Features', href: '/#features' },
       { label: 'Security', href: '/#security' },
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Android App', href: 'https://play.google.com/store/apps/details?id=com.shiriki.app' },
+      { label: 'Android app', href: PLAY_STORE_URL },
     ],
   },
   {

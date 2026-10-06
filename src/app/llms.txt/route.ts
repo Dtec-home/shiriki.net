@@ -1,4 +1,4 @@
-import { SITE_URL } from '@/lib/site'
+import { PLAY_STORE_URL, SITE_URL } from '@/lib/site'
 import { FALLBACK_FAQS } from '@/lib/fallback-content'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { typeTag } from '@/sanity/lib/live'
@@ -93,6 +93,7 @@ export async function GET() {
     '> Shiriki is a church management platform for African churches — member records, communication, events, and finance, with mobile giving via M-Pesa, Airtel Money and USSD reconciled against the member register, with a dedicated Android app.',
     '',
     `Website: ${url('/')}`,
+    `Android app: ${PLAY_STORE_URL}`,
     '',
     sections.join('\n'),
   ].join('\n')

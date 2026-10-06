@@ -25,6 +25,7 @@ import {
   CONTACT_EMAIL,
   CONTACT_PHONE,
   ORGANIZATION_ADDRESS,
+  PLAY_STORE_URL,
   SITE_NAME,
   SITE_URL,
   SOCIAL_LINKS,
@@ -119,7 +120,8 @@ export function softwareApplicationSchema(): WithContext<SoftwareApplication> {
     name: SITE_NAME,
     url: SITE_URL,
     applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Web, Android, iOS, USSD',
+    operatingSystem: 'Web, Android, USSD',
+    installUrl: PLAY_STORE_URL,
     description:
       'Church management platform for African churches — member records, communication, events, finance, and mobile giving via M-Pesa, Airtel Money and USSD reconciled against the member register.',
     // Price range of the published monthly plans (Msingi to Kanisa; the
