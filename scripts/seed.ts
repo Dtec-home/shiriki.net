@@ -1114,7 +1114,7 @@ const siteSettings = {
 const homePage = {
   _id: 'homePage',
   _type: 'homePage',
-  heroEyebrow: 'Church management for East Africa',
+  heroEyebrow: 'Church management system for East Africa',
   heroHeadline: 'Church management that ',
   heroHeadlineHighlight: 'runs on M-Pesa.',
   heroSubheadline:

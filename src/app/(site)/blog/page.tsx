@@ -6,6 +6,7 @@ import { Reveal } from '@/components/motion/reveal'
 import { Stagger, StaggerItem } from '@/components/motion/stagger'
 import { PostCard, type PostCardPost } from '@/components/blog/post-card'
 import { Button } from '@/components/ui/button'
+import { BreadcrumbLd } from '@/components/seo/json-ld'
 import { buildMetadata } from '@/lib/metadata'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { postsQuery } from '@/sanity/lib/queries'
@@ -13,8 +14,9 @@ import { typeTag } from '@/sanity/lib/live'
 import { SectionLabel } from '@/components/sections/section-label'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Blog',
-  description: 'Practical writing on church giving, membership, and ministry operations across East Africa.',
+  title: 'Church Management & Giving Blog',
+  description:
+    'Practical guides on church management, M-Pesa giving, church finance and membership for churches across East Africa, from the Shiriki team.',
   path: '/blog',
 })
 
@@ -30,6 +32,7 @@ export default async function BlogIndexPage() {
 
   return (
     <Container as="div" className="flex flex-col gap-12 py-16 md:py-24">
+      <BreadcrumbLd name="Blog" path="/blog" />
       <Reveal className="flex flex-col gap-4">
         <SectionLabel className="text-primary">The Shiriki blog</SectionLabel>
         <h1 className="max-w-3xl text-balance text-4xl font-bold tracking-tight md:text-6xl">

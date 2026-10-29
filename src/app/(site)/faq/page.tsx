@@ -11,7 +11,7 @@ import {
 import { CtaBand } from '@/components/sections/cta-band'
 import { PortableTextRenderer } from '@/components/blog/portable-text-renderer'
 import { SectionErrorBoundary } from '@/components/section-error-boundary'
-import { JsonLd } from '@/components/seo/json-ld'
+import { BreadcrumbLd, JsonLd } from '@/components/seo/json-ld'
 import { buildMetadata } from '@/lib/metadata'
 import { faqPageSchema } from '@/lib/json-ld'
 import { sanityFetch } from '@/sanity/lib/fetch'
@@ -21,8 +21,9 @@ import { FALLBACK_FAQS, type FaqDoc } from '@/lib/fallback-content'
 import { SectionLabel } from '@/components/sections/section-label'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Frequently asked questions',
-  description: 'Answers about M-Pesa integration, USSD giving, data security, pricing, onboarding, and offline use.',
+  title: 'Church Management System FAQ',
+  description:
+    'Answers about Shiriki church management: M-Pesa and USSD giving, the Android app, church funds management, data security, pricing and onboarding.',
   path: '/faq',
 })
 
@@ -43,6 +44,7 @@ export default async function FaqPage() {
 
   return (
     <>
+      <BreadcrumbLd name="FAQ" path="/faq" />
       <JsonLd data={faqLd} />
       <Container
         as="div"

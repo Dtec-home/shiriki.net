@@ -9,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+import { BreadcrumbLd } from '@/components/seo/json-ld'
 import { buildMetadata } from '@/lib/metadata'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { pricingPageQuery } from '@/sanity/lib/queries'
@@ -16,9 +17,9 @@ import { typeTag } from '@/sanity/lib/live'
 import { SectionLabel } from '@/components/sections/section-label'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Pricing',
+  title: 'Church Management Software Pricing (KES)',
   description:
-    'Simple, KES-priced plans for churches of every size — start with a 30-day free trial, then from KES 2,000/mo to custom enterprise deployments.',
+    'Shiriki church management system pricing in KES: a 30-day free trial, then from KES 2,000/month. M-Pesa giving, CFMS finance and member records included.',
   path: '/pricing',
 })
 
@@ -104,6 +105,7 @@ export default async function PricingPage() {
 
   return (
     <>
+      <BreadcrumbLd name="Pricing" path="/pricing" />
       <Container as="div" className="flex flex-col gap-16 py-16 md:py-24">
         <Reveal className="flex flex-col gap-5">
           <SectionLabel className="text-primary">Pricing</SectionLabel>

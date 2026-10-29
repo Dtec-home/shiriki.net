@@ -3,6 +3,7 @@ import { AlertTriangle } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { PortableTextRenderer } from '@/components/blog/portable-text-renderer'
 import { SectionErrorBoundary } from '@/components/section-error-boundary'
+import { BreadcrumbLd } from '@/components/seo/json-ld'
 import { buildMetadata } from '@/lib/metadata'
 import { CONTACT_EMAIL, DEVELOPER_NAME } from '@/lib/site'
 import { sanityFetch } from '@/sanity/lib/fetch'
@@ -36,6 +37,7 @@ export default async function TermsOfServicePage() {
 
   return (
     <Container size="prose" as="div" className="flex flex-col gap-8 py-16 md:py-24">
+      <BreadcrumbLd name="Terms of service" path="/terms" />
       <div className="flex flex-col gap-3">
         <SectionLabel className="text-primary">Legal</SectionLabel>
         <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">Terms of service</h1>

@@ -1,3 +1,5 @@
+import { breadcrumbSchema } from '@/lib/json-ld'
+
 /**
  * Renders one or more schema.org JSON-LD payloads as
  * `<script type="application/ld+json">` tags.
@@ -24,5 +26,20 @@ export function JsonLd({ data }: { data: object | object[] }) {
         )
       })}
     </>
+  )
+}
+
+/**
+ * `BreadcrumbList` for a top-level page: Home › `name`. Gives each page a
+ * clean "shiriki.site › Pricing" trail in results instead of a bare URL.
+ */
+export function BreadcrumbLd({ name, path }: { name: string; path: string }) {
+  return (
+    <JsonLd
+      data={breadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name, url: path },
+      ])}
+    />
   )
 }

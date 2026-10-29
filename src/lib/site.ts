@@ -14,9 +14,60 @@ export const SITE_TAGLINE = 'Church management that runs on M-Pesa.'
 export const SITE_LOCALE = 'en_KE'
 export const SITE_LANG = 'en'
 
-export const DEFAULT_TITLE = `${SITE_NAME} | Church management that runs on M-Pesa`
+/**
+ * What Shiriki *is*, as a search phrase. "Shiriki" alone is a common Swahili
+ * word shared with other products, so the brand is always paired with this
+ * category in titles and structured data — that pairing is what lets a
+ * search engine tell this Shiriki apart from the rest.
+ */
+export const SITE_CATEGORY = 'Church Management System'
+
+export const DEFAULT_TITLE = `${SITE_NAME} ${SITE_CATEGORY} | CFMS & M-Pesa Giving`
 export const DEFAULT_DESCRIPTION =
-  'Church management for African congregations: M-Pesa STK Push, PayBill, Airtel Money and USSD giving reconciled against your member register. Available on Web and Android.'
+  'Shiriki is a church management system (ChMS) and church funds management system (CFMS) for African churches: M-Pesa, Airtel Money and USSD giving, members, and finance. Web and Android.'
+
+/**
+ * Other names people search for Shiriki by. Fed to JSON-LD `alternateName`,
+ * which is what Google's site-name and knowledge-panel matching reads.
+ */
+export const SITE_ALTERNATE_NAMES = [
+  'Shiriki Church Management System',
+  'Shiriki CFMS',
+  'Shiriki ChMS',
+  'Shiriki Church',
+  'shiriki.site',
+]
+
+/**
+ * The search terms the site targets. Emitted as `<meta name="keywords">`
+ * (read by Bing and others; Google ignores it) and as JSON-LD `keywords`.
+ * The words that actually move Google are the ones in titles, headings and
+ * body copy — keep these in sync with the copy, not the other way round.
+ */
+export const SITE_KEYWORDS = [
+  'Shiriki',
+  'Shiriki church management system',
+  'church management system',
+  'church management software',
+  'ChMS',
+  'church CMS',
+  'church funds management system',
+  'CFMS',
+  'church finance software',
+  'church accounting software',
+  'church giving app',
+  'online church giving',
+  'M-Pesa church giving',
+  'church M-Pesa PayBill reconciliation',
+  'USSD church giving',
+  'tithe and offering management',
+  'church member management',
+  'church membership software',
+  'church database',
+  'church management system Kenya',
+  'church software Africa',
+  'parish management system',
+]
 
 /**
  * The application, where a church actually signs up and signs in. Separate

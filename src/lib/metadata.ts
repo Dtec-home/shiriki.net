@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
+  SITE_CATEGORY,
+  SITE_KEYWORDS,
   SITE_LOCALE,
   SITE_NAME,
   SITE_URL,
@@ -28,6 +30,22 @@ function truncate(text: string, max: number): string {
   const lastSpace = slice.lastIndexOf(' ')
   const base = lastSpace > max * 0.6 ? slice.slice(0, lastSpace) : slice
   return `${base.trimEnd()}…`
+}
+
+/**
+ * Brand every title. A bare "Pricing" in a results page says nothing about
+ * whose pricing, and "Shiriki" alone collides with other products, so the
+ * longest brand suffix that fits wins: "| Shiriki Church Management System"
+ * on short titles, "| Shiriki" on long ones (truncating the page part, never
+ * the brand). Titles that already name the brand are left alone.
+ */
+function brandTitle(title: string): string {
+  if (title.includes(SITE_NAME)) return truncate(title, TITLE_MAX)
+  for (const suffix of [` | ${SITE_NAME} ${SITE_CATEGORY}`, ` | ${SITE_NAME}`]) {
+    if (title.length + suffix.length <= TITLE_MAX) return `${title}${suffix}`
+  }
+  const suffix = ` | ${SITE_NAME}`
+  return `${truncate(title, TITLE_MAX - suffix.length)}${suffix}`
 }
 
 export type BuildMetadataArgs = {
@@ -73,7 +91,7 @@ export function buildMetadata({
   publishedTime,
   modifiedTime,
 }: BuildMetadataArgs): Metadata {
-  const resolvedTitle = truncate(title?.trim() || DEFAULT_TITLE, TITLE_MAX)
+  const resolvedTitle = brandTitle(title?.trim() || DEFAULT_TITLE)
   const resolvedDescription = truncate(
     description?.trim() || DEFAULT_DESCRIPTION,
     DESCRIPTION_MAX,
@@ -103,7 +121,14 @@ export function buildMetadata({
     metadataBase: new URL(SITE_URL),
     title: resolvedTitle,
     description: resolvedDescription,
+    keywords: SITE_KEYWORDS,
+    applicationName: SITE_NAME,
     alternates: { canonical: url },
+    // Search Console ownership, so the sitemap can be submitted and sitelinks
+    // and rich results monitored. Set the token in Vercel; absent, no tag.
+    ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+      ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
+      : {}),
     robots: noIndex
       ? { index: false, follow: false }
       : { index: true, follow: true },

@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge'
 import { CtaBand } from '@/components/sections/cta-band'
 import { PortableTextRenderer } from '@/components/blog/portable-text-renderer'
 import { SectionErrorBoundary } from '@/components/section-error-boundary'
+import { BreadcrumbLd } from '@/components/seo/json-ld'
 import { buildMetadata } from '@/lib/metadata'
 import { urlFor } from '@/sanity/lib/image'
 import { sanityFetch } from '@/sanity/lib/fetch'
@@ -17,9 +18,9 @@ import { typeTag } from '@/sanity/lib/live'
 import { SectionLabel } from '@/components/sections/section-label'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'About us',
+  title: 'About Shiriki — Church Management Built in Kenya',
   description:
-    'Shiriki is built by a team of East African engineers for churches across Africa — mobile-first, M-Pesa-native, and resilient without reliable internet.',
+    'Shiriki is a church management system and church funds management system (CFMS) built by East African engineers — mobile-first, M-Pesa-native, and works offline.',
   path: '/about',
 })
 
@@ -114,6 +115,7 @@ export default async function AboutPage() {
 
   return (
     <>
+      <BreadcrumbLd name="About" path="/about" />
       <Container as="div" className="flex flex-col gap-20 py-16 md:py-24">
         <Reveal className="flex flex-col gap-5">
           <SectionLabel className="text-primary">About Shiriki</SectionLabel>

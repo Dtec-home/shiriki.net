@@ -10,9 +10,16 @@
 //   - FAQPage               (/faq)                — from faq docs
 //   - Article               (blog post)           — with author/publisher
 //   - BreadcrumbList        (any nested page)      — from a crumb trail
+//   - SiteNavigationElement (root layout)        — the primary nav
+//
+// "Shiriki" is a common word shared with other products, so every entity
+// here carries the category (`alternateName`, `description`, `keywords`)
+// and the entities reference each other by `@id`. That linked graph is what
+// lets a search engine treat this site as one brand and not a keyword match.
 
 import type {
   Article,
+  ItemList,
   BreadcrumbList,
   FAQPage,
   Organization,
@@ -24,12 +31,17 @@ import type {
 import {
   CONTACT_EMAIL,
   CONTACT_PHONE,
+  DEFAULT_DESCRIPTION,
+  DEVELOPER_NAME,
   ORGANIZATION_ADDRESS,
   PLAY_STORE_URL,
+  SITE_ALTERNATE_NAMES,
+  SITE_KEYWORDS,
   SITE_NAME,
+  SITE_TAGLINE,
   SITE_URL,
-  SOCIAL_LINKS,
 } from '@/lib/site'
+import type { NavLink } from '@/lib/nav'
 import { portableTextToPlain } from '@/lib/portable-text-to-plain'
 
 function absoluteUrl(path: string): string {
@@ -47,11 +59,20 @@ export function organizationSchema(): WithContext<Organization> {
     '@type': 'Organization',
     '@id': `${SITE_URL}/#organization`,
     name: SITE_NAME,
+    alternateName: SITE_ALTERNATE_NAMES,
     url: SITE_URL,
+    description: DEFAULT_DESCRIPTION,
+    slogan: SITE_TAGLINE,
+    parentOrganization: { '@type': 'Organization', name: DEVELOPER_NAME },
+    knowsAbout: SITE_KEYWORDS,
+    areaServed: ['Kenya', 'Uganda', 'Tanzania', 'Rwanda'].map((name) => ({ '@type': 'Country', name })),
     // Google wants a square logo of at least 112x112px; the 1200x630 OG card
     // gets cropped. apple-icon.png is the 180x180 Shiriki mark.
     logo: absoluteUrl('/apple-icon.png'),
-    sameAs: SOCIAL_LINKS.map((link) => link.url),
+    // Only profiles verified as Shiriki's own. A sameAs to another
+    // "Shiriki" account would merge the two brands — the opposite of the
+    // point. Add SOCIAL_LINKS back here once each account is confirmed.
+    sameAs: [PLAY_STORE_URL],
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -90,8 +111,12 @@ export function websiteSchema(hasSearchRoute = false): WithContext<WebSite> {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': `${SITE_URL}/#website`,
+    // Google's site-name system reads `name` then `alternateName`.
     name: SITE_NAME,
+    alternateName: SITE_ALTERNATE_NAMES,
     url: SITE_URL,
+    description: DEFAULT_DESCRIPTION,
+    inLanguage: 'en',
     publisher: { '@id': `${SITE_URL}/#organization` },
     ...(hasSearchRoute
       ? {
@@ -118,12 +143,25 @@ export function softwareApplicationSchema(): WithContext<SoftwareApplication> {
     '@type': 'SoftwareApplication',
     '@id': `${SITE_URL}/#software`,
     name: SITE_NAME,
+    alternateName: SITE_ALTERNATE_NAMES,
     url: SITE_URL,
     applicationCategory: 'BusinessApplication',
+    applicationSubCategory: 'Church Management System',
     operatingSystem: 'Web, Android, USSD',
     installUrl: PLAY_STORE_URL,
+    downloadUrl: PLAY_STORE_URL,
+    sameAs: [PLAY_STORE_URL],
+    keywords: SITE_KEYWORDS.join(', '),
     description:
-      'Church management platform for African churches — member records, communication, events, finance, and mobile giving via M-Pesa, Airtel Money and USSD reconciled against the member register.',
+      'Shiriki is a church management system (ChMS) and church funds management system (CFMS) for African churches — member records, communication, events, finance, and mobile giving via M-Pesa, Airtel Money and USSD reconciled against the member register.',
+    featureList: [
+      'M-Pesa STK Push and PayBill giving with automatic reconciliation',
+      'Airtel Money, card and USSD giving',
+      'Church funds management: tithes, offerings, pledges and departments',
+      'Member register, attendance and visitor follow-up',
+      'SMS and push announcements and event reminders',
+      'Android app for members',
+    ],
     // Price range of the published monthly plans (Msingi to Kanisa; the
     // Shirikisho tier is quoted). A bare `price: '0'` would claim the product
     // is free, which it is not — only the 30-day trial is.
@@ -216,4 +254,29 @@ export function breadcrumbSchema(crumbs: BreadcrumbInput[]): WithContext<Breadcr
       item: crumb.url.startsWith('http') ? crumb.url : absoluteUrl(crumb.url),
     })),
   }
+}
+
+// ---------------------------------------------------------------------------
+// SiteNavigationElement
+// ---------------------------------------------------------------------------
+
+/**
+ * The primary nav as an `ItemList` of `SiteNavigationElement`s. Google picks
+ * sitelinks algorithmically and does not promise to read this, but it states
+ * the site's main sections plainly to every crawler, which is the input
+ * sitelinks are built from.
+ */
+export function siteNavigationSchema(links: NavLink[]): WithContext<ItemList> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${SITE_URL}/#navigation`,
+    name: `${SITE_NAME} site navigation`,
+    itemListElement: links.map((link, index) => ({
+      '@type': 'SiteNavigationElement',
+      position: index + 1,
+      name: link.label,
+      url: absoluteUrl(link.href),
+    })),
+  } as WithContext<ItemList>
 }

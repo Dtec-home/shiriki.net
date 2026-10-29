@@ -8,6 +8,7 @@ import { DigitalHome, FALLBACK_DIGITAL_HOME } from '@/components/sections/digita
 import { SecurityBand, FALLBACK_SECURITY_BAND } from '@/components/sections/security-band'
 import { Testimonials, FALLBACK_TESTIMONIALS } from '@/components/sections/testimonials'
 import { CtaBand } from '@/components/sections/cta-band'
+import { WhatIsShiriki } from '@/components/sections/what-is-shiriki'
 import { SectionErrorBoundary } from '@/components/section-error-boundary'
 import { JsonLd } from '@/components/seo/json-ld'
 import { MAIN_NAV } from '@/lib/nav'
@@ -228,6 +229,9 @@ export default async function HomePage() {
       </SectionErrorBoundary>
       <SectionErrorBoundary label="Testimonials" silent>
         <Testimonials {...FALLBACK_TESTIMONIALS} items={testimonialItems} />
+      </SectionErrorBoundary>
+      <SectionErrorBoundary label="WhatIsShiriki">
+        <WhatIsShiriki />
       </SectionErrorBoundary>
       <SectionErrorBoundary label="CtaBand">
         <CtaBand

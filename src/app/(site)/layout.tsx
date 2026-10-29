@@ -4,7 +4,8 @@ import { Footer } from '@/components/layout/footer'
 import { JsonLd } from '@/components/seo/json-ld'
 import { ScrollDepth } from '@/components/analytics/scroll-depth'
 import { WhatsAppButton } from '@/components/layout/whatsapp-button'
-import { organizationSchema, websiteSchema } from '@/lib/json-ld'
+import { organizationSchema, siteNavigationSchema, websiteSchema } from '@/lib/json-ld'
+import { MAIN_NAV } from '@/lib/nav'
 
 /**
  * Public site shell: skip-to-content link, sticky `Header`, `<main>`,
@@ -22,7 +23,7 @@ export default function SiteLayout({ children }: { children: ReactNode }) {
       >
         Skip to content
       </a>
-      <JsonLd data={[organizationSchema(), websiteSchema()]} />
+      <JsonLd data={[organizationSchema(), websiteSchema(), siteNavigationSchema(MAIN_NAV)]} />
       <Header />
       <main id="main-content">{children}</main>
       <Footer />

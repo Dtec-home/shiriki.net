@@ -3,13 +3,15 @@ import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { Reveal } from '@/components/motion/reveal'
 import { ContactForm } from '@/components/forms/contact-form'
+import { BreadcrumbLd } from '@/components/seo/json-ld'
 import { buildMetadata } from '@/lib/metadata'
 import { CONTACT_EMAIL, CONTACT_PHONE, ORGANIZATION_ADDRESS, SALES_EMAIL, USSD_CODE } from '@/lib/site'
 import { SectionLabel } from '@/components/sections/section-label'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Contact us',
-  description: 'Talk to the Shiriki team about giving, membership, and communication tools for your church.',
+  title: 'Contact Shiriki — Book a Church Software Demo',
+  description:
+    'Talk to the Shiriki team in Nairobi about church management software, M-Pesa giving and church funds management for your congregation. Book a demo.',
   path: '/contact',
 })
 
@@ -23,6 +25,7 @@ const CONTACT_DETAILS = [
 export default function ContactPage() {
   return (
     <Container as="div" className="grid grid-cols-1 gap-16 py-16 md:py-24 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+      <BreadcrumbLd name="Contact" path="/contact" />
       <Reveal className="flex flex-col gap-8">
         <div className="flex flex-col gap-5">
           <SectionLabel className="text-primary">Contact</SectionLabel>
