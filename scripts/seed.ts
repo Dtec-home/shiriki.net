@@ -372,6 +372,76 @@ const faqDefs = [
     category: 'Giving',
     order: 5,
   },
+  // ---------- Fundraising ----------
+  {
+    question: 'Can we run fundraising campaigns and harambees on Shiriki?',
+    answer: [
+      block(
+        'Yes, on the Ukuaji plan and above. Give each drive — a building fund, a land purchase, a harambee, a mission trip — a target, optional dates, a department, and a short Pay Bill account code such as BUILD. Once a second person approves it, members give with your church’s own Pay Bill and that code, by M-Pesa prompt from the campaign page, through USSD, or at the desk, and every gift counts towards one progress bar.',
+      ),
+      block(
+        'Each campaign gets a shareable public page on your church’s own Shiriki address with progress, updates, and a give button, plus a statement of money in and money out for the board. There is no limit on the number of campaigns.',
+      ),
+    ],
+    category: 'Fundraising',
+    order: 6,
+  },
+  {
+    question: 'How do pledges get paid off?',
+    answer: [
+      block(
+        'Automatically. Members pledge in the app, on the campaign page, through USSD, or on a pledge card at the desk. When a gift arrives, Shiriki applies it to that member’s open pledges oldest first — and only money given after the pledge was made can clear it, so old giving never makes a new promise look kept.',
+      ),
+      block(
+        'Members see what they still owe and can pay the balance in one tap. Reminder SMS are optional, are sent only between 8am and 8pm, and draw from your church’s SMS credits.',
+      ),
+    ],
+    category: 'Fundraising',
+    order: 7,
+  },
+  {
+    question: 'What are fundraising champions?',
+    answer: [
+      block(
+        'Champions are members who raise money from their own circle. Each gets a personal code (for example, a giver types BUILD JOHN as the Pay Bill account), a personal page to share, and a dashboard of who gave through them. The campaign page shows a champion leaderboard with first names and initials, never donors. Champions are included on Ukuaji and above.',
+      ),
+    ],
+    category: 'Fundraising',
+    order: 8,
+  },
+  {
+    question: 'Can a campaign count everything a department has ever received?',
+    answer: [
+      block(
+        'Yes. A department-backed campaign counts every gift to its department, history included, whichever code the giver used — so a land drive’s total is the land department’s total. Switching a live campaign to this mode needs a second approver, and a daily check confirms the campaign and the department still agree. Available on Ukuaji and above.',
+      ),
+    ],
+    category: 'Fundraising',
+    order: 9,
+  },
+  {
+    question: 'How does the automatic WhatsApp group leaderboard work?',
+    answer: [
+      block(
+        'On the Kanisa plan and above, a church admin links your church’s own WhatsApp number by scanning a QR code in Settings, then picks the group for each campaign. After gifts come in, Shiriki posts an updated leaderboard to that group — gathered into one post about every minute, so a busy service does not flood the chat. If a post fails it is retried, never sent twice, and the campaign page shows whether the last one went out.',
+      ),
+      block(
+        'Your church chooses how givers appear: full name, first name and initial (the default), or hidden with totals only. Any member can also choose to be listed as “Well-wisher”.',
+      ),
+    ],
+    category: 'Fundraising',
+    order: 10,
+  },
+  {
+    question: 'Who can see donor names?',
+    answer: [
+      block(
+        'Public campaign pages show totals only — amount raised, number of givers, days left — never names or amounts. Names are visible to your church staff and the department’s leaders, and each champion sees the people who gave through their own code. In WhatsApp leaderboards, names follow your church’s setting and each member’s own choice to stay anonymous.',
+      ),
+    ],
+    category: 'Fundraising',
+    order: 11,
+  },
   // ---------- Pricing ----------
   {
     question: 'Is there a free trial?',
@@ -381,7 +451,7 @@ const faqDefs = [
       ),
     ],
     category: 'Pricing',
-    order: 6,
+    order: 12,
   },
   {
     question: 'What happens after the 30-day free trial?',
@@ -391,7 +461,7 @@ const faqDefs = [
       ),
     ],
     category: 'Pricing',
-    order: 7,
+    order: 13,
   },
   {
     question: 'Do you charge a percentage on M-Pesa giving?',
@@ -401,7 +471,7 @@ const faqDefs = [
       ),
     ],
     category: 'Pricing',
-    order: 8,
+    order: 14,
   },
   {
     question: 'Is there a discount for annual billing?',
@@ -411,7 +481,7 @@ const faqDefs = [
       ),
     ],
     category: 'Pricing',
-    order: 9,
+    order: 15,
   },
   // ---------- Security ----------
   {
@@ -422,7 +492,7 @@ const faqDefs = [
       ),
     ],
     category: 'Security',
-    order: 10,
+    order: 16,
   },
   {
     question: 'Are you compliant with the Kenya Data Protection Act?',
@@ -432,7 +502,7 @@ const faqDefs = [
       ),
     ],
     category: 'Security',
-    order: 11,
+    order: 17,
   },
   {
     question: 'Who can access our church\'s data?',
@@ -442,7 +512,20 @@ const faqDefs = [
       ),
     ],
     category: 'Security',
-    order: 12,
+    order: 18,
+  },
+  {
+    question: 'How does fingerprint sign-in on the Shiriki app work?',
+    answer: [
+      block(
+        'The first time a member signs in, they confirm their phone with an SMS code. After that, the app creates a sign-in key that is locked inside the phone’s own security hardware, and a fingerprint is all it takes — no SMS code every week. The key never leaves the phone and cannot be copied to another device.',
+      ),
+      block(
+        'The app locks after 5 minutes away, amounts are hidden in the app switcher, and members can see and sign out their other phones themselves. Fingerprint sign-in is included in every plan.',
+      ),
+    ],
+    category: 'Security',
+    order: 19,
   },
   // ---------- Operations ----------
   {
@@ -453,7 +536,7 @@ const faqDefs = [
       ),
     ],
     category: 'Operations',
-    order: 13,
+    order: 20,
   },
   {
     question: 'Can we run payroll for our church staff?',
@@ -463,7 +546,7 @@ const faqDefs = [
       ),
     ],
     category: 'Operations',
-    order: 14,
+    order: 21,
   },
   {
     question: 'Can we export our data if we ever need to?',
@@ -473,7 +556,7 @@ const faqDefs = [
       ),
     ],
     category: 'Operations',
-    order: 15,
+    order: 22,
   },
   {
     question: 'How does the SMS allocation work?',
@@ -483,7 +566,7 @@ const faqDefs = [
       ),
     ],
     category: 'Operations',
-    order: 16,
+    order: 23,
   },
   // ---------- Getting started / Onboarding ----------
   {
@@ -494,7 +577,7 @@ const faqDefs = [
       ),
     ],
     category: 'Getting started',
-    order: 17,
+    order: 24,
   },
   {
     question: 'Can we import our existing member records?',
@@ -504,7 +587,7 @@ const faqDefs = [
       ),
     ],
     category: 'Getting started',
-    order: 18,
+    order: 25,
   },
   {
     question: 'Do you offer support in Swahili?',
@@ -514,7 +597,7 @@ const faqDefs = [
       ),
     ],
     category: 'Getting started',
-    order: 19,
+    order: 26,
   },
   {
     question: 'What do we need to get started?',
@@ -524,7 +607,7 @@ const faqDefs = [
       ),
     ],
     category: 'Getting started',
-    order: 20,
+    order: 27,
   },
   {
     question: 'Can we switch from another church management tool?',
@@ -534,17 +617,17 @@ const faqDefs = [
       ),
     ],
     category: 'Getting started',
-    order: 21,
+    order: 28,
   },
   {
     question: 'Is there a Shiriki mobile app?',
     answer: [
       block(
-        'Yes. The Shiriki app for Android is on Google Play at https://play.google.com/store/apps/details?id=app.shiriki.mobile. Members can see their giving history and receipts, update their profile, and get church announcements and event reminders. Members without a smartphone can still give by dialling *710*12414#.',
+        'Yes. The Shiriki app for Android is on Google Play at https://play.google.com/store/apps/details?id=app.shiriki.mobile. Members can give, see their giving history and receipts, follow campaigns and their own pledges, update their profile, and get church announcements and event reminders. After the first sign-in, a fingerprint is all it takes to open it. Members without a smartphone can still give by dialling *710*12414#.',
       ),
     ],
     category: 'Getting started',
-    order: 22,
+    order: 29,
   },
 ].map((f) => ({
   _id: `faq-${slugify(f.question)}`,
@@ -946,6 +1029,147 @@ const postDefs = [
       ),
       block(
         'Kila mgeni anayeingia kanisani ni mtu, si nambari. Mfumo wa kidijitali unahakikisha kwamba kila mtu anaonekana na kufuatiliwa, hata wakati kanisa linakua kwa kasi.',
+      ),
+    ],
+  },
+  {
+    title: 'How to run a harambee on Shiriki, from first pledge to final statement',
+    slug: 'run-a-harambee-on-shiriki',
+    excerpt:
+      'A building fund or harambee usually lives in an exercise book, a spreadsheet and a dozen WhatsApp messages. Here is how to run one on Shiriki, with your own Pay Bill, a public page, pledges, champions and a statement the board can trust.',
+    publishedAt: '2026-11-03T07:00:00Z',
+    categoryId: categoryIds.giving,
+    authorId: authorIds.shirikiTeam,
+    body: [
+      h2('The exercise book problem'),
+      block(
+        'Most church drives start the same way. The pastor announces a target, the treasurer opens an exercise book, and pledges are written on cards. Money arrives by Pay Bill, by envelope and at the harambee itself, and after every service someone retypes the list for the WhatsApp group. By the end, nobody is quite sure the total in the book matches the money in the bank.',
+      ),
+      block(
+        'A campaign on Shiriki is not a separate fund. It is a tag on ordinary gifts to one of your departments, so your books, your Cash Statement and your department totals stay exactly as they are — and the campaign simply counts what belongs to it.',
+      ),
+      h3('Step 1: create the campaign'),
+      bullets([
+        'Give it a title, a one-line summary, a story and a cover photo',
+        'Set a target and, if you want one, a start and end date',
+        'Choose the department the money belongs to, for example Building',
+        'Pick a short Pay Bill account code of letters or digits, for example BUILD',
+        'Decide whether to allow pledges and champions',
+      ]),
+      h3('Step 2: a second person approves it'),
+      block(
+        'Nobody launches a drive alone. A church admin or pastor who did not create the campaign approves it (four-eyes approval). Once it is live, the department and the Pay Bill code are locked, because members have already started using them.',
+      ),
+      h3('Step 3: share the public page'),
+      block(
+        'Every campaign gets a public page on your church’s own Shiriki address. It shows the story, a progress bar, the amount raised, the number of givers, days left, your updates and a give button that sends an M-Pesa prompt. It never shows donor names or amounts — totals only. Share it to WhatsApp, Facebook, X or by SMS, and the link preview always shows today’s figures.',
+      ),
+      h3('Step 4: every channel counts'),
+      bullets([
+        'Pay Bill: members use your church’s Pay Bill with BUILD as the account number',
+        'M-Pesa prompt: from the public page or the member app',
+        'USSD: from any phone, no data bundle needed',
+        'At the desk: a recorder tags cash and envelope gifts to the campaign',
+      ]),
+      h3('Step 5: pledges and champions'),
+      block(
+        'Members pledge in the app, on the public page (a visitor confirms with an SMS code), by USSD or on a pledge card. As money arrives, pledges clear themselves. Champions raise from their own circle with a personal code — BUILD JOHN on Pay Bill — and see who gave through them on their own dashboard.',
+      ),
+      h3('Step 6: updates, statement and close-out'),
+      block(
+        'Post updates as the walls go up and, if you want, text everyone who has given (from your church’s SMS credits). The campaign statement lists money in and money out with a running balance, ready for the board and the auditors. When the drive ends, close it out: the final statement is saved, and any surplus stays in the department. A late Pay Bill payment to a closed campaign is still credited to it.',
+      ),
+      h3('Which plan?'),
+      block(
+        'Fundraising campaigns, public pages, pledges, champions and department-backed campaigns are included on Ukuaji and above. The automatic WhatsApp group leaderboard is included on Kanisa and above.',
+      ),
+      block(
+        'Harambee ni ya wote. Kwa Shiriki, kila mchango — kwa Pay Bill, USSD au mezani — unaonekana kwenye jumla moja, na kila ahadi inafuatiliwa bila daftari.',
+      ),
+    ],
+  },
+  {
+    title: 'Automatic WhatsApp group leaderboards: no more typing out the list',
+    slug: 'whatsapp-group-leaderboards',
+    excerpt:
+      'After every service, someone types out who gave what for the church WhatsApp group. On Shiriki’s Kanisa plan, the group gets an updated leaderboard after every gift, from your church’s own number, with names shown the way your church chooses.',
+    publishedAt: '2026-11-10T07:00:00Z',
+    categoryId: categoryIds.operations,
+    authorId: authorIds.amaniMwenda,
+    body: [
+      h2('The Sunday-night list'),
+      block(
+        'In many churches the most read message of the week is the contributors’ list: every name, every amount, a running total, posted to the church WhatsApp group by a tired treasurer late at night. It works because people like to see the drive moving. It breaks when the list is late, when a name is missed, or when the treasurer is away.',
+      ),
+      h3('How it works on Shiriki'),
+      bullets([
+        'A church admin links your church’s own WhatsApp number by scanning a QR code in Settings — the same way you would open WhatsApp on a computer',
+        'Each campaign is given the group it posts to',
+        'When gifts arrive — Pay Bill, M-Pesa prompt, USSD or at the desk — Shiriki posts an updated leaderboard to that group',
+        'Gifts are gathered into one post about every minute per campaign, so a busy service does not flood the chat',
+        'If WhatsApp is unreachable the post is retried, never sent twice, and the campaign page shows whether the last post went out',
+      ]),
+      block(
+        'Posts come from your church’s own number into your own groups. Shiriki never posts from a shared platform number, and one church’s session never touches another church’s groups.',
+      ),
+      h3('Names, the way your church chooses'),
+      block(
+        'Kenya’s Data Protection Act asks churches to think about how members’ names are shared. So each church picks how givers appear in WhatsApp lists: full name, first name and initial (the default), or hidden, with totals only. On top of that, any member can choose to be listed as “Well-wisher”. Public web pages are always totals only.',
+      ),
+      h3('A preview that matches the post'),
+      block(
+        'Every post carries a link to the campaign page. Its preview — title, amount raised, target — always matches the figures in the post it came with, so nobody sees yesterday’s total under today’s message.',
+      ),
+      h3('Which plan?'),
+      block(
+        'The automatic WhatsApp group leaderboard is included on Kanisa and above, because it keeps a WhatsApp session running for your church. On Ukuaji, treasurers can still share the contributor list to the group by hand in one tap.',
+      ),
+      block(
+        'Hakuna tena kuandika orodha ya wachangiaji kila Jumapili usiku. Kikundi cha WhatsApp kinaona maendeleo papo hapo.',
+      ),
+    ],
+  },
+  {
+    title: 'Pledges that clear themselves: how Shiriki matches gifts to promises',
+    slug: 'pledges-that-clear-themselves',
+    excerpt:
+      'Chasing pledges by phone and ticking them off in Excel is slow and easy to get wrong. Here is how Shiriki applies each gift to the right pledge automatically, and why only money given after a pledge can clear it.',
+    publishedAt: '2026-11-17T07:00:00Z',
+    categoryId: categoryIds.giving,
+    authorId: authorIds.shirikiTeam,
+    body: [
+      h2('A pledge is a promise, not a payment'),
+      block(
+        'A pledge card says “I will give KES 50,000 to the building fund by June”. Then the money arrives in pieces: KES 5,000 by Pay Bill, KES 2,000 in an envelope, a bigger gift at the harambee. Someone has to match each piece to the right promise, and that someone is usually the treasurer, with a spreadsheet, on a Monday.',
+      ),
+      h3('Where pledges come from'),
+      bullets([
+        'The member app or the member portal: My pledges, then Make a pledge',
+        'The campaign’s public page: a visitor pledges and confirms with an SMS code, no account needed',
+        'USSD: from any phone',
+        'A pledge card: staff record it in the pledge register',
+      ]),
+      h3('How gifts are applied'),
+      bullets([
+        'Each gift is applied to the giver’s open pledges oldest first',
+        'Only money given after the pledge was made can clear it — old giving never makes a new promise look kept',
+        'A gift to a campaign pays that campaign’s pledges; a gift to a department-backed campaign pays the campaign’s pledges first, then the giver’s pledges to that department',
+        'Anything beyond the pledge balance stays a normal gift',
+        'Voiding a receipt reverses what it paid',
+      ]),
+      block(
+        'A pledge paid in full becomes Fulfilled; one past its due date with a balance becomes Overdue. Members see what they still owe and pay the balance in one tap.',
+      ),
+      h3('Reminders, without the phone calls'),
+      block(
+        'If your church switches them on, Shiriki sends a monthly reminder, one a few days before the due date and an overdue notice, only between 8am and 8pm and never more than one a day. Every reminder draws from your church’s SMS credits, and Shiriki tells you clearly when credits run out.',
+      ),
+      h3('The register'),
+      block(
+        'The pledge register shows who pledged what, what has been paid and the balance, filtered by campaign, department or status, and exports to Excel or PDF. A daily check flags any pledge that a later gift should have paid but did not.',
+      ),
+      block(
+        'Ahadi ni deni. Shiriki inahakikisha kila mchango unapunguza ahadi sahihi, bila daftari wala simu za kukumbusha.',
       ),
     ],
   },

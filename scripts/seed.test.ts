@@ -17,7 +17,7 @@
 import assert from 'node:assert/strict'
 import { describe, test } from 'node:test'
 
-import { faqs, featureIds, features, givingChannels, planFlagBullets, posts, pricingPlans } from './seed'
+import { categories, faqs, featureIds, features, givingChannels, planFlagBullets, posts, pricingPlans } from './seed'
 
 /** Every string inside a value, Portable Text included, joined with spaces. */
 function textOf(value: unknown): string {
@@ -146,5 +146,90 @@ describe('MKT-2 plan bullets follow P-D3 and tenants/plans.py', () => {
     assert.doesNotMatch(ukuaji, /WhatsApp/)
     assert.match(kanisa, /automatic WhatsApp group leaderboard/i)
     assert.match(text, /fingerprint sign-in/i)
+  })
+})
+
+describe('MKT-3 blog posts and FAQ entries', () => {
+  const NEW_POSTS = [
+    'post-run-a-harambee-on-shiriki',
+    'post-whatsapp-group-leaderboards',
+    'post-pledges-that-clear-themselves',
+  ]
+  const NEW_FAQS = [
+    'faq-can-we-run-fundraising-campaigns-and-harambees-on-shiriki',
+    'faq-how-do-pledges-get-paid-off',
+    'faq-what-are-fundraising-champions',
+    'faq-can-a-campaign-count-everything-a-department-has-ever-received',
+    'faq-how-does-the-automatic-whatsapp-group-leaderboard-work',
+    'faq-who-can-see-donor-names',
+    'faq-how-does-fingerprint-sign-in-on-the-shiriki-app-work',
+  ]
+  const post = (id: string) => {
+    const p = posts.find((x) => x._id === id)
+    assert.ok(p, `post ${id} exists`)
+    return p
+  }
+  const faq = (id: string) => {
+    const f = faqs.find((x) => x._id === id)
+    assert.ok(f, `faq ${id} exists`)
+    return f
+  }
+
+  test('the three new posts exist with an excerpt, a body and a known category', () => {
+    const categoryIds = new Set(categories.map((c) => c._id))
+    for (const id of NEW_POSTS) {
+      const p = post(id)
+      assert.ok(p.excerpt.length > 60, `${id} has an excerpt`)
+      assert.ok(p.body.length >= 8, `${id} has a real body`)
+      for (const c of p.categories) assert.ok(categoryIds.has(c._ref), `${id} category ${c._ref} exists`)
+      assert.ok(!Number.isNaN(Date.parse(p.publishedAt)), `${id} has a date`)
+    }
+    const slugs = posts.map((p) => p.slug.current)
+    assert.equal(new Set(slugs).size, slugs.length)
+  })
+
+  test('the harambee post walks through code, approval, page, pledges, champions and close-out', () => {
+    const text = textOf(post(NEW_POSTS[0]))
+    for (const re of [/Pay Bill/, /second person|four-eyes/i, /public page/i, /pledge/i, /champion/i, /statement/i, /Ukuaji/]) {
+      assert.match(text, re)
+    }
+  })
+
+  test('the WhatsApp post is Kanisa-only, uses the church’s own number and honours the naming setting (P-D5)', () => {
+    const text = textOf(post(NEW_POSTS[1]))
+    assert.match(text, /Kanisa/)
+    assert.match(text, /own (WhatsApp )?number/i)
+    assert.match(text, /first name and initial/i)
+    assert.match(text, /totals only/i)
+    assert.match(text, /Well-wisher/)
+    assert.doesNotMatch(text, /every donor is named/i)
+  })
+
+  test('the pledges post explains oldest-first and only-later-money clearing', () => {
+    const text = textOf(post(NEW_POSTS[2]))
+    assert.match(text, /oldest first/i)
+    assert.match(text, /after the pledge/i)
+    assert.match(text, /SMS credits/i)
+  })
+
+  test('the new FAQs exist, sold on the right plan', () => {
+    for (const id of NEW_FAQS) faq(id)
+    assert.match(textOf(faq(NEW_FAQS[0])), /Ukuaji/)
+    assert.match(textOf(faq(NEW_FAQS[4])), /Kanisa/)
+    assert.match(textOf(faq(NEW_FAQS[5])), /totals only/i)
+    assert.match(textOf(faq(NEW_FAQS[6])), /every plan/i)
+  })
+
+  test('the mobile app FAQ mentions fingerprint sign-in', () => {
+    assert.match(textOf(faq('faq-is-there-a-shiriki-mobile-app')), /fingerprint/i)
+  })
+
+  test('FAQ ids are unique and the display order has no gaps', () => {
+    const ids = faqs.map((f) => f._id)
+    assert.equal(new Set(ids).size, ids.length)
+    assert.deepEqual(
+      faqs.map((f) => f.order),
+      faqs.map((_, i) => i + 1),
+    )
   })
 })
