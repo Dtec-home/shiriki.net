@@ -19,10 +19,15 @@
  *
  * Idempotent: every document has a deterministic `_id` and is written with
  * `createOrReplace`, so re-running is safe.
+ *
+ * Importing this module has no side effects: the content arrays are exported
+ * for `scripts/seed.test.ts`, and nothing is read from the environment or
+ * written to Sanity unless the file is run directly (`pnpm seed`).
  */
 
 import { existsSync, readFileSync } from 'fs'
 import { resolve } from 'path'
+import { fileURLToPath } from 'url'
 
 // `next-sanity` re-exports `createClient` from `@sanity/client`. It's used
 // here (rather than depending on `@sanity/client` directly) because it's
@@ -31,70 +36,6 @@ import { createClient } from 'next-sanity'
 
 import { PRIVACY_POLICY_LAST_UPDATED, privacyPolicyBody } from '../src/lib/legal/privacy-policy'
 import { DEVELOPER_NAME } from '../src/lib/site'
-
-// Load .env.local (tsx doesn't load Next.js env files automatically). No
-// `dotenv` dependency is installed, so parse the minimal `KEY=VALUE` format
-// ourselves rather than adding a new package dependency for this one script.
-loadDotEnvLocal()
-
-function loadDotEnvLocal() {
-  const envPath = resolve(process.cwd(), '.env.local')
-  if (!existsSync(envPath)) return
-
-  for (const line of readFileSync(envPath, 'utf8').split('\n')) {
-    const trimmed = line.trim()
-    if (!trimmed || trimmed.startsWith('#')) continue
-
-    const eq = trimmed.indexOf('=')
-    if (eq === -1) continue
-
-    const key = trimmed.slice(0, eq).trim()
-    let value = trimmed.slice(eq + 1).trim()
-    if (
-      (value.startsWith('"') && value.endsWith('"')) ||
-      (value.startsWith("'") && value.endsWith("'"))
-    ) {
-      value = value.slice(1, -1)
-    }
-
-    if (!(key in process.env)) {
-      process.env[key] = value
-    }
-  }
-}
-
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
-const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2026-08-01'
-const token = process.env.SANITY_API_WRITE_TOKEN
-
-function fail(message: string): never {
-  console.error(`\n[seed] ${message}\n`)
-  process.exit(1)
-}
-
-if (!projectId) {
-  fail(
-    'NEXT_PUBLIC_SANITY_PROJECT_ID is missing. Create a Sanity project, set ' +
-      'the real project ID in .env.local, then re-run `pnpm seed`.',
-  )
-}
-
-if (!token) {
-  fail(
-    'SANITY_API_WRITE_TOKEN is missing. Create a write-capable token in ' +
-      'sanity.io/manage -> your project -> API -> Tokens (Editor or ' +
-      'Administrator permissions) and add it to .env.local, then re-run `pnpm seed`.',
-  )
-}
-
-const client = createClient({
-  projectId,
-  dataset,
-  apiVersion,
-  token,
-  useCdn: false,
-})
 
 // ---------------------------------------------------------------------------
 // Portable Text helpers
@@ -171,10 +112,12 @@ const givingChannelIds = {
 const featureIds = {
   memberRecords: 'feature-member-records',
   givingFinance: 'feature-giving-finance',
+  fundraisingCampaigns: 'feature-fundraising-campaigns',
   communication: 'feature-communication',
   eventsAttendance: 'feature-events-attendance',
   smallGroups: 'feature-small-groups',
   reportsInsights: 'feature-reports-insights',
+  memberApp: 'feature-member-app',
 }
 
 const authorIds = {
@@ -280,14 +223,35 @@ const features = [
     emphasis: true,
   },
   {
+    _id: featureIds.fundraisingCampaigns,
+    _type: 'feature',
+    title: 'Fundraising campaigns',
+    description:
+      'Run a building fund, harambee, or mission drive with a target, a deadline, and its own Pay Bill account code. Members give by M-Pesa prompt, Pay Bill, USSD, or at the desk, and every gift counts towards the same progress bar.',
+    icon: 'heart-handshake',
+    bullets: [
+      'A shareable public page with progress, updates, and a give button — totals only, never donor names',
+      'Pledges that clear themselves as money arrives, with SMS reminders',
+      'Champions who raise from their own circle with a personal code and leaderboard',
+      'A campaign statement and close-out record for the board and auditors',
+      'Four-eyes approval: nobody launches a drive alone',
+    ],
+    order: 3,
+    emphasis: false,
+  },
+  {
     _id: featureIds.communication,
     _type: 'feature',
     title: 'Communication',
     description:
-      'Reach the whole congregation or a single small group with SMS, WhatsApp, and email — segmented by ministry, department, or campus.',
+      'Reach the whole congregation or a single small group with SMS and email, and let your church WhatsApp group see who has given without anyone typing out a list.',
     icon: 'MessageCircle',
-    bullets: ['Bulk SMS with delivery reports', 'WhatsApp broadcast lists', 'Scheduled reminders for events'],
-    order: 3,
+    bullets: [
+      'Bulk SMS with delivery reports',
+      'Automatic WhatsApp group leaderboard after every gift, sent from your church\u2019s own number',
+      'Scheduled reminders for events',
+    ],
+    order: 4,
     emphasis: false,
   },
   {
@@ -298,7 +262,7 @@ const features = [
       'Plan services, conferences, and small group meetings, then track attendance with a tap — from the main sanctuary to every branch.',
     icon: 'CalendarCheck',
     bullets: ['QR check-in for services and events', 'Multi-campus attendance rollups', 'Volunteer scheduling'],
-    order: 4,
+    order: 5,
     emphasis: false,
   },
   {
@@ -309,7 +273,7 @@ const features = [
       'Track cell groups, Bible study attendance, and discipleship pathways so no member falls through the cracks.',
     icon: 'Users2',
     bullets: ['Group rosters and leader dashboards', 'Discipleship milestone tracking', 'Follow-up task lists'],
-    order: 5,
+    order: 6,
     emphasis: false,
   },
   {
@@ -320,7 +284,22 @@ const features = [
       'Board-ready dashboards for giving trends, attendance, and membership growth — exportable in one click for elders and treasurers.',
     icon: 'BarChart3',
     bullets: ['Giving trend dashboards', 'Attendance & growth reports', 'One-click CSV / PDF export'],
-    order: 6,
+    order: 7,
+    emphasis: false,
+  },
+  {
+    _id: featureIds.memberApp,
+    _type: 'feature',
+    title: 'Member app with fingerprint sign-in',
+    description:
+      'Members give, pledge, and see their receipts in the Shiriki app. After the first sign-in by SMS code, a fingerprint is all it takes \u2014 the key that proves it is them never leaves their phone.',
+    icon: 'smartphone',
+    bullets: [
+      'Fingerprint sign-in, bound to the member\u2019s own phone',
+      'The app locks after 5 minutes away, and amounts are hidden from the app switcher',
+      'Members see and sign out their other phones themselves',
+    ],
+    order: 8,
     emphasis: false,
   },
 ]
@@ -1298,10 +1277,77 @@ const legalPages = [
 ]
 
 // ---------------------------------------------------------------------------
+// Sanity client (only built when the script runs)
+// ---------------------------------------------------------------------------
+
+// Load .env.local (tsx doesn't load Next.js env files automatically). No
+// `dotenv` dependency is installed, so parse the minimal `KEY=VALUE` format
+// ourselves rather than adding a new package dependency for this one script.
+function loadDotEnvLocal() {
+  const envPath = resolve(process.cwd(), '.env.local')
+  if (!existsSync(envPath)) return
+
+  for (const line of readFileSync(envPath, 'utf8').split('\n')) {
+    const trimmed = line.trim()
+    if (!trimmed || trimmed.startsWith('#')) continue
+
+    const eq = trimmed.indexOf('=')
+    if (eq === -1) continue
+
+    const key = trimmed.slice(0, eq).trim()
+    let value = trimmed.slice(eq + 1).trim()
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1)
+    }
+
+    if (!(key in process.env)) {
+      process.env[key] = value
+    }
+  }
+}
+
+function fail(message: string): never {
+  console.error(`\n[seed] ${message}\n`)
+  process.exit(1)
+}
+
+function createSeedClient() {
+  loadDotEnvLocal()
+
+  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+  const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
+  const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2026-08-01'
+  const token = process.env.SANITY_API_WRITE_TOKEN
+
+  if (!projectId) {
+    fail(
+      'NEXT_PUBLIC_SANITY_PROJECT_ID is missing. Create a Sanity project, set ' +
+        'the real project ID in .env.local, then re-run `pnpm seed`.',
+    )
+  }
+
+  if (!token) {
+    fail(
+      'SANITY_API_WRITE_TOKEN is missing. Create a write-capable token in ' +
+        'sanity.io/manage -> your project -> API -> Tokens (Editor or ' +
+        'Administrator permissions) and add it to .env.local, then re-run `pnpm seed`.',
+    )
+  }
+
+  const client = createClient({ projectId, dataset, apiVersion, token, useCdn: false })
+  return { client, dataset, projectId }
+}
+
+// ---------------------------------------------------------------------------
 // Run
 // ---------------------------------------------------------------------------
 
 async function run() {
+  const { client, dataset, projectId } = createSeedClient()
+
   // Order matters: referenced documents must exist before the documents
   // that reference them.
   const collections = [
@@ -1333,7 +1379,27 @@ async function run() {
   console.log('[seed] Open /studio to review or edit the seeded content.')
 }
 
-run().catch((err) => {
-  console.error('[seed] Failed:', err)
-  process.exit(1)
-})
+export {
+  aboutPage,
+  authors,
+  categories,
+  faqDefs as faqs,
+  featureIds,
+  features,
+  givingChannelIds,
+  givingChannels,
+  homePage,
+  posts,
+  pricingPage,
+  pricingPlans,
+  siteSettings,
+}
+
+const isDirectRun = Boolean(process.argv[1]) && resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+
+if (isDirectRun) {
+  run().catch((err) => {
+    console.error('[seed] Failed:', err)
+    process.exit(1)
+  })
+}
