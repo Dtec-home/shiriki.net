@@ -21,7 +21,17 @@ import { test, expect, type Page } from '@playwright/test'
  * doesn't change with color scheme and re-running it per theme would just
  * double the runtime for no extra signal.
  */
-const ROUTES = ['/', '/about', '/pricing', '/contact', '/faq', '/blog', '/privacy', '/terms']
+const ROUTES = [
+  '/',
+  '/about',
+  '/pricing',
+  '/contact',
+  '/faq',
+  '/blog',
+  '/privacy',
+  '/terms',
+  '/features/fundraising',
+]
 
 test.describe('a11y smoke', () => {
   for (const route of ROUTES) {
@@ -58,6 +68,41 @@ test.describe('a11y smoke', () => {
     const active = page.locator(':focus')
     await expect(active).toHaveText(/skip to content/i)
     await expect(active).toHaveAttribute('href', '#main-content')
+  })
+})
+
+/**
+ * Fundraising feature page (sprint 2026-11 "Parity", MKT-5). Theme-independent
+ * content checks live in the `a11y` project because it is the one project that
+ * runs once rather than per colour scheme. With no Sanity project configured
+ * the page renders its built-in fallback copy, which is what these assert.
+ */
+test.describe('/features/fundraising content', () => {
+  test('responds 200 with the fundraising heading', async ({ page }) => {
+    const response = await page.goto('/features/fundraising', { waitUntil: 'domcontentloaded' })
+    expect(response?.status()).toBe(200)
+    await expect(page.locator('h1')).toContainText(/fundrais|harambee|drive/i)
+  })
+
+  test('names every capability and the plan that includes it', async ({ page }) => {
+    await page.goto('/features/fundraising', { waitUntil: 'domcontentloaded' })
+    const main = page.locator('#main-content')
+    for (const text of [/pledges/i, /champions/i, /public campaign page/i, /statement/i, /whatsapp group leaderboard/i, /fingerprint sign-in/i]) {
+      await expect(main.getByText(text).first()).toBeVisible()
+    }
+    const plans = main.locator('[data-testid="fundraising-plans"]')
+    await expect(plans).toContainText('Ukuaji')
+    await expect(plans).toContainText('Kanisa')
+    await expect(plans.locator('[data-plan="whatsapp-leaderboard"]')).toContainText('Kanisa')
+    await expect(plans.locator('[data-plan="device-sign-in"]')).toContainText(/every plan/i)
+  })
+
+  test('copy stays brand-neutral', async ({ page }) => {
+    await page.goto('/features/fundraising', { waitUntil: 'domcontentloaded' })
+    const text = (await page.locator('#main-content').innerText()).toLowerCase()
+    for (const word of ['sda', 'adventist', 'kawangware', 'sabbath', 'm-changa', 'catholic', 'anglican', 'pentecostal']) {
+      expect(text, `found "${word}" on /features/fundraising`).not.toMatch(new RegExp(`\\b${word}\\b`))
+    }
   })
 })
 
