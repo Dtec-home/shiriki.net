@@ -896,15 +896,15 @@ const postDefs = [
       ),
       h3('Msingi: the foundation'),
       block(
-        'Best for a small fellowship, home church, or new plant with under 150 members. You get M-Pesa STK Push and USSD giving, a member directory, basic attendance, 100 SMS per month, and one admin login. Start with a 30-day free trial, then KES 2,000 per month.',
+        'Best for a small fellowship, home church, or new plant with under 150 members. You get M-Pesa STK Push and USSD giving, a member directory, basic attendance, 100 SMS per month, one admin login, and fingerprint sign-in on the member app (every plan has it). Start with a 30-day free trial, then KES 2,000 per month.',
       ),
       h3('Ukuaji: growth mode'),
       block(
-        'Best for a growing urban or peri-urban church between 150 and 500 members that needs all giving channels (including PayBill, Airtel Money, and card), up to 5 admin roles, events, email notifications, financial reports, and 200 SMS. KES 3,500 per month.',
+        'Best for a growing urban or peri-urban church between 150 and 500 members that needs all giving channels (including PayBill, Airtel Money, and card), up to 5 admin roles, events, email notifications, financial reports, and 200 SMS. Ukuaji is also where fundraising campaigns start: a public page for every drive, pledges that clear themselves as money arrives, champions with personal codes, and campaigns that count a whole department\u2019s giving. KES 3,500 per month.',
       ),
       h3('Kanisa: the full church office'),
       block(
-        'Best for an established church between 500 and 2,000 members with salaried staff, a finance committee, and possibly 2\u20133 branches. Adds unlimited admin roles, double-entry accounting, budgets, expense claims, HR, Kenyan payroll (PAYE/NSSF/SHIF), paid ticketing, YouTube sermon sync, push notifications, and 500 SMS. KES 7,500 per month.',
+        'Best for an established church between 500 and 2,000 members with salaried staff, a finance committee, and possibly 2\u20133 branches. Adds unlimited admin roles, double-entry accounting, budgets, expense claims, HR, Kenyan payroll (PAYE/NSSF/SHIF), paid ticketing, YouTube sermon sync, an automatic WhatsApp group leaderboard posted from your church\u2019s own number after every gift, and 500 SMS. KES 7,500 per month.',
       ),
       h3('Shirikisho: the network'),
       block(
@@ -967,6 +967,22 @@ const posts = postDefs.map((p) => ({
 // Pricing plans (KES)
 // ---------------------------------------------------------------------------
 
+/**
+ * The plan bullet for each flag added in sprint 2026-11 (decision P-D3), on the
+ * cheapest plan that includes it in the backend's `tenants/plans.py`. Higher
+ * plans include it too ("everything in the plan below"), so it is listed once.
+ * Keyed by flag name so a contract test can compare it with `plans.py`.
+ */
+const planFlagBullets = {
+  device_sign_in: { plan: 'Msingi', bullet: 'Fingerprint sign-in on the member app' },
+  giving_campaigns: { plan: 'Ukuaji', bullet: 'Fundraising campaigns with public pages' },
+  campaign_public_pages: { plan: 'Ukuaji', bullet: 'Fundraising campaigns with public pages' },
+  pledge_module: { plan: 'Ukuaji', bullet: 'Pledges that clear themselves as money arrives' },
+  fundraising_champions: { plan: 'Ukuaji', bullet: 'Fundraising champions with personal codes' },
+  department_campaigns: { plan: 'Ukuaji', bullet: 'Department-backed campaigns, history included' },
+  whatsapp_leaderboard: { plan: 'Kanisa', bullet: 'Automatic WhatsApp group leaderboard' },
+} as const
+
 const pricingPlans = [
   {
     _type: 'plan',
@@ -981,6 +997,7 @@ const pricingPlans = [
       '100 SMS/month included',
       'Basic attendance tracking',
       '1 admin login',
+      planFlagBullets.device_sign_in.bullet,
       'Community support',
     ],
     highlighted: false,
@@ -996,6 +1013,10 @@ const pricingPlans = [
     features: [
       'Up to 500 members',
       'All giving channels (M-Pesa, Airtel Money, card, USSD)',
+      planFlagBullets.giving_campaigns.bullet,
+      planFlagBullets.pledge_module.bullet,
+      planFlagBullets.fundraising_champions.bullet,
+      planFlagBullets.department_campaigns.bullet,
       'Up to 5 admin roles',
       'Events & RSVPs',
       '200 SMS/month included',
@@ -1018,6 +1039,7 @@ const pricingPlans = [
       'Double-entry accounting & budgets',
       'HR, leave & Kenyan payroll (PAYE/NSSF/SHIF)',
       'Paid event ticketing & YouTube sync',
+      planFlagBullets.whatsapp_leaderboard.bullet,
       '500 SMS/month included',
       'Up to 3 branches',
     ],
@@ -1389,6 +1411,7 @@ export {
   givingChannelIds,
   givingChannels,
   homePage,
+  planFlagBullets,
   posts,
   pricingPage,
   pricingPlans,

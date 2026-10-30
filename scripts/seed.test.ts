@@ -17,7 +17,7 @@
 import assert from 'node:assert/strict'
 import { describe, test } from 'node:test'
 
-import { faqs, featureIds, features, givingChannels, posts, pricingPlans } from './seed'
+import { faqs, featureIds, features, givingChannels, planFlagBullets, posts, pricingPlans } from './seed'
 
 /** Every string inside a value, Portable Text included, joined with spaces. */
 function textOf(value: unknown): string {
@@ -88,5 +88,63 @@ describe('brand neutrality and claims (all stories)', () => {
     ]) {
       assert.doesNotMatch(everything, banned)
     }
+  })
+})
+
+describe('MKT-2 plan bullets follow P-D3 and tenants/plans.py', () => {
+  /**
+   * The tier each sprint-2026-11 flag is first included in, copied from the
+   * backend's `tenants/plans.py` on `sprint/2026-11-parity` (239bcb7):
+   * MSINGI_FLAGS, UKUAJI_ADDS, KANISA_ADDS. Tiers accumulate upwards.
+   */
+  const FIRST_PLAN: Record<string, string> = {
+    device_sign_in: 'Msingi',
+    giving_campaigns: 'Ukuaji',
+    pledge_module: 'Ukuaji',
+    campaign_public_pages: 'Ukuaji',
+    fundraising_champions: 'Ukuaji',
+    department_campaigns: 'Ukuaji',
+    whatsapp_leaderboard: 'Kanisa',
+  }
+  const ORDER = ['Msingi', 'Ukuaji', 'Kanisa', 'Shirikisho']
+
+  test('every new flag has a bullet on the plan that first includes it', () => {
+    assert.deepEqual(Object.keys(planFlagBullets).sort(), Object.keys(FIRST_PLAN).sort())
+    for (const [flag, { plan, bullet }] of Object.entries(planFlagBullets)) {
+      assert.equal(plan, FIRST_PLAN[flag], `${flag} is sold on ${FIRST_PLAN[flag]}`)
+      const p = pricingPlans.find((x) => x.name === plan)
+      assert.ok(p?.features.includes(bullet), `${plan} lists "${bullet}"`)
+    }
+  })
+
+  test('no cheaper plan claims a feature it does not include', () => {
+    for (const { plan, bullet } of Object.values(planFlagBullets)) {
+      for (const cheaper of ORDER.slice(0, ORDER.indexOf(plan))) {
+        const p = pricingPlans.find((x) => x.name === cheaper)
+        assert.ok(!textOf(p).includes(bullet), `${cheaper} does not list "${bullet}"`)
+      }
+    }
+    const msingi = textOf(pricingPlans.find((x) => x.name === 'Msingi')).toLowerCase()
+    for (const word of ['campaign', 'pledge', 'champion', 'leaderboard']) {
+      assert.ok(!msingi.includes(word), `Msingi does not mention "${word}"`)
+    }
+    const ukuaji = textOf(pricingPlans.find((x) => x.name === 'Ukuaji')).toLowerCase()
+    assert.ok(!ukuaji.includes('whatsapp'), 'Ukuaji does not mention WhatsApp')
+  })
+
+  test('prices are unchanged (Q-3)', () => {
+    const prices = Object.fromEntries(pricingPlans.map((p) => [p.name, p.priceKES ?? null]))
+    assert.deepEqual(prices, { Msingi: 2000, Ukuaji: 3500, Kanisa: 7500, Shirikisho: null })
+  })
+
+  test('the plan guide post says the same thing as the plan cards', () => {
+    const post = posts.find((p) => p._id === 'post-choosing-the-right-plan')
+    const text = textOf(post?.body)
+    const ukuaji = text.slice(text.indexOf('Ukuaji: growth mode'), text.indexOf('Kanisa: the full church office'))
+    const kanisa = text.slice(text.indexOf('Kanisa: the full church office'), text.indexOf('Shirikisho: the network'))
+    assert.match(ukuaji, /fundraising campaigns/i)
+    assert.doesNotMatch(ukuaji, /WhatsApp/)
+    assert.match(kanisa, /automatic WhatsApp group leaderboard/i)
+    assert.match(text, /fingerprint sign-in/i)
   })
 })
