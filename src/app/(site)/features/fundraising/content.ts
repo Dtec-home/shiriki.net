@@ -7,9 +7,11 @@
  * `feature-fundraising-campaigns` (seeded by scripts/seed.ts) on top of this
  * when Sanity is configured; with no Sanity project, this is what renders.
  *
- * Plan rows mirror the sprint's confirmed tiers (P-D3) and must stay identical
- * to `tenants/plans.py` and the pricing bullets: the site is a promise.
+ * Plan rows are derived from `@/lib/pricing-plans` (P-D3 tiers, shared with
+ * the pricing page and the seed): the site is a promise.
  */
+
+import { PLAN_FLAG_BULLETS, PLAN_NAMES } from '@/lib/pricing-plans'
 
 export const FUNDRAISING_PATH = '/features/fundraising'
 
@@ -106,20 +108,28 @@ export const FUNDRAISING_SMS_NOTE =
   'Donor updates, pledge reminders and champion digests are sent from your church’s SMS credits. Scheduled reminders stay off until your church switches them on.'
 
 export type FundraisingPlanRow = {
-  /** Stable key, used as `data-plan` for tests and by the pricing contract. */
+  /** Stable key, used as `data-plan` for tests. */
   key: string
   capability: string
   plan: string
 }
 
+/** "Ukuaji and above"; the cheapest plan reads as "Every plan". */
+function planLabel(flag: keyof typeof PLAN_FLAG_BULLETS): string {
+  const plan = PLAN_FLAG_BULLETS[flag].plan
+  return plan === PLAN_NAMES[0] ? 'Every plan' : `${plan} and above`
+}
+
+// The plan column comes from PLAN_FLAG_BULLETS (shared with the pricing page
+// and the seed, checked against tenants/plans.py), so it cannot drift.
 export const FUNDRAISING_PLAN_ROWS: FundraisingPlanRow[] = [
-  { key: 'giving-campaigns', capability: 'Fundraising campaigns with Pay Bill codes', plan: 'Ukuaji and above' },
-  { key: 'pledges', capability: 'Pledges, reminders and the pledge register', plan: 'Ukuaji and above' },
-  { key: 'champions', capability: 'Champions with personal codes', plan: 'Ukuaji and above' },
-  { key: 'department-campaigns', capability: 'Department-backed campaigns', plan: 'Ukuaji and above' },
-  { key: 'public-pages', capability: 'Public campaign pages', plan: 'Ukuaji and above' },
-  { key: 'whatsapp-leaderboard', capability: 'Automatic WhatsApp group leaderboard', plan: 'Kanisa and above' },
-  { key: 'device-sign-in', capability: 'Fingerprint sign-in on mobile', plan: 'Every plan' },
+  { key: 'giving-campaigns', capability: 'Fundraising campaigns with Pay Bill codes', plan: planLabel('giving_campaigns') },
+  { key: 'pledges', capability: 'Pledges, reminders and the pledge register', plan: planLabel('pledge_module') },
+  { key: 'champions', capability: 'Champions with personal codes', plan: planLabel('fundraising_champions') },
+  { key: 'department-campaigns', capability: 'Department-backed campaigns', plan: planLabel('department_campaigns') },
+  { key: 'public-pages', capability: 'Public campaign pages', plan: planLabel('campaign_public_pages') },
+  { key: 'whatsapp-leaderboard', capability: 'Automatic WhatsApp group leaderboard', plan: planLabel('whatsapp_leaderboard') },
+  { key: 'device-sign-in', capability: 'Fingerprint sign-in on mobile', plan: planLabel('device_sign_in') },
 ]
 
 export const FUNDRAISING_FAQ = [
