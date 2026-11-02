@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit",
     "typegen": "sanity schema extract --enforce-required-fields && sanity typegen generate",
     "seed": "tsx scripts/seed.ts",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:seed": "node --import tsx --test scripts/seed.test.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
