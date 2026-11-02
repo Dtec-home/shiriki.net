@@ -195,10 +195,10 @@ export default async function FundraisingFeaturePage() {
               <h2 id="fundraising-whatsapp" className="mt-6 text-2xl font-bold md:text-3xl">
                 {FUNDRAISING_WHATSAPP.title}
               </h2>
-              <p className="mt-4 leading-7 text-primary-foreground/80">{FUNDRAISING_WHATSAPP.text}</p>
+              <p className="mt-4 leading-7 text-primary-foreground">{FUNDRAISING_WHATSAPP.text}</p>
               <ul className="mt-6 flex flex-col gap-3">
                 {FUNDRAISING_WHATSAPP.points.map((point) => (
-                  <li key={point} className="flex items-start gap-2 text-sm text-primary-foreground/85">
+                  <li key={point} className="flex items-start gap-2 text-sm text-primary-foreground">
                     <Check
                       className="mt-0.5 size-4 shrink-0 text-secondary dark:text-primary-foreground"
                       aria-hidden="true"
