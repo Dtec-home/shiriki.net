@@ -206,7 +206,7 @@ async function findUnlabeledControls(page: Page): Promise<string[]> {
  * ask the OS for less motion. Playwright's `toBeVisible` ignores opacity, so
  * this multiplies computed opacity up each heading's ancestor chain.
  */
-const REDUCED_MOTION_ROUTES = ['/']
+const REDUCED_MOTION_ROUTES = ['/', '/features/fundraising']
 
 test.describe('reduced motion keeps content visible', () => {
   test.use({ contextOptions: { reducedMotion: 'reduce' } })
