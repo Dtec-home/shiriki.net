@@ -234,3 +234,9 @@ test.describe('reduced motion keeps content visible', () => {
     })
   }
 })
+
+test('header and footer link to the fundraising page', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'domcontentloaded' })
+  await expect(page.locator('header a[href="/features/fundraising"]').first()).toBeVisible()
+  await expect(page.locator('footer a[href="/features/fundraising"]').first()).toBeVisible()
+})

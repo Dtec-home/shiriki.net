@@ -20,6 +20,7 @@ export type FooterNavColumn = {
 export const MAIN_NAV: NavLink[] = [
   { label: 'Giving', href: '/#giving' },
   { label: 'Features', href: '/#features' },
+  { label: 'Fundraising', href: '/features/fundraising' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
@@ -33,6 +34,7 @@ export const FOOTER_NAV: FooterNavColumn[] = [
     links: [
       { label: 'Giving', href: '/#giving' },
       { label: 'Features', href: '/#features' },
+      { label: 'Fundraising', href: '/features/fundraising' },
       { label: 'Security', href: '/#security' },
       { label: 'Pricing', href: '/pricing' },
       { label: 'Android app', href: PLAY_STORE_URL },
