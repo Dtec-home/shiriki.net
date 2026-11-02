@@ -17,7 +17,7 @@
 import assert from 'node:assert/strict'
 import { describe, test } from 'node:test'
 
-import { categories, faqs, featureIds, features, givingChannels, planFlagBullets, posts, pricingPlans } from './seed'
+import { categories, faqs, featureIds, features, givingChannelIds, givingChannels, planFlagBullets, posts, pricingPlans } from './seed'
 
 /** Every string inside a value, Portable Text included, joined with spaces. */
 function textOf(value: unknown): string {
@@ -231,5 +231,30 @@ describe('MKT-3 blog posts and FAQ entries', () => {
       faqs.map((f) => f.order),
       faqs.map((_, i) => i + 1),
     )
+  })
+})
+
+describe('MKT-4 giving channels mention campaign codes on Pay Bill and USSD', () => {
+  const channel = (id: string) => {
+    const c = givingChannels.find((x) => x._id === id)
+    assert.ok(c, `channel ${id} exists`)
+    return textOf(c)
+  }
+
+  test('Pay Bill explains campaign and champion account codes', () => {
+    const text = channel(givingChannelIds.mpesaPaybill)
+    assert.match(text, /campaign/i)
+    assert.match(text, /BUILD/)
+    assert.match(text, /champion/i)
+  })
+
+  test('USSD offers campaigns and pledges', () => {
+    const text = channel(givingChannelIds.ussd)
+    assert.match(text, /campaign/i)
+    assert.match(text, /pledge/i)
+  })
+
+  test('channel ids are unchanged', () => {
+    assert.deepEqual(givingChannels.map((c) => c._id).sort(), Object.values(givingChannelIds).sort())
   })
 })

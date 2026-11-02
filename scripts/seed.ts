@@ -154,7 +154,7 @@ const givingChannels = [
     _type: 'givingChannel',
     name: 'M-Pesa PayBill',
     description:
-      'A dedicated PayBill number for your church. Members who prefer to give through the M-Pesa menu are matched and reconciled automatically.',
+      'A dedicated PayBill number for your church. Members who prefer to give through the M-Pesa menu are matched and reconciled automatically. On Ukuaji and above, a campaign\u2019s account code (for example BUILD, or BUILD JOHN for a champion) sends the gift straight to that fundraising campaign.',
     icon: 'Landmark',
     badge: 'Familiar',
     order: 2,
@@ -184,7 +184,7 @@ const givingChannels = [
     _type: 'givingChannel',
     name: 'USSD',
     description:
-      'No smartphone or data bundle required. Members dial *710*12414# from any phone to give, check pledges, or request a statement.',
+      'No smartphone or data bundle required. Members dial *710*12414# from any phone to give, check pledges, or request a statement \u2014 and, on Ukuaji and above, give to a campaign, make a pledge, or pay one off.',
     icon: 'Phone',
     badge: 'Works offline',
     order: 5,
