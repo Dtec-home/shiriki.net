@@ -35,6 +35,7 @@ import { fileURLToPath } from 'url'
 import { createClient } from 'next-sanity'
 
 import { PRIVACY_POLICY_LAST_UPDATED, privacyPolicyBody } from '../src/lib/legal/privacy-policy'
+import { PLAN_FLAG_BULLETS, planBullets } from '../src/lib/pricing-plans'
 import { DEVELOPER_NAME } from '../src/lib/site'
 
 // ---------------------------------------------------------------------------
@@ -1191,21 +1192,9 @@ const posts = postDefs.map((p) => ({
 // Pricing plans (KES)
 // ---------------------------------------------------------------------------
 
-/**
- * The plan bullet for each flag added in sprint 2026-11 (decision P-D3), on the
- * cheapest plan that includes it in the backend's `tenants/plans.py`. Higher
- * plans include it too ("everything in the plan below"), so it is listed once.
- * Keyed by flag name so a contract test can compare it with `plans.py`.
- */
-const planFlagBullets = {
-  device_sign_in: { plan: 'Msingi', bullet: 'Fingerprint sign-in on the member app' },
-  giving_campaigns: { plan: 'Ukuaji', bullet: 'Fundraising campaigns with public pages' },
-  campaign_public_pages: { plan: 'Ukuaji', bullet: 'Fundraising campaigns with public pages' },
-  pledge_module: { plan: 'Ukuaji', bullet: 'Pledges that clear themselves as money arrives' },
-  fundraising_champions: { plan: 'Ukuaji', bullet: 'Fundraising champions with personal codes' },
-  department_campaigns: { plan: 'Ukuaji', bullet: 'Department-backed campaigns, history included' },
-  whatsapp_leaderboard: { plan: 'Kanisa', bullet: 'Automatic WhatsApp group leaderboard' },
-} as const
+// The sprint 2026-11 plan bullets (P-D3) live in `src/lib/pricing-plans.ts`,
+// shared with the pricing page's built-in fallback so the two cannot drift.
+const planFlagBullets = PLAN_FLAG_BULLETS
 
 const pricingPlans = [
   {
@@ -1221,7 +1210,7 @@ const pricingPlans = [
       '100 SMS/month included',
       'Basic attendance tracking',
       '1 admin login',
-      planFlagBullets.device_sign_in.bullet,
+      ...planBullets('Msingi'),
       'Community support',
     ],
     highlighted: false,
@@ -1237,10 +1226,7 @@ const pricingPlans = [
     features: [
       'Up to 500 members',
       'All giving channels (M-Pesa, Airtel Money, card, USSD)',
-      planFlagBullets.giving_campaigns.bullet,
-      planFlagBullets.pledge_module.bullet,
-      planFlagBullets.fundraising_champions.bullet,
-      planFlagBullets.department_campaigns.bullet,
+      ...planBullets('Ukuaji'),
       'Up to 5 admin roles',
       'Events & RSVPs',
       '200 SMS/month included',
@@ -1263,7 +1249,7 @@ const pricingPlans = [
       'Double-entry accounting & budgets',
       'HR, leave & Kenyan payroll (PAYE/NSSF/SHIF)',
       'Paid event ticketing & YouTube sync',
-      planFlagBullets.whatsapp_leaderboard.bullet,
+      ...planBullets('Kanisa'),
       '500 SMS/month included',
       'Up to 3 branches',
     ],

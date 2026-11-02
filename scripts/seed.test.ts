@@ -17,6 +17,8 @@
 import assert from 'node:assert/strict'
 import { describe, test } from 'node:test'
 
+import { FALLBACK_COMPARISON_ROWS, FALLBACK_PRICING_TIERS, PLAN_FLAG_BULLETS } from '../src/lib/pricing-plans'
+
 import { categories, faqs, featureIds, features, givingChannelIds, givingChannels, planFlagBullets, posts, pricingPlans } from './seed'
 
 /** Every string inside a value, Portable Text included, joined with spaces. */
@@ -256,5 +258,35 @@ describe('MKT-4 giving channels mention campaign codes on Pay Bill and USSD', ()
 
   test('channel ids are unchanged', () => {
     assert.deepEqual(givingChannels.map((c) => c._id).sort(), Object.values(givingChannelIds).sort())
+  })
+})
+
+describe('follow-up: the built-in pricing (no Sanity) matches the seed', () => {
+  const ORDER = ['Msingi', 'Ukuaji', 'Kanisa', 'Shirikisho']
+  const newBullets = new Set(Object.values(planFlagBullets).map((b) => b.bullet as string))
+
+  test('seed and fallback read the plan bullets from one shared module', () => {
+    assert.equal(planFlagBullets, PLAN_FLAG_BULLETS)
+  })
+
+  test('each fallback tier lists the same sprint bullets as the seed plan', () => {
+    for (const plan of pricingPlans) {
+      const tier = FALLBACK_PRICING_TIERS.find((t) => t.name === plan.name)
+      assert.ok(tier, `fallback tier ${plan.name} exists`)
+      const fromSeed = plan.features.filter((f: string) => newBullets.has(f))
+      const fromFallback = tier.features.filter((f) => newBullets.has(f))
+      assert.deepEqual(fromFallback, fromSeed, `${plan.name} bullets match`)
+    }
+  })
+
+  test('the comparison table ticks each sprint feature from its first plan upwards', () => {
+    for (const { plan, bullet } of Object.values(planFlagBullets)) {
+      const row = FALLBACK_COMPARISON_ROWS.find((r) => r.feature === bullet)
+      assert.ok(row, `comparison row "${bullet}" exists`)
+      assert.deepEqual(
+        row.values,
+        ORDER.map((_, i) => i >= ORDER.indexOf(plan)),
+      )
+    }
   })
 })
