@@ -158,9 +158,12 @@ export function softwareApplicationSchema(): WithContext<SoftwareApplication> {
       'M-Pesa STK Push and PayBill giving with automatic reconciliation',
       'Airtel Money, card and USSD giving',
       'Church funds management: tithes, offerings, pledges and departments',
+      'Fundraising campaigns with Pay Bill campaign codes, pledges that clear themselves, champions and a campaign statement',
+      'Public campaign pages showing totals only',
+      'Automatic WhatsApp group leaderboard for campaigns',
       'Member register, attendance and visitor follow-up',
       'SMS and push announcements and event reminders',
-      'Android app for members',
+      'Android app for members with fingerprint sign-in',
     ],
     // Price range of the published monthly plans (Msingi to Kanisa; the
     // Shirikisho tier is quoted). A bare `price: '0'` would claim the product

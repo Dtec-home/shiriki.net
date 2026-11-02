@@ -46,6 +46,7 @@ export const metadata: Metadata = buildMetadata({
   description:
     'Run church fundraising campaigns on your own Pay Bill: campaign codes, pledges that clear themselves, champions, a public progress page and an automatic WhatsApp leaderboard.',
   path: FUNDRAISING_PATH,
+  image: `${FUNDRAISING_PATH}/opengraph-image`,
 })
 
 // Kept beside the page (not in sanity/lib/queries.ts) because only this route

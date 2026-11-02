@@ -107,6 +107,51 @@ test.describe('/features/fundraising content', () => {
 })
 
 /**
+ * SEO / AEO surfaces for the fundraising page (MKT-6): sitemap, llms.txt,
+ * llms-full.txt, the SoftwareApplication feature list and the page's own OG
+ * image. All of these must hold with no Sanity project configured.
+ */
+test.describe('fundraising SEO and AEO', () => {
+  test('sitemap lists the fundraising page', async ({ request }) => {
+    const body = await (await request.get('/sitemap.xml')).text()
+    expect(body).toContain('/features/fundraising</loc>')
+  })
+
+  test('llms.txt links the fundraising page', async ({ request }) => {
+    const body = await (await request.get('/llms.txt')).text()
+    expect(body).toMatch(/- \[Fundraising campaigns\]\(https?:\/\/[^)]+\/features\/fundraising\)/)
+  })
+
+  test('llms-full.txt inlines the fundraising copy and plans', async ({ request }) => {
+    const body = await (await request.get('/llms-full.txt')).text()
+    expect(body).toContain('### Fundraising campaigns')
+    expect(body).toMatch(/URL: https?:\/\/[^\s]+\/features\/fundraising/)
+    expect(body).toMatch(/WhatsApp group leaderboard: Kanisa and above/)
+    expect(body).toMatch(/Fingerprint sign-in on mobile: Every plan/)
+  })
+
+  test('SoftwareApplication featureList names the new features', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
+    const blocks = await page.locator('script[type="application/ld+json"]').allTextContents()
+    const app = blocks.map((b) => JSON.parse(b)).find((d) => d['@type'] === 'SoftwareApplication')
+    expect(app, 'SoftwareApplication JSON-LD on /').toBeTruthy()
+    const list = (app.featureList as string[]).join(' | ')
+    expect(list).toMatch(/fundraising campaigns/i)
+    expect(list).toMatch(/whatsapp group leaderboard/i)
+    expect(list).toMatch(/fingerprint sign-in/i)
+  })
+
+  test('fundraising page has its own OG image', async ({ page, request }) => {
+    await page.goto('/features/fundraising', { waitUntil: 'domcontentloaded' })
+    const og = await page.locator('meta[property="og:image"]').first().getAttribute('content')
+    expect(og).toContain('/features/fundraising/opengraph-image')
+    const image = await request.get(new URL(og!).pathname)
+    expect(image.status()).toBe(200)
+    expect(image.headers()['content-type']).toContain('image/png')
+  })
+})
+
+/**
  * Returns a list of human-readable descriptions of form controls (input,
  * textarea, select) that lack an accessible name, excluding controls hidden
  * from assistive tech via an `aria-hidden` ancestor (e.g. honeypot fields)
