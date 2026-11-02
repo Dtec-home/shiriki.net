@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 
+import { FUNDRAISING_PATH } from '@/app/(site)/features/fundraising/content'
 import { SITE_URL } from '@/lib/site'
 import { sanityFetch } from '@/sanity/lib/fetch'
 import { typeTag } from '@/sanity/lib/live'
@@ -23,6 +24,7 @@ const STATIC_ROUTES: {
   { path: '/', changeFrequency: 'weekly', priority: 1 },
   { path: '/about', changeFrequency: 'monthly', priority: 0.8 },
   { path: '/pricing', changeFrequency: 'monthly', priority: 0.9 },
+  { path: FUNDRAISING_PATH, changeFrequency: 'monthly', priority: 0.9 },
   { path: '/contact', changeFrequency: 'yearly', priority: 0.7 },
   { path: '/faq', changeFrequency: 'monthly', priority: 0.6 },
   { path: '/blog', changeFrequency: 'weekly', priority: 0.8 },

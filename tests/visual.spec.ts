@@ -16,7 +16,17 @@ import { test, expect, type Page } from '@playwright/test'
  * `attribute="class"`), set before navigation so the very first paint is
  * already in the right theme — avoids a light->dark flash in the screenshot.
  */
-const ROUTES = ['/', '/about', '/pricing', '/contact', '/faq', '/blog', '/privacy', '/terms']
+const ROUTES = [
+  '/',
+  '/about',
+  '/pricing',
+  '/contact',
+  '/faq',
+  '/blog',
+  '/privacy',
+  '/terms',
+  '/features/fundraising',
+]
 
 test.describe('visual regression', () => {
   for (const route of ROUTES) {
@@ -50,6 +60,20 @@ test.describe('visual regression', () => {
  */
 async function waitForStableLayout(page: Page): Promise<void> {
   await page.evaluate(() => document.fonts.ready)
+
+  // The projects run with reduced motion, where the reveal wrappers show
+  // everything at once. Walking the page anyway keeps captures complete if a
+  // project is ever run with motion on (scroll-triggered reveals).
+  await page.evaluate(async () => {
+    const step = window.innerHeight / 2
+    for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+      window.scrollTo(0, y)
+      await new Promise((resolve) => setTimeout(resolve, 50))
+    }
+    window.scrollTo(0, 0)
+  })
+  // Let any reveal transitions (200 ms) finish.
+  await page.waitForTimeout(400)
 
   let lastHeight = -1
   let stableReadings = 0

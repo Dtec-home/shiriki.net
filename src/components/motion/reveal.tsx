@@ -49,21 +49,26 @@ export function Reveal({
   duration = 0.2,
   distance = 16,
 }: RevealProps) {
+  // Always render the motion.div: the server cannot know the visitor's
+  // motion preference and renders the hidden initial state. Swapping to a
+  // plain <div> on the client left that inline opacity:0 in place after
+  // hydration, so reduced-motion visitors saw blank sections. Instead, show
+  // the content at once (no travel, no duration, no scroll trigger).
   const shouldReduceMotion = useReducedMotion()
-
-  if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>
-  }
-
   const offset = offsetFor(direction, distance)
+  const shown = { opacity: 1, x: 0, y: 0 }
 
   return (
     <motion.div
       className={className}
       initial={{ opacity: 0, ...offset }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-      transition={{ duration, delay, ease: STANDARD_EASE }}
+      {...(shouldReduceMotion
+        ? { animate: shown, transition: { duration: 0 } }
+        : {
+            whileInView: shown,
+            viewport: { once: true, margin: "0px 0px -10% 0px" },
+            transition: { duration, delay, ease: STANDARD_EASE },
+          })}
     >
       {children}
     </motion.div>
