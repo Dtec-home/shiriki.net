@@ -23,6 +23,12 @@ const containerVariants = (staggerDelay: number): Variants => ({
   },
 })
 
+// Reduced motion: same hidden state as the server rendered, shown at once.
+const reducedItemVariants: Variants = {
+  hidden: { opacity: 0, y: ITEM_RISE },
+  visible: { opacity: 1, y: 0, transition: { duration: 0 } },
+}
+
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: ITEM_RISE },
   visible: {
@@ -38,19 +44,24 @@ const itemVariants: Variants = {
  * animation, nothing hidden) under prefers-reduced-motion.
  */
 export function Stagger({ children, className, staggerDelay = 0.07 }: StaggerProps) {
+  // Always render the motion.div: the server cannot know the visitor's
+  // motion preference and renders the hidden initial state. Swapping to a
+  // plain <div> on the client left that inline opacity:0 in place after
+  // hydration, so reduced-motion visitors saw blank sections. Instead, show
+  // the content at once (no travel, no duration, no scroll trigger).
   const shouldReduceMotion = useReducedMotion()
-
-  if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>
-  }
 
   return (
     <motion.div
       className={className}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-      variants={containerVariants(staggerDelay)}
+      {...(shouldReduceMotion
+        ? { animate: "visible", variants: containerVariants(0) }
+        : {
+            whileInView: "visible",
+            viewport: { once: true, margin: "0px 0px -10% 0px" },
+            variants: containerVariants(staggerDelay),
+          })}
     >
       {children}
     </motion.div>
@@ -66,12 +77,9 @@ type StaggerItemProps = {
 export function StaggerItem({ children, className }: StaggerItemProps) {
   const shouldReduceMotion = useReducedMotion()
 
-  if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>
-  }
-
+  // See Stagger: never swap to a plain <div>, or the SSR opacity:0 sticks.
   return (
-    <motion.div className={className} variants={itemVariants}>
+    <motion.div className={className} variants={shouldReduceMotion ? reducedItemVariants : itemVariants}>
       {children}
     </motion.div>
   )

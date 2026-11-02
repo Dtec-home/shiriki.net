@@ -199,3 +199,38 @@ async function findUnlabeledControls(page: Page): Promise<string[]> {
     return problems
   })
 }
+
+/**
+ * Reduced motion: scroll-reveal wrappers (Reveal, Stagger, FadeIn, FadeInUp)
+ * must leave every section fully visible, without scrolling, for visitors who
+ * ask the OS for less motion. Playwright's `toBeVisible` ignores opacity, so
+ * this multiplies computed opacity up each heading's ancestor chain.
+ */
+const REDUCED_MOTION_ROUTES = ['/']
+
+test.describe('reduced motion keeps content visible', () => {
+  test.use({ contextOptions: { reducedMotion: 'reduce' } })
+
+  for (const route of REDUCED_MOTION_ROUTES) {
+    test(`${route} section headings are opaque`, async ({ page }) => {
+      await page.goto(route, { waitUntil: 'networkidle' })
+      await expect
+        .poll(
+          () =>
+            page.evaluate(() =>
+              Array.from(document.querySelectorAll('#main-content h1, #main-content h2'))
+                .map((heading) => {
+                  let opacity = 1
+                  for (let node: Element | null = heading; node; node = node.parentElement) {
+                    opacity *= Number(getComputedStyle(node).opacity)
+                  }
+                  return opacity < 0.99 ? `${heading.textContent?.trim()} (${opacity})` : null
+                })
+                .filter(Boolean),
+            ),
+          { message: `headings hidden under reduced motion on ${route}`, timeout: 3_000 },
+        )
+        .toEqual([])
+    })
+  }
+})
