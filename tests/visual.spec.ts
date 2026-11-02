@@ -37,11 +37,6 @@ test.describe('visual regression', () => {
         window.localStorage.setItem('theme', dark ? 'dark' : 'light')
       }, wantsDark)
 
-      // Under `prefers-reduced-motion: reduce` the `Reveal` wrappers hydrate as
-      // plain divs but keep the server's inline `opacity:0`, so sections stay
-      // invisible (reported to the motion owner). Capture with motion allowed;
-      // the scroll walk in `waitForStableLayout` reveals every section once.
-      await page.emulateMedia({ reducedMotion: 'no-preference' })
       await page.goto(route, { waitUntil: 'networkidle' })
       await waitForStableLayout(page)
 
@@ -66,10 +61,9 @@ test.describe('visual regression', () => {
 async function waitForStableLayout(page: Page): Promise<void> {
   await page.evaluate(() => document.fonts.ready)
 
-  // Scroll-triggered `Reveal`/`Stagger` wrappers keep below-the-fold content
-  // at opacity 0 until it enters the viewport, which made full-page shots
-  // mostly blank. Walk the page once so every section has revealed, then
-  // return to the top for the capture.
+  // The projects run with reduced motion, where the reveal wrappers show
+  // everything at once. Walking the page anyway keeps captures complete if a
+  // project is ever run with motion on (scroll-triggered reveals).
   await page.evaluate(async () => {
     const step = window.innerHeight / 2
     for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
@@ -78,7 +72,7 @@ async function waitForStableLayout(page: Page): Promise<void> {
     }
     window.scrollTo(0, 0)
   })
-  // Let the last reveal transitions (200 ms) finish.
+  // Let any reveal transitions (200 ms) finish.
   await page.waitForTimeout(400)
 
   let lastHeight = -1
