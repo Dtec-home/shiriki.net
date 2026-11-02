@@ -17,6 +17,7 @@
 import assert from 'node:assert/strict'
 import { describe, test } from 'node:test'
 
+import { FALLBACK_FAQS } from '../src/lib/fallback-content'
 import { FALLBACK_COMPARISON_ROWS, FALLBACK_PRICING_TIERS, PLAN_FLAG_BULLETS } from '../src/lib/pricing-plans'
 
 import { categories, faqs, featureIds, features, givingChannelIds, givingChannels, planFlagBullets, posts, pricingPlans } from './seed'
@@ -288,5 +289,38 @@ describe('follow-up: the built-in pricing (no Sanity) matches the seed', () => {
         ORDER.map((_, i) => i >= ORDER.indexOf(plan)),
       )
     }
+  })
+})
+
+describe('follow-up: built-in FAQs (no Sanity) carry the new topics and no stale plans', () => {
+  /** Fallback FAQ id → the seed FAQ it must say the same as. */
+  const MIRRORS: Record<string, string> = {
+    'fundraising-campaigns': 'faq-can-we-run-fundraising-campaigns-and-harambees-on-shiriki',
+    'fundraising-pledges': 'faq-how-do-pledges-get-paid-off',
+    'whatsapp-leaderboard': 'faq-how-does-the-automatic-whatsapp-group-leaderboard-work',
+    'donor-names': 'faq-who-can-see-donor-names',
+    'fingerprint-sign-in': 'faq-how-does-fingerprint-sign-in-on-the-shiriki-app-work',
+  }
+
+  test('each new fallback FAQ says exactly what the seed FAQ says', () => {
+    for (const [fallbackId, seedId] of Object.entries(MIRRORS)) {
+      const fb = FALLBACK_FAQS.find((f) => f._id === fallbackId)
+      const seed = faqs.find((f) => f._id === seedId)
+      assert.ok(fb, `fallback FAQ ${fallbackId} exists`)
+      assert.ok(seed, `seed FAQ ${seedId} exists`)
+      assert.equal(fb.question, seed.question)
+      const plain = (seed.answer as { children: { text: string }[] }[])
+        .map((b) => b.children.map((c) => c.text).join(''))
+        .join(' ')
+      assert.equal(fb.answer, plain)
+    }
+  })
+
+  test('no retired plan names or free-forever promises', () => {
+    const text = textOf(FALLBACK_FAQS)
+    for (const stale of [/free forever/i, /\bStarter\b/, /\bGrowth\b/, /\bEnterprise\b/, /up to 100 members/i]) {
+      assert.doesNotMatch(text, stale)
+    }
+    assert.match(textOf(FALLBACK_FAQS.find((f) => f._id === 'pricing-free')), /30-day free trial/)
   })
 })

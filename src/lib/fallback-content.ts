@@ -49,6 +49,34 @@ export const FALLBACK_FAQS: FaqDoc[] = [
       'Yes. Airtel Money is supported for Airtel subscribers, and card payments (via Paystack) are available for diaspora members giving in other currencies.',
   },
   {
+    _id: 'fundraising-campaigns',
+    category: 'Fundraising',
+    question: 'Can we run fundraising campaigns and harambees on Shiriki?',
+    answer:
+      'Yes, on the Ukuaji plan and above. Give each drive — a building fund, a land purchase, a harambee, a mission trip — a target, optional dates, a department, and a short Pay Bill account code such as BUILD. Once a second person approves it, members give with your church’s own Pay Bill and that code, by M-Pesa prompt from the campaign page, through USSD, or at the desk, and every gift counts towards one progress bar. Each campaign gets a shareable public page on your church’s own Shiriki address with progress, updates, and a give button, plus a statement of money in and money out for the board. There is no limit on the number of campaigns.',
+  },
+  {
+    _id: 'fundraising-pledges',
+    category: 'Fundraising',
+    question: 'How do pledges get paid off?',
+    answer:
+      'Automatically. Members pledge in the app, on the campaign page, through USSD, or on a pledge card at the desk. When a gift arrives, Shiriki applies it to that member’s open pledges oldest first — and only money given after the pledge was made can clear it, so old giving never makes a new promise look kept. Members see what they still owe and can pay the balance in one tap. Reminder SMS are optional, are sent only between 8am and 8pm, and draw from your church’s SMS credits.',
+  },
+  {
+    _id: 'whatsapp-leaderboard',
+    category: 'Fundraising',
+    question: 'How does the automatic WhatsApp group leaderboard work?',
+    answer:
+      'On the Kanisa plan and above, a church admin links your church’s own WhatsApp number by scanning a QR code in Settings, then picks the group for each campaign. After gifts come in, Shiriki posts an updated leaderboard to that group — gathered into one post about every minute, so a busy service does not flood the chat. If a post fails it is retried, never sent twice, and the campaign page shows whether the last one went out. Your church chooses how givers appear: full name, first name and initial (the default), or hidden with totals only. Any member can also choose to be listed as “Well-wisher”.',
+  },
+  {
+    _id: 'donor-names',
+    category: 'Fundraising',
+    question: 'Who can see donor names?',
+    answer:
+      'Public campaign pages show totals only — amount raised, number of givers, days left — never names or amounts. Names are visible to your church staff and the department’s leaders, and each champion sees the people who gave through their own code. In WhatsApp leaderboards, names follow your church’s setting and each member’s own choice to stay anonymous.',
+  },
+  {
     _id: 'security-data',
     category: 'Security',
     question: 'How is our members\' data kept secure?',
@@ -63,11 +91,18 @@ export const FALLBACK_FAQS: FaqDoc[] = [
       'Yes. Shiriki ships with 7+ granular admin roles (for example: finance-only, membership-only, or event coordinator) so volunteers only ever see the data relevant to their responsibility.',
   },
   {
+    _id: 'fingerprint-sign-in',
+    category: 'Security',
+    question: 'How does fingerprint sign-in on the Shiriki app work?',
+    answer:
+      'The first time a member signs in, they confirm their phone with an SMS code. After that, the app creates a sign-in key that is locked inside the phone’s own security hardware, and a fingerprint is all it takes — no SMS code every week. The key never leaves the phone and cannot be copied to another device. The app locks after 5 minutes away, amounts are hidden in the app switcher, and members can see and sign out their other phones themselves. Fingerprint sign-in is included in every plan.',
+  },
+  {
     _id: 'pricing-free',
     category: 'Pricing',
-    question: 'Is there a free plan for small congregations?',
+    question: 'Is there a free trial?',
     answer:
-      'Yes — the Starter plan is free forever for congregations up to 100 members, and includes M-Pesa STK Push giving, a member directory, and one admin login. See the pricing page for the full comparison.',
+      'Yes. Every church starts with a 30-day free trial on the Msingi plan — M-Pesa STK Push giving, USSD giving, a member directory, attendance tracking, and 100 SMS included. After the trial, Msingi is KES 2,000 per month. See the pricing page for the full comparison.',
   },
   {
     _id: 'pricing-switch',
@@ -102,6 +137,6 @@ export const FALLBACK_FAQS: FaqDoc[] = [
     category: 'Support',
     question: 'How do we reach support if something goes wrong?',
     answer:
-      'Every plan includes email support with a one-business-day response time. Growth and Enterprise plans add phone and priority chat support, and Enterprise includes a dedicated account contact.',
+      'Msingi includes community support. Ukuaji and Kanisa add priority support, with an onboarding call on Kanisa, and Shirikisho includes a dedicated account manager and an SLA. Our team helps in English and Swahili by phone, WhatsApp, and email.',
   },
 ]
