@@ -44,13 +44,13 @@ export function PricingTable({ tiers, comparisonRows }: PricingTableProps) {
                 <h3 className="text-xl font-bold">{tier.name}</h3>
                 {tier.highlighted ? <Badge className="bg-secondary text-secondary-foreground">Most popular</Badge> : null}
               </div>
-              <p className={cn('mt-2 text-sm', tier.highlighted ? 'text-primary-foreground/70' : 'text-muted-foreground')}>
+              <p className={cn('mt-2 text-sm', tier.highlighted ? 'text-primary-foreground/90' : 'text-muted-foreground')}>
                 {tier.description}
               </p>
               <div className="mt-6">
                 <span className="text-4xl font-bold tracking-tight">{formatPrice(tier.priceKes)}</span>
               </div>
-              <p className={cn('mt-1 text-sm', tier.highlighted ? 'text-primary-foreground/70' : 'text-muted-foreground')}>
+              <p className={cn('mt-1 text-sm', tier.highlighted ? 'text-primary-foreground/90' : 'text-muted-foreground')}>
                 {tier.billingNote}
               </p>
               <ul className="mt-8 flex flex-1 flex-col gap-3">

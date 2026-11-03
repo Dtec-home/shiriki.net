@@ -98,12 +98,21 @@
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.50 0.22 200);
+  /* L 0.46, not 0.50 (sprint 2026-11 MKQ-2, F-6): at 0.50 teal text measured
+     4.41:1 on --background and white on teal 4.60:1, so text-primary links
+     and the footer's translucent text failed WCAG AA 4.5:1. At 0.46 teal
+     text is 5.2:1 on --background, white on teal 5.4:1 and 90% white on
+     teal 4.7:1 — which is why text on bg-primary surfaces uses
+     text-primary-foreground/90 and never a lower opacity. */
+  --primary: oklch(0.46 0.22 200);
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.968 0.007 247.896);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
+  /* L 0.52, not 0.554 (MKQ-2, F-6): secondary text sits on tinted surfaces
+     (bg-muted/40, the teal-tinted bands) where 0.554 measured 4.25–4.47:1.
+     0.52 is ≥ 4.9:1 on all of them and 5.3:1 on --background. */
+  --muted-foreground: oklch(0.52 0.046 257.417);
   --accent: oklch(0.968 0.007 247.896);
   --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);

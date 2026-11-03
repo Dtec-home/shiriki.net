@@ -1,4 +1,6 @@
 import { test, expect, type Page } from '@playwright/test'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 /**
  * Accessibility smoke tests (Sprint 7.6). Deliberately narrow: these are
@@ -240,3 +242,39 @@ test('header and footer link to the fundraising page', async ({ page }) => {
   await expect(page.locator('header a[href="/features/fundraising"]').first()).toBeVisible()
   await expect(page.locator('footer a[href="/features/fundraising"]').first()).toBeVisible()
 })
+
+/**
+ * Colour contrast (sprint 2026-11 "Parity", MKT-QA / MKQ-2, F-6): axe-core's
+ * `color-contrast` rule (WCAG 2 AA, 4.5:1 body text, 3:1 large text) on every
+ * route in both colour schemes. axe-core is injected straight from the
+ * package rather than through @axe-core/playwright, and only this rule runs:
+ * the structural checks above already cover headings, alt text and labels.
+ */
+const AXE_SOURCE = readFileSync(join(process.cwd(), 'node_modules/axe-core/axe.min.js'), 'utf8')
+
+type ContrastIssue = { target: string; summary: string }
+
+async function contrastViolations(page: Page): Promise<ContrastIssue[]> {
+  await page.addScriptTag({ content: AXE_SOURCE })
+  return page.evaluate(async () => {
+    const axe = (window as unknown as { axe: { run: (ctx: unknown, opts: unknown) => Promise<{ violations: { nodes: { target: unknown[]; failureSummary?: string; any: { message: string }[] }[] }[] }> } }).axe
+    const result = await axe.run(document, { runOnly: { type: 'rule', values: ['color-contrast'] }, resultTypes: ['violations'] })
+    return result.violations.flatMap((v) =>
+      v.nodes.map((n) => ({ target: n.target.join(' '), summary: n.any[0]?.message ?? n.failureSummary ?? '' })),
+    )
+  })
+}
+
+for (const colorScheme of ['light', 'dark'] as const) {
+  test.describe(`colour contrast (${colorScheme})`, () => {
+    test.use({ colorScheme, contextOptions: { reducedMotion: 'reduce' } })
+
+    for (const route of ROUTES) {
+      test(`${route} has no axe color-contrast violations`, async ({ page }) => {
+        await page.goto(route, { waitUntil: 'networkidle' })
+        const issues = await contrastViolations(page)
+        expect(issues, `${route} (${colorScheme}):\n${issues.map((i) => `${i.target} — ${i.summary}`).join('\n')}`).toEqual([])
+      })
+    }
+  })
+}
