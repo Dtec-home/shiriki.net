@@ -11,7 +11,8 @@
     "typegen": "sanity schema extract --enforce-required-fields && sanity typegen generate",
     "seed": "tsx scripts/seed.ts",
     "test:e2e": "playwright test",
-    "test:seed": "node --import tsx --test scripts/seed.test.ts"
+    "test:seed": "node --import tsx --test scripts/seed.test.ts",
+    "test:contract": "node --import tsx --test tests/contract/*.test.ts && tsx scripts/check-plans-contract.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
