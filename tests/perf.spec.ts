@@ -103,3 +103,23 @@ test('no internal link or sitemap URL is broken', async ({ page, request, baseUR
   }
   expect(broken).toEqual([])
 })
+
+/**
+ * MKT-QA2: the dialog primitives (base-ui Dialog/Sheet, the demo form's
+ * Select) load on first open, not with the page. `base-ui-scroll-locked` is
+ * the scroll-lock attribute only the dialog code contains.
+ */
+test('/ does not load the dialog code until a dialog is opened', async ({ page, request }) => {
+  // Only the scripts the page's own HTML references: Next later prefetches
+  // other routes' chunks for visible links, which may share base-ui code.
+  const html = await (await request.get('/')).text()
+  const srcs = [...new Set([...html.matchAll(/src="(\/_next\/static\/[^"]+\.js)"/g)].map((m) => m[1]))]
+  expect(srcs.length).toBeGreaterThan(0)
+  const bodies = await Promise.all(srcs.map(async (src) => (await request.get(src)).text()))
+  const withDialog = srcs.filter((_, i) => bodies[i].includes('base-ui-scroll-locked'))
+  expect(withDialog, 'initial scripts with dialog code').toEqual([])
+
+  await page.goto('/', { waitUntil: 'networkidle' })
+  await page.locator('header').getByRole('button', { name: 'Request demo' }).click()
+  await expect(page.getByRole('dialog', { name: 'Request a demo' })).toBeVisible()
+})

@@ -278,3 +278,83 @@ for (const colorScheme of ['light', 'dark'] as const) {
     }
   })
 }
+
+/**
+ * Dialogs (MKT-QA2): the demo-request dialog and the mobile menu are loaded
+ * on first open (perf.spec.ts checks they are not in the initial bundle).
+ * These pin the behaviour that must survive that: keyboard opening, focus
+ * moving into the dialog, Escape closing it, focus returning to the control
+ * that opened it, and no WCAG A/AA axe violations inside the open dialog.
+ */
+async function dialogViolations(page: Page): Promise<ContrastIssue[]> {
+  await page.addScriptTag({ content: AXE_SOURCE })
+  return page.evaluate(async () => {
+    const axe = (window as unknown as { axe: { run: (ctx: unknown, opts: unknown) => Promise<{ violations: { id: string; nodes: { target: unknown[] }[] }[] }> } }).axe
+    const result = await axe.run(
+      { include: [['[role="dialog"]']] },
+      { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] }, resultTypes: ['violations'] },
+    )
+    return result.violations.flatMap((v) => v.nodes.map((n) => ({ target: n.target.join(' '), summary: v.id })))
+  })
+}
+
+const focusInside = (page: Page) =>
+  page.evaluate(() => Boolean(document.activeElement?.closest('[role="dialog"]')))
+
+test.describe('dialogs: keyboard, focus return, axe', () => {
+  test('demo dialog opens from the keyboard and returns focus to its trigger', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'networkidle' })
+    const trigger = page.locator('header').getByRole('button', { name: 'Request demo' })
+    await trigger.focus()
+    await page.keyboard.press('Enter')
+    const dialog = page.getByRole('dialog', { name: 'Request a demo' })
+    await expect(dialog).toBeVisible()
+    await expect.poll(() => focusInside(page)).toBe(true)
+    expect(await dialogViolations(page)).toEqual([])
+    await page.keyboard.press('Escape')
+    await expect(dialog).toBeHidden()
+    await expect(trigger).toBeFocused()
+  })
+
+  test('demo dialog opens again after closing', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'networkidle' })
+    const trigger = page.locator('header').getByRole('button', { name: 'Request demo' })
+    for (let i = 0; i < 2; i++) {
+      await trigger.click()
+      await expect(page.getByRole('dialog', { name: 'Request a demo' })).toBeVisible()
+      await page.keyboard.press('Escape')
+      await expect(page.getByRole('dialog')).toBeHidden()
+    }
+  })
+
+  test.describe('phone width', () => {
+    test.use({ viewport: { width: 390, height: 844 } })
+
+    test('mobile menu opens from the keyboard and returns focus to the menu button', async ({ page }) => {
+      await page.goto('/', { waitUntil: 'networkidle' })
+      const menuButton = page.getByRole('button', { name: 'Open menu' })
+      await menuButton.focus()
+      await page.keyboard.press('Enter')
+      const menu = page.getByRole('dialog')
+      await expect(menu.getByRole('navigation', { name: 'Mobile' })).toBeVisible()
+      await expect.poll(() => focusInside(page)).toBe(true)
+      expect(await dialogViolations(page)).toEqual([])
+      await page.keyboard.press('Escape')
+      await expect(menu).toBeHidden()
+      await expect(menuButton).toBeFocused()
+    })
+
+    test('Request demo in the mobile menu opens the demo dialog; closing it returns focus to the menu button', async ({ page }) => {
+      await page.goto('/', { waitUntil: 'networkidle' })
+      const menuButton = page.getByRole('button', { name: 'Open menu' })
+      await menuButton.click()
+      await page.getByRole('dialog').getByRole('button', { name: 'Request demo' }).click()
+      const demo = page.getByRole('dialog', { name: 'Request a demo' })
+      await expect(demo).toBeVisible()
+      await expect.poll(() => focusInside(page)).toBe(true)
+      await page.keyboard.press('Escape')
+      await expect(page.getByRole('dialog')).toBeHidden()
+      await expect(menuButton).toBeFocused()
+    })
+  })
+})

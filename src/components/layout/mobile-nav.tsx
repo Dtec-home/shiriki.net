@@ -1,84 +1,55 @@
 'use client'
 
 import * as React from 'react'
-import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { Menu } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet'
-import { DemoRequestDialog } from '@/components/forms/demo-request-dialog'
-import { MAIN_NAV } from '@/lib/nav'
-import { APP_SIGNIN_URL, APP_SIGNUP_URL } from '@/lib/site'
+import { DemoDialogHost } from '@/components/forms/demo-request-dialog'
+
+/** The drawer (base-ui Sheet) is fetched on first open, not with the page (MKT-QA2). */
+const MobileNavSheet = dynamic(() => import('@/components/layout/mobile-nav-sheet'), { ssr: false })
 
 /**
- * Mobile navigation drawer: a `Sheet` triggered by a labelled hamburger
- * button, listing the same links as the desktop nav plus the demo CTA. Every
- * link and the trigger meet the 44px touch-target minimum. Closes on link
- * activation.
+ * Mobile navigation: a labelled hamburger button that opens a `Sheet` with
+ * the desktop nav's links plus the demo CTA. "Request demo" closes the sheet
+ * and opens the demo dialog, which lives here rather than inside the sheet
+ * so it survives the sheet unmounting; focus returns to the menu button
+ * when either closes.
  */
 export function MobileNav() {
   const [open, setOpen] = React.useState(false)
+  const [loaded, setLoaded] = React.useState(false)
+  const [demoOpen, setDemoOpen] = React.useState(false)
+  const buttonRef = React.useRef<HTMLButtonElement | null>(null)
 
-  function close() {
+  function openMenu() {
+    setLoaded(true)
+    setOpen(true)
+  }
+
+  function requestDemo() {
     setOpen(false)
+    setDemoOpen(true)
   }
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger render={<Button variant="outline" size="icon" aria-label="Open menu" className="size-11" />}>
+    <>
+      <Button
+        ref={buttonRef}
+        variant="outline"
+        size="icon"
+        aria-label="Open menu"
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        className="size-11"
+        onClick={openMenu}
+      >
         <Menu className="size-5" aria-hidden="true" />
-      </SheetTrigger>
-      <SheetContent side="right" className="flex w-full flex-col gap-0 sm:max-w-sm">
-        <SheetHeader>
-          <SheetTitle className="text-lg font-bold">Shiriki</SheetTitle>
-        </SheetHeader>
-
-        <nav aria-label="Mobile" className="flex flex-1 flex-col gap-1 overflow-y-auto px-4 pb-4">
-          <ul className="flex flex-col gap-1 py-2">
-            {MAIN_NAV.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={close}
-                  className="flex min-h-11 items-center rounded-md px-3 text-base font-medium hover:bg-muted"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <Link
-            href={APP_SIGNUP_URL}
-            onClick={close}
-            className="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-bold text-primary-foreground"
-          >
-            Get started
-          </Link>
-          <Link
-            href={APP_SIGNIN_URL}
-            onClick={close}
-            className="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-lg border px-4 py-2 text-sm font-medium"
-          >
-            Sign in
-          </Link>
-
-          <DemoRequestDialog>
-            <button
-              type="button"
-              onClick={close}
-              className="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-lg bg-secondary px-4 py-2 text-sm font-bold text-secondary-foreground"
-            >
-              Request demo
-            </button>
-          </DemoRequestDialog>
-        </nav>
-      </SheetContent>
-    </Sheet>
+      </Button>
+      {loaded ? (
+        <MobileNavSheet open={open} onOpenChange={setOpen} finalFocus={buttonRef} onRequestDemo={requestDemo} />
+      ) : null}
+      <DemoDialogHost open={demoOpen} onOpenChange={setDemoOpen} finalFocus={buttonRef} />
+    </>
   )
 }
