@@ -1,9 +1,6 @@
-"use client"
+import type { CSSProperties, ReactNode } from "react"
 
-import type { ReactNode } from "react"
-import { motion, useReducedMotion } from "motion/react"
-
-const STANDARD_EASE = [0.2, 0, 0, 1] as const
+import { cn } from "@/lib/utils"
 
 type RevealDirection = "up" | "down" | "left" | "right" | "none"
 
@@ -12,65 +9,72 @@ type RevealProps = {
   className?: string
   /** Direction the content travels in from. Defaults to "up". */
   direction?: RevealDirection
-  /** Delay in seconds before the animation starts. */
+  /**
+   * Delay in seconds. The reveal is scroll-linked, so this starts it a little
+   * later in the element's entry (0.1s ≈ 10% of the entry), capped at 0.4.
+   */
   delay?: number
-  /** Duration in seconds. Defaults to the "moderate" reveal timing (~200ms). */
+  /** Kept for API compatibility; a scroll-linked reveal has no duration. */
   duration?: number
   /** Distance (px) travelled while revealing. */
   distance?: number
 }
 
-function offsetFor(direction: RevealDirection, distance: number) {
+function offsetFor(direction: RevealDirection, distance: number): [number, number] {
   switch (direction) {
     case "up":
-      return { y: distance }
+      return [0, distance]
     case "down":
-      return { y: -distance }
+      return [0, -distance]
     case "left":
-      return { x: distance }
+      return [distance, 0]
     case "right":
-      return { x: -distance }
+      return [-distance, 0]
     case "none":
     default:
-      return {}
+      return [0, 0]
   }
 }
 
+/** Inline custom properties read by the `.reveal` rule in globals.css. */
+export function revealStyle({
+  x = 0,
+  y = 16,
+  delay = 0,
+}: {
+  x?: number
+  y?: number
+  delay?: number
+}): CSSProperties {
+  return {
+    "--reveal-x": `${x}px`,
+    "--reveal-y": `${y}px`,
+    "--reveal-start": `${Math.min(Math.max(delay, 0), 0.4) * 100}%`,
+  } as CSSProperties
+}
+
 /**
- * General-purpose reveal-on-scroll wrapper: fade + directional travel,
- * fires once when the element enters the viewport. Renders content
- * statically (no animation, never hidden) under prefers-reduced-motion.
+ * General-purpose reveal-on-scroll wrapper: fade + directional travel as the
+ * element enters the viewport.
+ *
+ * Pure CSS (a scroll-driven animation, `.reveal` in globals.css), not a
+ * client component (sprint 2026-11 MKQ-3): the server HTML is visible as-is,
+ * so above-the-fold content paints at once instead of waiting for JS to
+ * lift an inline `opacity: 0`, and no animation library ships to the
+ * browser. Browsers without `animation-timeline` and visitors who prefer
+ * reduced motion get the content with no animation.
  */
 export function Reveal({
   children,
   className,
   direction = "up",
   delay = 0,
-  duration = 0.2,
   distance = 16,
 }: RevealProps) {
-  // Always render the motion.div: the server cannot know the visitor's
-  // motion preference and renders the hidden initial state. Swapping to a
-  // plain <div> on the client left that inline opacity:0 in place after
-  // hydration, so reduced-motion visitors saw blank sections. Instead, show
-  // the content at once (no travel, no duration, no scroll trigger).
-  const shouldReduceMotion = useReducedMotion()
-  const offset = offsetFor(direction, distance)
-  const shown = { opacity: 1, x: 0, y: 0 }
-
+  const [x, y] = offsetFor(direction, distance)
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, ...offset }}
-      {...(shouldReduceMotion
-        ? { animate: shown, transition: { duration: 0 } }
-        : {
-            whileInView: shown,
-            viewport: { once: true, margin: "0px 0px -10% 0px" },
-            transition: { duration, delay, ease: STANDARD_EASE },
-          })}
-    >
+    <div className={cn("reveal", className)} style={revealStyle({ x, y, delay })}>
       {children}
-    </motion.div>
+    </div>
   )
 }

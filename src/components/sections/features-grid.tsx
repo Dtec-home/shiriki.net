@@ -99,12 +99,12 @@ function FeatureCard({ icon, title, text, items, dark = false }: FeatureCardData
     >
       <Icon className={dark ? 'text-secondary dark:text-primary-foreground' : 'text-primary'} aria-hidden="true" />
       <h3 className="mt-7 text-2xl font-bold">{title}</h3>
-      <p className={`mt-4 leading-7 ${dark ? 'text-primary-foreground/70' : 'text-muted-foreground'}`}>{text}</p>
+      <p className={`mt-4 leading-7 ${dark ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>{text}</p>
       <ul className="mt-7 flex flex-col gap-3">
         {items.map((item) => (
           <li
             key={item}
-            className={`flex items-center gap-2 text-sm ${dark ? 'text-primary-foreground/85' : 'text-muted-foreground'}`}
+            className={`flex items-center gap-2 text-sm ${dark ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}
           >
             <Check className={dark ? 'text-secondary dark:text-primary-foreground' : 'text-primary'} aria-hidden="true" />
             {item}

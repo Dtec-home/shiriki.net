@@ -1,0 +1,96 @@
+{
+  "source": {
+    "repo": "shiriki backend",
+    "path": "tenants/plans.py",
+    "ref": "sprint/2026-11-parity",
+    "commit": "c8c3b985306825faf2420cf5a1d40ad38898f265",
+    "blob": "ddb5b202c8e16a373d12d7ce621399bffce2c8cf"
+  },
+  "plans": [
+    {
+      "code": "MSINGI",
+      "label": "Msingi",
+      "priceKes": 2000,
+      "limits": {
+        "members": 150,
+        "sms_per_month": 100,
+        "branches": 0
+      },
+      "adds": [
+        "attendance_tracking",
+        "birthday_reminders",
+        "department_routing",
+        "device_sign_in",
+        "giver_claim_invites",
+        "multi_tenancy",
+        "push_notifications",
+        "swahili",
+        "treasury_books"
+      ]
+    },
+    {
+      "code": "UKUAJI",
+      "label": "Ukuaji",
+      "priceKes": 3500,
+      "limits": {
+        "members": 500,
+        "sms_per_month": 200,
+        "branches": 0
+      },
+      "adds": [
+        "airtel_money",
+        "campaign_public_pages",
+        "card_payments",
+        "champion_digest_sms",
+        "department_campaigns",
+        "email_notifications",
+        "events_module",
+        "events_rsvp",
+        "finance_ledger",
+        "fundraising_champions",
+        "giving_campaigns",
+        "lifecycle_events",
+        "pledge_module",
+        "pledge_reminder_sms",
+        "scheduled_messaging",
+        "visitor_workflow",
+        "year_end_statement_sms",
+        "year_end_statements"
+      ]
+    },
+    {
+      "code": "KANISA",
+      "label": "Kanisa",
+      "priceKes": 7500,
+      "limits": {
+        "members": 2000,
+        "sms_per_month": 500,
+        "branches": 3
+      },
+      "adds": [
+        "budget_module",
+        "event_feedback",
+        "event_feedback_sms",
+        "expense_claims",
+        "hr_module",
+        "leave_management",
+        "payroll",
+        "streaming_reports",
+        "venue_booking",
+        "volunteer_management",
+        "whatsapp_leaderboard"
+      ]
+    },
+    {
+      "code": "SHIRIKISHO",
+      "label": "Shirikisho",
+      "priceKes": null,
+      "limits": {
+        "members": null,
+        "sms_per_month": null,
+        "branches": null
+      },
+      "adds": []
+    }
+  ]
+}

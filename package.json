@@ -11,7 +11,8 @@
     "typegen": "sanity schema extract --enforce-required-fields && sanity typegen generate",
     "seed": "tsx scripts/seed.ts",
     "test:e2e": "playwright test",
-    "test:seed": "node --import tsx --test scripts/seed.test.ts"
+    "test:seed": "node --import tsx --test scripts/seed.test.ts",
+    "test:contract": "node --import tsx --test tests/contract/*.test.ts && tsx scripts/check-plans-contract.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
@@ -50,6 +51,7 @@
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "axe-core": "4.13.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.3.2",
     "postcss": "^8.5",

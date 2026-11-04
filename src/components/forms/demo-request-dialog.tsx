@@ -21,7 +21,7 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { CONGREGATION_SIZES, CONGREGATION_SIZE_LABELS } from '@/lib/contact-schema'
+import { CONGREGATION_SIZES, CONGREGATION_SIZE_LABELS } from '@/lib/contact-options'
 import { submitDemoRequest, type FormState } from '@/app/actions/contact'
 
 const initialState: FormState = { status: 'idle' }

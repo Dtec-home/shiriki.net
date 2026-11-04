@@ -83,7 +83,7 @@ export function SecurityBand({ eyebrow, heading, lead, badges, ussd }: SecurityB
             <Smartphone className="text-secondary dark:text-primary-foreground" aria-hidden="true" />
             <SectionLabel className="mt-8 text-secondary dark:text-primary-foreground">{ussd.eyebrow}</SectionLabel>
             <p className="mt-3 font-mono text-3xl font-bold">{ussd.code}</p>
-            <p className="mt-5 leading-7 text-primary-foreground/70">{ussd.text}</p>
+            <p className="mt-5 leading-7 text-primary-foreground/90">{ussd.text}</p>
             <DemoRequestDialog>
               <button
                 type="button"
