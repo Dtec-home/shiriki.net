@@ -12,10 +12,11 @@
 
 import { z } from 'zod'
 
-import { MARKET_COUNTRIES } from '@/lib/site'
+import { CONGREGATION_SIZES, CONTACT_COUNTRIES } from '@/lib/contact-options'
 
-/** Countries offered in the form's country selector. Matches @/lib/site. */
-export const CONTACT_COUNTRIES = MARKET_COUNTRIES
+// The option lists live in a zod-free module so client forms can import them
+// without shipping zod; re-exported here for existing server-side importers.
+export { CONGREGATION_SIZES, CONGREGATION_SIZE_LABELS, CONTACT_COUNTRIES, type CongregationSize } from '@/lib/contact-options'
 
 /**
  * Permissive phone check: accepts Kenyan local format (07xxxxxxxx /
@@ -64,17 +65,6 @@ export const contactSchema = z.object({
 })
 
 export type ContactInput = z.infer<typeof contactSchema>
-
-/** Buckets offered in the demo-request congregation-size selector. */
-export const CONGREGATION_SIZES = ['<100', '100-500', '500-2000', '2000+'] as const
-export type CongregationSize = (typeof CONGREGATION_SIZES)[number]
-
-export const CONGREGATION_SIZE_LABELS: Record<CongregationSize, string> = {
-  '<100': 'Under 100 members',
-  '100-500': '100 – 500 members',
-  '500-2000': '500 – 2,000 members',
-  '2000+': 'Over 2,000 members',
-}
 
 export const demoRequestSchema = z.object({
   name: z

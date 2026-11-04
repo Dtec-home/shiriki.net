@@ -21,11 +21,15 @@ const jakartaDisplay = Plus_Jakarta_Sans({
   weight: ['700', '800'],
 })
 
+// Not preloaded (sprint 2026-11 MKQ-3): the mono face only sets small
+// labels (USSD codes, eyebrows), mostly below the fold, and its three files
+// were competing with the CSS and the body font on a slow phone connection.
 const plexMono = IBM_Plex_Mono({
   variable: '--font-mono',
   subsets: ['latin'],
   display: 'swap',
   weight: ['400', '500', '600'],
+  preload: false,
 })
 
 export const metadata: Metadata = {
