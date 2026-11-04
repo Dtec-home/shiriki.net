@@ -19,7 +19,7 @@
  */
 
 import { execFileSync } from 'node:child_process'
-import { readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -260,6 +260,13 @@ function main(argv: string[]) {
   }
   const snapshot = loadSnapshot()
   if (argv[0] === '--verify-snapshot') {
+    // CI has no backend checkout: say so and pass, unless told the backend
+    // must be there (PLANS_CONTRACT_REQUIRE_BACKEND=1).
+    if (!existsSync(BACKEND_REPO)) {
+      const required = process.env.PLANS_CONTRACT_REQUIRE_BACKEND === '1'
+      console.log(`[plans-contract] ${required ? 'FAIL' : 'skip'}: no backend repo at ${BACKEND_REPO} (set SHIRIKI_BACKEND_REPO); snapshot from ${snapshot.source.ref} @ ${snapshot.source.commit.slice(0, 7)}`)
+      return required ? 1 : 0
+    }
     const fresh = exportBackendPlans(snapshot.source.ref)
     const same = JSON.stringify(fresh.plans) === JSON.stringify(snapshot.plans)
     console.log(same

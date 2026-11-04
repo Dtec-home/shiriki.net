@@ -64,6 +64,12 @@ export default defineConfig({
       // rather than once per theme.
       use: { ...devices['Desktop Chrome'] },
     },
+    {
+      // Mobile performance guards and the internal link check (MKQ-3).
+      name: 'perf',
+      testMatch: 'perf.spec.ts',
+      use: { ...devices['Desktop Chrome'] },
+    },
   ],
   webServer: {
     command: `pnpm build && pnpm start -p ${PORT}`,
