@@ -18,6 +18,11 @@ import { defineConfig, devices } from '@playwright/test'
  *   `colorScheme`, so every route is captured in both themes without
  *   duplicating test code.
  */
+// Port for the production server the suite builds and serves. Defaults to
+// 3000; set PLAYWRIGHT_PORT to run beside other servers (e.g. parallel lanes).
+const PORT = Number(process.env.PLAYWRIGHT_PORT) || 3000
+const BASE_URL = `http://localhost:${PORT}`
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
@@ -34,7 +39,7 @@ export default defineConfig({
     },
   },
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: BASE_URL,
     viewport: { width: 1280, height: 800 },
     // `reducedMotion` isn't a direct `use` option in this Playwright version's
     // types — it lives on the underlying browser-context options.
@@ -59,10 +64,16 @@ export default defineConfig({
       // rather than once per theme.
       use: { ...devices['Desktop Chrome'] },
     },
+    {
+      // Mobile performance guards and the internal link check (MKQ-3).
+      name: 'perf',
+      testMatch: 'perf.spec.ts',
+      use: { ...devices['Desktop Chrome'] },
+    },
   ],
   webServer: {
-    command: 'pnpm build && pnpm start',
-    url: 'http://localhost:3000',
+    command: `pnpm build && pnpm start -p ${PORT}`,
+    url: BASE_URL,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
   },

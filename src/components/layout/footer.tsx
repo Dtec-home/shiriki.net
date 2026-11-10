@@ -54,8 +54,8 @@ export async function Footer() {
             >
               <Logo tone="inverted" />
             </Link>
-            <p className="max-w-xs text-sm leading-6 text-primary-foreground/70">{blurb}</p>
-            <ul className="flex flex-col gap-1.5 pt-2 text-sm text-primary-foreground/70">
+            <p className="max-w-xs text-sm leading-6 text-primary-foreground/90">{blurb}</p>
+            <ul className="flex flex-col gap-1.5 pt-2 text-sm text-primary-foreground/90">
               <li className="flex items-center gap-2">
                 <Mail className="size-4 shrink-0" aria-hidden="true" />
                 <a
@@ -93,7 +93,7 @@ export async function Footer() {
                       target="_blank"
                       rel="noreferrer noopener"
                       aria-label={social.label}
-                      className="flex size-11 items-center justify-center rounded-full border border-primary-foreground/15 text-primary-foreground/80 transition-colors hover:border-primary-foreground/40 hover:text-primary-foreground focus-visible:outline-primary-foreground"
+                      className="flex size-11 items-center justify-center rounded-full border border-primary-foreground/15 text-primary-foreground/90 transition-colors hover:border-primary-foreground/40 hover:text-primary-foreground focus-visible:outline-primary-foreground"
                     >
                       <SocialIcon platform={social.platform} className="size-4" />
                     </a>
@@ -105,7 +105,7 @@ export async function Footer() {
 
           {FOOTER_NAV.map((column) => (
             <div key={column.heading} className="flex flex-col gap-1">
-              <h2 className="text-xs font-bold uppercase tracking-[0.14em] text-primary-foreground/70">
+              <h2 className="text-xs font-bold uppercase tracking-[0.14em] text-primary-foreground/90">
                 {column.heading}
               </h2>
               <ul className="flex flex-col text-sm">
@@ -113,7 +113,7 @@ export async function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="flex min-h-11 items-center text-primary-foreground/80 hover:text-primary-foreground focus-visible:outline-primary-foreground"
+                      className="flex min-h-11 items-center text-primary-foreground/90 hover:text-primary-foreground focus-visible:outline-primary-foreground"
                     >
                       {link.label}
                     </Link>
@@ -124,7 +124,7 @@ export async function Footer() {
           ))}
         </div>
 
-        <div className="flex flex-col gap-2 border-t border-primary-foreground/10 pt-6 text-sm text-primary-foreground/70 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-2 border-t border-primary-foreground/10 pt-6 text-sm text-primary-foreground/90 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {year} Shiriki. All rights reserved.</p>
           <div className="flex gap-4">
             <Link

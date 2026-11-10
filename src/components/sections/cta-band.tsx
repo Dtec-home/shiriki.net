@@ -32,7 +32,7 @@ export function CtaBand({ heading, sub, ctaLabel, ctaHref }: CtaBandProps) {
         <Container className="flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-2">
             <h2 className="text-balance text-2xl font-bold tracking-tight md:text-3xl">{heading}</h2>
-            {sub ? <p className="max-w-xl text-primary-foreground/70">{sub}</p> : null}
+            {sub ? <p className="max-w-xl text-primary-foreground/90">{sub}</p> : null}
           </div>
           {ctaHref ? (
             <TrackEvent event={ANALYTICS_EVENTS.CTA_CLICK} props={{ location: 'cta-band' }}>

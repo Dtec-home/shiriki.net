@@ -1,40 +1,25 @@
-"use client"
-
 import type { ReactNode } from "react"
-import { motion, useReducedMotion } from "motion/react"
 
-const STANDARD_EASE = [0.2, 0, 0, 1] as const
+import { cn } from "@/lib/utils"
+import { revealStyle } from "@/components/motion/reveal"
 
 type FadeInProps = {
   children: ReactNode
   className?: string
-  /** Delay in seconds before the animation starts. */
+  /** Delay in seconds; starts the scroll-linked fade a little later (see `Reveal`). */
   delay?: number
-  /** Duration in seconds. Defaults to the "moderate" reveal timing (~180ms). */
+  /** Kept for API compatibility; a scroll-linked reveal has no duration. */
   duration?: number
 }
 
 /**
- * Simple viewport-triggered fade-in. Renders content statically (no
- * animation, no initial opacity: 0) when the visitor prefers reduced
- * motion, so nothing is ever hidden for them.
+ * Fade-in as the element enters the viewport. CSS only (see `Reveal`):
+ * visible without JS, never hidden under prefers-reduced-motion.
  */
-export function FadeIn({ children, className, delay = 0, duration = 0.18 }: FadeInProps) {
-  const shouldReduceMotion = useReducedMotion()
-
-  if (shouldReduceMotion) {
-    return <div className={className}>{children}</div>
-  }
-
+export function FadeIn({ children, className, delay = 0 }: FadeInProps) {
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
-      transition={{ duration, delay, ease: STANDARD_EASE }}
-    >
+    <div className={cn("reveal", className)} style={revealStyle({ x: 0, y: 0, delay })}>
       {children}
-    </motion.div>
+    </div>
   )
 }

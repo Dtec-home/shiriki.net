@@ -11,7 +11,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { CONTACT_COUNTRIES } from '@/lib/contact-schema'
+import { CONTACT_COUNTRIES } from '@/lib/contact-options'
 import { submitContact, type FormState } from '@/app/actions/contact'
 
 const initialState: FormState = { status: 'idle' }

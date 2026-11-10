@@ -1,4 +1,15 @@
 import { portableTextToPlain } from '@/lib/portable-text-to-plain'
+import {
+  FUNDRAISING_CAPABILITIES,
+  FUNDRAISING_CHANNELS,
+  FUNDRAISING_DEVICE_SIGN_IN,
+  FUNDRAISING_PATH,
+  FUNDRAISING_PLAN_ROWS,
+  FUNDRAISING_SMS_NOTE,
+  FUNDRAISING_SUMMARY,
+  FUNDRAISING_TITLE,
+  FUNDRAISING_WHATSAPP,
+} from '@/app/(site)/features/fundraising/content'
 import { PLAY_STORE_URL, SITE_URL } from '@/lib/site'
 import { FALLBACK_FAQS } from '@/lib/fallback-content'
 import { sanityFetch } from '@/sanity/lib/fetch'
@@ -112,6 +123,21 @@ export async function GET() {
     'Pages',
     PAGES.map((page) => entry(page.title, page.path, [page.summary])),
   )
+
+  pushSection('Features', [
+    entry(FUNDRAISING_TITLE, FUNDRAISING_PATH, [
+      FUNDRAISING_SUMMARY,
+      'How givers reach a campaign:',
+      ...FUNDRAISING_CHANNELS.map((c) => `- ${c.title}: ${c.text}`),
+      'Capabilities:',
+      ...FUNDRAISING_CAPABILITIES.map((c) => `- ${c.title}: ${c.text}`),
+      `- ${FUNDRAISING_WHATSAPP.title}: ${FUNDRAISING_WHATSAPP.text}`,
+      `- ${FUNDRAISING_DEVICE_SIGN_IN.title}: ${FUNDRAISING_DEVICE_SIGN_IN.text}`,
+      'Plans:',
+      ...FUNDRAISING_PLAN_ROWS.map((row) => `- ${row.capability}: ${row.plan}`),
+      FUNDRAISING_SMS_NOTE,
+    ]),
+  ])
 
   pushSection(
     'FAQ',

@@ -1,3 +1,4 @@
+import { FUNDRAISING_PATH, FUNDRAISING_SUMMARY, FUNDRAISING_TITLE } from '@/app/(site)/features/fundraising/content'
 import { PLAY_STORE_URL, SITE_URL } from '@/lib/site'
 import { FALLBACK_FAQS } from '@/lib/fallback-content'
 import { sanityFetch } from '@/sanity/lib/fetch'
@@ -53,6 +54,7 @@ function section(heading: string, lines: string[]): string {
 const PAGES = [
   { title: 'Home', path: '/', desc: 'Church management platform overview — giving, members, communication, events, and finance.' },
   { title: 'About', path: '/about', desc: 'About Shiriki and its mission for African churches.' },
+  { title: FUNDRAISING_TITLE, path: FUNDRAISING_PATH, desc: FUNDRAISING_SUMMARY },
   { title: 'Pricing', path: '/pricing', desc: 'Plans and pricing in Kenyan Shillings.' },
   { title: 'Blog', path: '/blog', desc: 'Articles on church operations, giving, and community.' },
   { title: 'FAQ', path: '/faq', desc: 'Frequently asked questions about Shiriki.' },
