@@ -1038,7 +1038,7 @@ const postDefs = [
     slug: 'run-a-harambee-on-shiriki',
     excerpt:
       'A building fund or harambee usually lives in an exercise book, a spreadsheet and a dozen WhatsApp messages. Here is how to run one on Shiriki, with your own Pay Bill, a public page, pledges, champions and a statement the board can trust.',
-    publishedAt: '2026-11-03T07:00:00Z',
+    publishedAt: '2026-11-10T07:00:00Z',
     categoryId: categoryIds.giving,
     authorId: authorIds.shirikiTeam,
     body: [
@@ -1094,7 +1094,7 @@ const postDefs = [
     slug: 'whatsapp-group-leaderboards',
     excerpt:
       'After every service, someone types out who gave what for the church WhatsApp group. On Shiriki’s Kanisa plan, the group gets an updated leaderboard after every gift, from your church’s own number, with names shown the way your church chooses.',
-    publishedAt: '2026-11-10T07:00:00Z',
+    publishedAt: '2026-11-10T08:00:00Z',
     categoryId: categoryIds.operations,
     authorId: authorIds.amaniMwenda,
     body: [
@@ -1135,7 +1135,7 @@ const postDefs = [
     slug: 'pledges-that-clear-themselves',
     excerpt:
       'Chasing pledges by phone and ticking them off in Excel is slow and easy to get wrong. Here is how Shiriki applies each gift to the right pledge automatically, and why only money given after a pledge can clear it.',
-    publishedAt: '2026-11-17T07:00:00Z',
+    publishedAt: '2026-11-10T09:00:00Z',
     categoryId: categoryIds.giving,
     authorId: authorIds.shirikiTeam,
     body: [
