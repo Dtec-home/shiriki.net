@@ -150,7 +150,7 @@ export function OgTemplate({
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         <div style={{ display: 'flex', height: 4, width: 120, backgroundColor: GOLD }} />
         <div style={{ fontFamily: sansFont, fontSize: 22, color: LIGHT }}>
-          shiriki.site
+          shiriki.net
         </div>
       </div>
     </div>

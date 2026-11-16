@@ -604,7 +604,7 @@ const faqDefs = [
     question: 'What do we need to get started?',
     answer: [
       block(
-        'Just a phone number and an internet connection. Sign up at shiriki.site, choose your church\'s subdomain, and you are in the 30-day free trial immediately. To receive M-Pesa giving, you will need your own Safaricom PayBill or Till number and the Daraja API credentials — our setup wizard walks you through obtaining these.',
+        'Just a phone number and an internet connection. Sign up at shiriki.net, choose your church\'s subdomain, and you are in the 30-day free trial immediately. To receive M-Pesa giving, you will need your own Safaricom PayBill or Till number and the Daraja API credentials — our setup wizard walks you through obtaining these.',
       ),
     ],
     category: 'Getting started',
@@ -797,7 +797,7 @@ const postDefs = [
     body: [
       h2('Day 1: Sign up and claim your address'),
       block(
-        'Head to shiriki.site and create your church\u2019s account. You will pick a subdomain \u2014 for example, grace.shiriki.site \u2014 and verify your phone number with an OTP. The whole process takes under two minutes, and you are immediately inside the 30-day free trial.',
+        'Head to shiriki.net and create your church\u2019s account. You will pick a subdomain \u2014 for example, grace.shiriki.net \u2014 and verify your phone number with an OTP. The whole process takes under two minutes, and you are immediately inside the 30-day free trial.',
       ),
       h3('Day 2: Complete the setup wizard'),
       block(
@@ -1283,8 +1283,8 @@ const siteSettings = {
   _type: 'siteSettings',
   name: 'Shiriki',
   tagline: 'Church management that runs on M-Pesa.',
-  contactEmail: 'hello@shiriki.site',
-  salesEmail: 'sales@shiriki.site',
+  contactEmail: 'hello@shiriki.net',
+  salesEmail: 'sales@shiriki.net',
   phone: '+254 797 030 300',
   ussdCode: '*710*12414#',
   address: {
