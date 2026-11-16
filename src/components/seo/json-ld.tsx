@@ -31,7 +31,7 @@ export function JsonLd({ data }: { data: object | object[] }) {
 
 /**
  * `BreadcrumbList` for a top-level page: Home › `name`. Gives each page a
- * clean "shiriki.site › Pricing" trail in results instead of a bare URL.
+ * clean "shiriki.net › Pricing" trail in results instead of a bare URL.
  */
 export function BreadcrumbLd({ name, path }: { name: string; path: string }) {
   return (

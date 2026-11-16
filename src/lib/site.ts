@@ -35,7 +35,7 @@ export const SITE_ALTERNATE_NAMES = [
   'Shiriki CFMS',
   'Shiriki ChMS',
   'Shiriki Church',
-  'shiriki.site',
+  'shiriki.net',
 ]
 
 /**
@@ -72,10 +72,10 @@ export const SITE_KEYWORDS = [
 /**
  * The application, where a church actually signs up and signs in. Separate
  * host from this marketing site: churches are served per-subdomain there
- * (grace.shiriki.site), while this site is the apex.
+ * (grace.shiriki.net), while this site is the apex.
  */
 export const APP_URL = (
-  process.env.NEXT_PUBLIC_APP_URL || 'https://app.shiriki.site'
+  process.env.NEXT_PUBLIC_APP_URL || 'https://app.shiriki.net'
 ).replace(/\/+$/, '')
 
 /** Where "Get started" sends a church leader — the signup wizard. */
@@ -85,11 +85,11 @@ export const APP_SIGNUP_URL = `${APP_URL}/signup`
 export const APP_SIGNIN_URL = `${APP_URL}/login`
 
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://shiriki.site'
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://shiriki.net'
 ).replace(/\/$/, '')
 
-export const CONTACT_EMAIL = 'hello@shiriki.site'
-export const SALES_EMAIL = 'sales@shiriki.site'
+export const CONTACT_EMAIL = 'hello@shiriki.net'
+export const SALES_EMAIL = 'sales@shiriki.net'
 export const CONTACT_PHONE = '+254 797 030 300'
 export const USSD_CODE = '*710*12414#'
 
